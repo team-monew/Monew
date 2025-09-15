@@ -3,22 +3,8 @@ name: Vercel Preview
 on:
   push:
     branches: [dev]
-    paths:
-      - "src/**"
-      - "public/**"
-      - "package.json"
-      - "package-lock.json"
-      - "vite.config.*"
-      - "vercel.json"
   pull_request:
     branches: [dev, main]
-    paths:
-      - "src/**"
-      - "public/**"
-      - "package.json"
-      - "package-lock.json"
-      - "vite.config.*"
-      - "vercel.json"
 jobs:
   preview:
     runs-on: ubuntu-latest
