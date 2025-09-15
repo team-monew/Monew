@@ -1,0 +1,44 @@
+# .github/workflows/vercel-preview.yml
+name: Vercel Preview
+on:
+  push:
+    branches: [dev]
+    paths:
+      - "src/**"
+      - "public/**"
+      - "package.json"
+      - "package-lock.json"
+      - "vite.config.*"
+      - "vercel.json"
+  pull_request:
+    branches: [dev, main]
+    paths:
+      - "src/**"
+      - "public/**"
+      - "package.json"
+      - "package-lock.json"
+      - "vite.config.*"
+      - "vercel.json"
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    env:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+    concurrency:
+      group: vercel-preview-${{ github.ref }}
+      cancel-in-progress: true
+    steps:
+      - uses: actions/checkout@v4 # Github Actions 서버로 코드 다운로드
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+      - run: npm i -g vercel@latest
+      - name: Pull Project Settings (Preview)
+        run: vercel pull --yes --environment=preview --token=$VERCEL_TOKEN
+      - name: Build (Preview)
+        run: vercel build --token=$VERCEL_TOKEN
+      - name: Deploy (Preview)
+        run: vercel deploy --prebuilt --token=$VERCEL_TOKEN
