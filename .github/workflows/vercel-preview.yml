@@ -2,7 +2,7 @@
 name: Vercel Preview
 on:
   push:
-    branches: [dev]
+    branches: [dev, setting]
     paths:
       - "src/**"
       - "public/**"
