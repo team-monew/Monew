@@ -1,104 +1,154 @@
+@import "tailwindcss";
+
+/* 폰트 크기, 행간 설정 */
 @theme {
+  --fs-12: 12px;
+  --lh-12: 16px;
 
-  /* xs */
-  --text-12-r: 12px;
-  --text-12-r--line-height: 16px;
-  --text-12-r--font-weight: 400px;
+  --fs-14: 14px;
+  --lh-14: 20px;
 
-  --text-12-m: 12px;
-  --text-12-m--line-height: 16px;
-  --text-12-m--font-weight: 500px;
+  --fs-16: 16px;
+  --lh-16: 24px;
 
-  --text-12-sb: 12px;
-  --text-12-sb--line-height: 16px;
-  --text-12-sb--font-weight: 600px;
+  --fs-18: 18px;
+  --lh-18: 28px;
 
-  --text-12-b: 12px;
-  --text-12-b--line-height: 16px;
-  --text-12-b--font-weight: 700px;
+  --fs-20: 20px;
+  --lh-20: 28px;
 
-  /* sm */
-  --text-14-r: 14px;
-  --text-14-r--line-height: 20px;
-  --text-14-r--font-weight: 400px;
+  --fs-24: 24px;
+  --lh-24: 32px;
+}
 
-  --text-14-m: 14px;
-  --text-14-m--line-height: 20px;
-  --text-14-m--font-weight: 500px;
+/* 12px */
+@utility text-12-r {
+  font-size: var(--fs-12);
+  line-height: var(--lh-12);
+  font-weight: 400;
+}
+@utility text-12-m {
+  font-size: var(--fs-12);
+  line-height: var(--lh-12);
+  font-weight: 500;
+}
+@utility text-12-sb {
+  font-size: var(--fs-12);
+  line-height: var(--lh-12);
+  font-weight: 600;
+}
+@utility text-12-b {
+  font-size: var(--fs-12);
+  line-height: var(--lh-12);
+  font-weight: 700;
+} /* bold */
 
-  --text-14-sb: 14px;
-  --text-14-sb--line-height: 20px;
-  --text-14-sb--font-weight: 600px;
+/* 14px */
+@utility text-14-r {
+  font-size: var(--fs-14);
+  line-height: var(--lh-14);
+  font-weight: 400;
+}
+@utility text-14-m {
+  font-size: var(--fs-14);
+  line-height: var(--lh-14);
+  font-weight: 500;
+}
+@utility text-14-sb {
+  font-size: var(--fs-14);
+  line-height: var(--lh-14);
+  font-weight: 600;
+}
+@utility text-14-b {
+  font-size: var(--fs-14);
+  line-height: var(--lh-14);
+  font-weight: 700;
+}
 
-  --text-14-b: 14px;
-  --text-14-b--line-height: 20px;
-  --text-14-b--font-weight: 700px;
+/* 16px */
+@utility text-16-r {
+  font-size: var(--fs-16);
+  line-height: var(--lh-16);
+  font-weight: 400;
+}
+@utility text-16-m {
+  font-size: var(--fs-16);
+  line-height: var(--lh-16);
+  font-weight: 500;
+}
+@utility text-16-sb {
+  font-size: var(--fs-16);
+  line-height: var(--lh-16);
+  font-weight: 600;
+}
+@utility text-16-b {
+  font-size: var(--fs-16);
+  line-height: var(--lh-16);
+  font-weight: 700;
+}
 
-  /* base */
-  --text-16-r: 16px;
-  --text-16-r--line-height: 24px;
-  --text-16-r--font-weight: 400px;
+/* 18px */
+@utility text-18-r {
+  font-size: var(--fs-18);
+  line-height: var(--lh-18);
+  font-weight: 400;
+}
+@utility text-18-m {
+  font-size: var(--fs-18);
+  line-height: var(--lh-18);
+  font-weight: 500;
+}
+@utility text-18-sb {
+  font-size: var(--fs-18);
+  line-height: var(--lh-18);
+  font-weight: 600;
+}
+@utility text-18-b {
+  font-size: var(--fs-18);
+  line-height: var(--lh-18);
+  font-weight: 700;
+}
 
-  --text-16-m: 16px;
-  --text-16-m--line-height: 24px;
-  --text-16-m--font-weight: 500px;
+/* 20px */
+@utility text-20-r {
+  font-size: var(--fs-20);
+  line-height: var(--lh-20);
+  font-weight: 400;
+}
+@utility text-20-m {
+  font-size: var(--fs-20);
+  line-height: var(--lh-20);
+  font-weight: 500;
+}
+@utility text-20-sb {
+  font-size: var(--fs-20);
+  line-height: var(--lh-20);
+  font-weight: 600;
+}
+@utility text-20-b {
+  font-size: var(--fs-20);
+  line-height: var(--lh-20);
+  font-weight: 700;
+}
 
-  --text-16-sb: 16px;
-  --text-16-sb--line-height: 24px;
-  --text-16-sb--font-weight: 600px;
-
-  --text-16-b: 16px;
-  --text-16-b--line-height: 24px;
-  --text-16-b--font-weight: 700px;
-
-  /* lg */
-  --text-18-r: 18px;
-  --text-18-r--line-height: 28px;
-  --text-18-r--font-weight: 400px;
-
-  --text-18-m: 18px;
-  --text-18-m--line-height: 28px;
-  --text-18-m--font-weight: 500px;
-
-  --text-18-sb: 18px;
-  --text-18-sb--line-height: 28px;
-  --text-18-sb--font-weight: 600px;
-
-  --text-18-b: 18px;
-  --text-18-b--line-height: 28px;
-  --text-18-b--font-weight: 700px;
-
-  /* xl */
-  --text-20-r: 20px;
-  --text-20-r--line-height: 28px;
-  --text-20-r--font-weight: 400px;
-
-  --text-20-m: 20px;
-  --text-20-m--line-height: 28px;
-  --text-20-m--font-weight: 500px;
-
-  --text-20-sb: 20px;
-  --text-20-sb--line-height: 28px;
-  --text-20-sb--font-weight: 600px;
-
-  --text-20-b: 20px;
-  --text-20-b--line-height: 28px;
-  --text-20-b--font-weight: 700px;
-
-  /* 2xl */
-  --text-24-r: 24px;
-  --text-24-r--line-height: 32px;
-  --text-24-r--font-weight: 400px;
-
-  --text-24-m: 24px;
-  --text-24-m--line-height: 32px;
-  --text-24-m--font-weight: 500px;
-
-  --text-24-sb: 24px;
-  --text-24-sb--line-height: 32px;
-  --text-24-sb--font-weight: 600px;
-
-  --text-24-b: 24px;
-  --text-24-b--line-height: 32px;
-  --text-24-b--font-weight: 700px;
+/* 24px */
+@utility text-24-r {
+  font-size: var(--fs-24);
+  line-height: var(--lh-24);
+  font-weight: 400;
+}
+@utility text-24-m {
+  font-size: var(--fs-24);
+  line-height: var(--lh-24);
+  font-weight: 500;
+}
+@utility text-24-sb {
+  font-size: var(--fs-24);
+  line-height: var(--lh-24);
+  font-weight: 600;
+}
+@utility text-24-b {
+  font-size: var(--fs-24);
+  line-height: var(--lh-24);
+  font-weight: 700;
 }
