@@ -16,7 +16,8 @@
     "*.{js,jsx,ts,tsx}": [
       "eslint --fix",
       "prettier --write"
-    ]
+    ],
+    "*": "git add"
   },
   "dependencies": {
     "react": "^19.1.1",
