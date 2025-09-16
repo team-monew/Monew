@@ -2,7 +2,6 @@
 @import "./font.css";
 @import "./text.css";
 @import "./color.css";
-@import "./breakpoint.css";
 
 @layer base {
   html,
@@ -22,8 +21,8 @@
       "Noto Color Emoji",
       "Segoe UI Symbol",
       sans-serif;
-    color: var(--color-slate-700);
-    background-color: var(--color-slate-50);
+    color: var(--color-gray-700);
+    background-color: var(--color-gray-50);
   }
 
   button {
