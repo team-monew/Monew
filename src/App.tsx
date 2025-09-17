@@ -1,9 +1,9 @@
 import { Routes, Route, Navigate } from "react-router";
-import LoginPage from "./pages/auth/login/LoginPage";
-import SignUpPage from "./pages/auth/signup/SignUpPage";
-import FeedPage from "./pages/feed/FeedPage";
-import InterestsPage from "./pages/interests/InterestsPage";
-import HistoryPage from "./pages/history/HistoryPage";
+import LoginPage from "@/pages/auth/login/LoginPage";
+import SignUpPage from "@/pages/auth/signup/SignUpPage";
+import FeedPage from "@/pages/feed/FeedPage";
+import InterestsPage from "@/pages/interests/InterestsPage";
+import HistoryPage from "@/pages/history/HistoryPage";
 
 function App() {
   return (
