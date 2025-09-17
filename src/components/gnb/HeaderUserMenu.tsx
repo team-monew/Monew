@@ -9,7 +9,7 @@ export default function HeaderUserMenu() {
       <button className="text-14-m text-gray-400 sm:block hidden">
         로그아웃
       </button>
-      <img src={logoutIcon} alt="logout" className="sm:hidden block" />
+      <img src={logoutIcon} alt="logout" className="sm:hidden block h-5" />
     </div>
   );
 }
