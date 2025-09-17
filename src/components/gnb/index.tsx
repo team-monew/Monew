@@ -6,8 +6,8 @@ import { ROUTES } from "@/shared/constants/routes";
 
 export default function Header() {
   return (
-    <header className="flex items-center justify-center w-full h-[80px] bg-white lg:px-[19vw] px-[5vw]">
-      <div className="flex w-full justify-between">
+    <header className="flex items-center justify-center w-full h-[80px] bg-white border-b border-gray-200 lg:px-[19vw] px-[5vw]">
+      <div className="flex items-center justify-between w-full">
         <Link to={ROUTES.ROOT} aria-label="홈" className="md:block hidden">
           <img src={logoUrl} alt="Monew logo" className="h-[48px]" />
         </Link>
