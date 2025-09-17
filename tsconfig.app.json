@@ -23,5 +23,13 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src"]
+  "include": [
+    "src",
+    "src/shared/store/.gitkeep",
+    "src/shared/hooks/.gitkeep",
+    "src/shared/api/.gitkeep",
+    "src/components/Modal/.gitkeep",
+    "src/components/Header/.gitkeep",
+    "src/components/Button/.gitkeep"
+  ]
 }
