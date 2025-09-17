@@ -1,5 +1,6 @@
 import { Outlet } from "react-router";
 import Header from "@/components/gnb";
+import Footer from "@/components/Footer";
 
 export default function AppLayout() {
   return (
@@ -8,6 +9,7 @@ export default function AppLayout() {
       <main className="min-h-[calc(100vh-80px-60px)]">
         <Outlet />
       </main>
+      <Footer />
     </div>
   );
 }
