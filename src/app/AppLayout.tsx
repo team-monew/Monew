@@ -5,7 +5,7 @@ export default function AppLayout() {
   return (
     <div className="min-h-dvh">
       <Header />
-      <main className="min-h-[calc(100vh-80px)]">
+      <main className="min-h-[calc(100vh-80px)] pt-[60px]">
         <Outlet />
       </main>
     </div>
