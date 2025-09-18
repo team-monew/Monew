@@ -1,5 +1,5 @@
 import { Outlet } from "react-router";
-import PublicHeader from "@/components/gnb/auth";
+import { PublicHeader } from "@/components/gnb";
 
 export default function PublicLayout() {
   return (

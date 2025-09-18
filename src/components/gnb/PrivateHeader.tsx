@@ -3,7 +3,7 @@ import HeaderTab from "@/components/gnb/HeaderTabs";
 import HeaderUserMenu from "@/components/gnb/HeaderUserMenu";
 import { headerStyle } from "@/components/gnb/headerStyle";
 
-export default function Header() {
+export default function PrivateHeader() {
   return (
     <header className={`${headerStyle}`}>
       <div className="flex items-center justify-between w-full">
