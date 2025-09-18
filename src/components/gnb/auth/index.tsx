@@ -1,7 +1,7 @@
 import Logo from "@/components/gnb/Logo";
 import { headerStyle } from "@/components/gnb/headerStyle";
 
-export default function HeaderAuth() {
+export default function PublicHeader() {
   return (
     <header className={`${headerStyle}`}>
       <div className="flex items-center w-full">
