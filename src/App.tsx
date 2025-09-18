@@ -2,19 +2,19 @@ import { Routes, Route, Navigate } from "react-router";
 import AppLayout from "@/app/AppLayout";
 import LoginPage from "@/pages/auth/login/LoginPage";
 import SignUpPage from "@/pages/auth/signup/SignUpPage";
-import FeedPage from "@/pages/feed/FeedPage";
+import ArticlesPage from "@/pages/articles/ArticlesPage";
 import InterestsPage from "@/pages/interests/InterestsPage";
-import HistoryPage from "@/pages/history/HistoryPage";
+import ActivitiesPage from "@/pages/activities/ActivitiesPage";
 
 function App() {
   return (
     <Routes>
       <Route element={<AppLayout />}>
-        <Route path="/" element={<Navigate to="/feed" replace />} />
+        <Route path="/" element={<Navigate to="/articles" replace />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
-        <Route path="/feed" element={<FeedPage />} />
-        <Route path="/history" element={<HistoryPage />} />
+        <Route path="/articles" element={<ArticlesPage />} />
+        <Route path="/activities" element={<ActivitiesPage />} />
         <Route path="/interests" element={<InterestsPage />} />
         <Route path="*" element={<div>404</div>} />
       </Route>

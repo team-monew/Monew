@@ -1,15 +1,15 @@
-export const HISTORY_TABS = ["recent", "liked", "viewed"] as const;
-export const DEFAULT_HISTORY_TAB: HistoryTab = "recent";
-export type HistoryTab = (typeof HISTORY_TABS)[number];
+export const activities_TABS = ["recent", "liked", "viewed"] as const;
+export const DEFAULT_activities_TAB: activitiesTab = "recent";
+export type activitiesTab = (typeof activities_TABS)[number];
 
 export const ROUTES = {
   ROOT: "/",
   AUTH_LOGIN: "/login",
   AUTH_SIGNUP: "/signup",
-  FEED: "/feed",
-  HISTORY: "/history",
+  articles: "/articles",
+  activities: "/activities",
   INTERESTS: "/interests",
 } as const;
 
-export const historyPath = (tab: HistoryTab = DEFAULT_HISTORY_TAB) =>
-  `${ROUTES.HISTORY}?tab=${tab}` as const;
+export const activitiesPath = (tab: activitiesTab = DEFAULT_activities_TAB) =>
+  `${ROUTES.activities}?tab=${tab}` as const;
