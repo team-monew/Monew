@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import searchIcon from "../../assets/icons/search.svg";
+import searchIcon from "@/assets/icons/search.svg";
 
 interface SearchBarProps extends React.InputHTMLAttributes<HTMLInputElement> {
   width?: string;
@@ -44,7 +44,7 @@ function SearchBar({
         ref={inputRef}
         type="text"
         placeholder="검색어를 입력해주세요"
-        className={`flex-1 outline-none font-pretendard placeholder:text-sm placeholder:font-normal placeholder:leading-5 ${className}`}
+        className={`flex-1 outline-none font-pretendard placeholder:text-sm placeholder:text-gray-400 placeholder:font-normal placeholder:leading-5 ${className}`}
         onKeyDown={handleKeyDown}
         {...props}
       />
