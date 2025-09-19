@@ -1,6 +1,6 @@
 import { Outlet } from "react-router";
-import { PrivateHeader } from "@/components/gnb";
-import Footer from "@/components/Footer";
+import { PrivateHeader } from "@/components/common/gnb";
+import Footer from "@/components/common/Footer";
 
 export default function PrivateLayout() {
   return (

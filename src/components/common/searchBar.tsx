@@ -8,7 +8,7 @@ interface SearchBarProps extends React.InputHTMLAttributes<HTMLInputElement> {
   onSearch?: (value: string) => void;
 }
 
-function SearchBar({
+export default function SearchBar({
   width = "w-3xs",
   height = "h-[40px]",
   containerClassName = "",
@@ -54,5 +54,3 @@ function SearchBar({
     </div>
   );
 }
-
-export default SearchBar;
