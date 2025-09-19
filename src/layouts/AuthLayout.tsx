@@ -1,5 +1,5 @@
 import { Outlet } from "react-router";
-import Header from "@/components/gnb";
+import Header from "@/components/common/gnb";
 
 export default function AuthLayout() {
   return (

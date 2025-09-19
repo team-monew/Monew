@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import logoUrl from "@/assets/logos/app/logo.svg";
-import HeaderTab from "@/components/gnb/HeaderTabs";
-import HeaderUserMenu from "@/components/gnb/HeaderUserMenu";
+import HeaderTab from "@/components/common/gnb/HeaderTabs";
+import HeaderUserMenu from "@/components/common/gnb/HeaderUserMenu";
 import { ROUTES } from "@/shared/constants/routes";
 
 export default function Header() {

@@ -1,6 +1,6 @@
 import { Outlet } from "react-router";
-import Header from "@/components/gnb";
-import Footer from "@/components/Footer";
+import Header from "@/components/common/gnb";
+import Footer from "@/components/common/Footer";
 
 export default function AppLayout() {
   return (

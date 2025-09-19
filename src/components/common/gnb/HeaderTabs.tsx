@@ -1,4 +1,4 @@
-import HeaderTabButton from "@/components/gnb/HeaderTabButton";
+import HeaderTabButton from "@/components/common/gnb/HeaderTabButton";
 
 export default function HeaderTabs() {
   return (
