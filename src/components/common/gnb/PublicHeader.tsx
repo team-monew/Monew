@@ -1,5 +1,5 @@
 import Logo from "@/components/common/gnb/Logo";
-import { headerStyle } from "@/components/common/gnb/headerStyle";
+import { headerStyle } from "@/components/common/gnb/header.styles";
 
 export default function PublicHeader() {
   return (
