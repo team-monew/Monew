@@ -1,10 +1,10 @@
 import { Outlet } from "react-router";
-import Header from "@/components/gnb";
+import { PublicHeader } from "@/components/gnb";
 
-export default function AuthLayout() {
+export default function PublicLayout() {
   return (
     <div className="min-h-dvh flex flex-col">
-      <Header />
+      <PublicHeader />
       <main className="flex-1">
         <Outlet />
       </main>
