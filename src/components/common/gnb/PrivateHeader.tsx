@@ -1,7 +1,7 @@
-import Logo from "@/components/gnb/Logo";
-import HeaderTab from "@/components/gnb/HeaderTabs";
-import HeaderUserMenu from "@/components/gnb/HeaderUserMenu";
-import { headerStyle } from "@/components/gnb/headerStyle";
+import Logo from "@/components/common/gnb/Logo";
+import HeaderTab from "@/components/common/gnb/HeaderTabs";
+import HeaderUserMenu from "@/components/common/gnb/HeaderUserMenu";
+import { headerStyle } from "@/components/common/gnb/headerStyle";
 
 export default function PrivateHeader() {
   return (
