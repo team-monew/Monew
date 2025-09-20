@@ -37,8 +37,8 @@ export const cx = (...xs: Array<string | false | null | undefined>) => {
 };
 
 export const buttonClass = ({
-  size = "lg",
   variant = "primary",
+  size = "lg",
   disabled = false,
   fullWidth = false,
 }: ButtonStyleProps) => {
