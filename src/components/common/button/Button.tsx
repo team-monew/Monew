@@ -1,44 +1,18 @@
-import type { ReactNode } from "react";
-import {
-  baseStyles,
-  variantStyles,
-  sizeStyles,
-  disabledStyles,
-  cx,
-} from "./button.styles";
-import type { Variant, Size } from "./button.styles";
+import { cx, buttonClass } from "./button.styles";
+import type { ButtonStyleProps } from "./button.styles";
 
-interface ButtonProps extends React.ComponentPropsWithRef<"button"> {
-  variant?: Variant;
-  size?: Size;
-  onClick?: () => void;
-  children: ReactNode;
-}
+type ButtonProps = React.ComponentPropsWithRef<"button"> & ButtonStyleProps;
 
-export default function Button({
-  variant = "primary",
-  size = "lg",
-  disabled = false,
-  className,
-  onClick,
-  children,
-  ...props
-}: ButtonProps) {
-  const buttonStyles = cx(
-    baseStyles,
-    sizeStyles[size],
-    disabled ? disabledStyles : variantStyles[variant],
-    className
-  );
-
+export default function Button({ className, ...props }: ButtonProps) {
+  const { variant, size, fullWidth, disabled, ...rest } = props;
   return (
     <button
-      className={buttonStyles}
-      onClick={onClick}
+      className={cx(
+        buttonClass({ variant, size, fullWidth, disabled, ...rest }),
+        className
+      )}
       disabled={disabled}
-      {...props}
-    >
-      {children}
-    </button>
+      {...rest}
+    />
   );
 }
