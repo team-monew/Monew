@@ -35,6 +35,6 @@
     "src/shared/api/.gitkeep",
     "src/components/Modal/.gitkeep",
     "src/components/Header/.gitkeep",
-    "src/components/Button/.gitkeep"
+    "src/components/common/button/.gitkeep"
   ]
 }
