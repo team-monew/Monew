@@ -3,9 +3,12 @@ import { useEffect } from "react";
 
 export const useClosePopup = (
   ref: React.RefObject<HTMLElement | null>,
-  onClose: () => void
+  onClose: () => void,
+  isOpen: boolean = true
 ) => {
   useEffect(() => {
+    if (!isOpen) return;
+
     const handleClickOutside = (e: MouseEvent) => {
       const target = e.target as Node | null;
 
@@ -24,12 +27,12 @@ export const useClosePopup = (
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("mousedown", handleClickOutside, true);
+    document.addEventListener("keydown", handleKeyDown, true);
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("mousedown", handleClickOutside, true);
+      document.removeEventListener("keydown", handleKeyDown, true);
     };
-  }, [onClose, ref]);
+  }, [onClose, ref, isOpen]);
 };
