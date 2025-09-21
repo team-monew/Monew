@@ -24,7 +24,10 @@ export async function login(body: LoginBody): Promise<User> {
 }
 
 /* 사용자 정보 수정 */
-export async function usersEdit(body: UpdateUserBody): Promise<User> {
-  const { data } = await http.patch<User>("/users/{userId}", body);
+export async function updateUser(
+  userId: string,
+  body: UpdateUserBody
+): Promise<User> {
+  const { data } = await http.patch<User>(`/users/${userId}`, body);
   return data;
 }
