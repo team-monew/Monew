@@ -46,7 +46,7 @@ export default function Input({
       )}
 
       <div
-        className={`w-full min-h-14 border border-slate-200 rounded-lg mt-1 py-4 px-5 gap-2.5 bg-white ${error ? "border-red-500" : "border-slate-200"} focus-within:border-blue-500 ${className || ""}`}
+        className={`w-full min-h-14 border rounded-lg mt-1 py-4 px-5 gap-2.5 bg-white ${error ? "border-red-500" : "border-slate-200"} focus-within:border-blue-500 ${className || ""}`}
       >
         <div className="flex items-center justify-between">
           <input
