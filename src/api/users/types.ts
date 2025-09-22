@@ -1,5 +1,7 @@
+import type { UserId } from "@/types/ids";
+
 export type User = {
-  id: string;
+  id: UserId;
   email: string;
   nickname: string;
   createdAt: string;
