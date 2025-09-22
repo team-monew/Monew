@@ -1,3 +1,5 @@
+import type { UserId, ArticleId } from "@/types/ids";
+
 export type ArticleListItem = {
   id: string;
   source: string;
@@ -9,9 +11,6 @@ export type ArticleListItem = {
   viewCount: number;
   viewedByMe: boolean;
 };
-
-export type ArticleId = string;
-export type UserId = string;
 
 /* 기사 정렬 아이템 */
 export type ArticlesOrderBy = "publishDate" | "viewCount" | "commentCount";

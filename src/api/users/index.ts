@@ -1,5 +1,6 @@
 import { http } from "@/lib/http";
 import type * as T from "@/api/users/types";
+import type { UserId } from "@/types/ids";
 
 /* 회원가입 */
 export async function signUp(body: T.SignUpBody): Promise<T.User> {
@@ -23,11 +24,11 @@ export async function updateUser(
 }
 
 /* 사용자 논리 삭제 */
-export async function deleteUser(userId: T.UserId): Promise<void> {
+export async function deleteUser(userId: UserId): Promise<void> {
   await http.delete<void>(`/users/${userId}`);
 }
 
 /* 사용자 물리 삭제 */
-export async function hardDeleteUser(userId: T.UserId): Promise<void> {
+export async function hardDeleteUser(userId: UserId): Promise<void> {
   await http.delete<void>(`/users/${userId}/hard`);
 }

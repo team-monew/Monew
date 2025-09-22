@@ -1,13 +1,14 @@
 import { http } from "@/lib/http";
 import type * as T from "@/api/articles/types";
+import type { UserId, ArticleId } from "@/types/ids";
 
 /* 기사 뷰 등록 */
 export async function addArticleView({
   articleId,
   requestUserId,
 }: {
-  articleId: T.ArticleId;
-  requestUserId: T.UserId;
+  articleId: ArticleId;
+  requestUserId: UserId;
 }): Promise<T.AddArticleViewResponse> {
   const { data } = await http.post<T.AddArticleViewResponse>(
     `/articles/${articleId}/article-views`,
@@ -20,7 +21,7 @@ export async function addArticleView({
 /* 뉴스 기사 목록 조회 */
 export async function getArticles(
   params: T.GetArticlesParams,
-  requestUserId: T.UserId
+  requestUserId: UserId
 ): Promise<T.GetArticlesResponse> {
   const { data } = await http.get<T.GetArticlesResponse>("/articles", {
     params,
@@ -49,11 +50,11 @@ export async function restoreArticles(
 }
 
 /* 뉴스 기사 논리 삭제 */
-export async function deleteArticle(articleId: T.ArticleId): Promise<void> {
+export async function deleteArticle(articleId: ArticleId): Promise<void> {
   await http.delete<void>(`/articles/${articleId}`);
 }
 
 /* 뉴스 기사 물리 삭제 */
-export async function hardDeleteArticle(articleId: T.ArticleId): Promise<void> {
+export async function hardDeleteArticle(articleId: ArticleId): Promise<void> {
   await http.delete<void>(`/articles/${articleId}/hard`);
 }
