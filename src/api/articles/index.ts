@@ -1,0 +1,59 @@
+import { http } from "@/lib/http";
+import type * as T from "@/api/articles/types";
+
+/* 기사 뷰 등록 */
+export async function addArticleView({
+  articleId,
+  requestUserId,
+}: {
+  articleId: T.ArticleId;
+  requestUserId: T.UserId;
+}): Promise<T.AddArticleViewResponse> {
+  const { data } = await http.post<T.AddArticleViewResponse>(
+    `/articles/${articleId}/article-views`,
+    undefined,
+    { headers: { "Monew-Request-User-ID": requestUserId } }
+  );
+  return data;
+}
+
+/* 뉴스 기사 목록 조회 */
+export async function getArticles(
+  params: T.GetArticlesParams,
+  requestUserId: T.UserId
+): Promise<T.GetArticlesResponse> {
+  const { data } = await http.get<T.GetArticlesResponse>("/articles", {
+    params,
+    headers: { "Monew-Request-User-ID": requestUserId },
+  });
+  return data;
+}
+
+/* 출처 목록 조회 */
+export async function getArticleSource(): Promise<T.ArticleSource[]> {
+  const { data } = await http.get<T.ArticleSource[]>("/articles/sources");
+  return data;
+}
+
+/* 뉴스 복구 */
+export async function restoreArticles(
+  params: T.RestoreArticlesParams
+): Promise<T.RestoreArticlesResponse> {
+  const { data } = await http.get<T.RestoreArticlesResponse>(
+    "/articles/restore",
+    {
+      params,
+    }
+  );
+  return data;
+}
+
+/* 뉴스 기사 논리 삭제 */
+export async function deleteArticle(articleId: T.ArticleId): Promise<void> {
+  await http.delete<void>(`/articles/${articleId}`);
+}
+
+/* 뉴스 기사 물리 삭제 */
+export async function hardDeleteArticle(articleId: T.ArticleId): Promise<void> {
+  await http.delete<void>(`/articles/${articleId}/hard`);
+}

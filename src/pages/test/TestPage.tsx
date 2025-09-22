@@ -25,9 +25,9 @@ export default function TestPage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center gap-6 p-6">
+    <div className="flex flex-col items-center gap-6 p-6">
       테스트 페이지
-      <Button onClick={handleLogin} className="min-w-[160px] max-w-[400px]">
+      <Button onClick={handleLogin} className="maw-w-[400px] p-4">
         테스트 계정 로그인
       </Button>
     </div>
