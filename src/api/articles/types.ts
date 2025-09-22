@@ -10,13 +10,14 @@ export type ArticleListItem = {
   viewedByMe: boolean;
 };
 
+export type ArticleId = string;
+export type UserId = string;
+
 /* 기사 정렬 아이템 */
 export type ArticlesOrderBy = "publishDate" | "viewCount" | "commentCount";
 export type SortDirection = "ASC" | "DESC"; // 오름차순, 내림차순
 
 /* 기사 뷰 등록 */
-export type ArticleId = string;
-export type UserId = string;
 export type AddArticleViewParams = {
   articleId: ArticleId;
   requestUserId: UserId;
