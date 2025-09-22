@@ -29,7 +29,7 @@ export default function HeaderTabButton({
       to={TAB_TO_PATH[variant]}
       className={({ isActive }) =>
         [
-          "inline-flex items-center gap-2 rounded-lg px-4 py-2 text-16-sb transition",
+          "inline-flex items-center gap-2 rounded-lg px-4 py-2 md:text-16-sb text-14-sb transition",
           isActive
             ? "bg-cyan-100 text-cyan-700"
             : "bg-transparent text-gray-900 hover:bg-gray-100",
