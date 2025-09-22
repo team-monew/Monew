@@ -10,9 +10,9 @@ const HEADER_TAB_BUTTON_TEXT: Record<HeaderTabButtonVariant, string> = {
 };
 
 const TAB_TO_PATH: Record<HeaderTabButtonVariant, string> = {
-  articles: ROUTES.articles,
+  articles: ROUTES.ARTICLES,
   interests: ROUTES.INTERESTS,
-  activities: ROUTES.activities,
+  activities: ROUTES.ACTIVITIES,
 };
 
 type HeaderTabButtonProps = {

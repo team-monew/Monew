@@ -6,6 +6,7 @@ import SignUpPage from "@/pages/auth/signup/SignUpPage";
 import ArticlesPage from "@/pages/articles/ArticlesPage";
 import InterestsPage from "@/pages/interests/InterestsPage";
 import ActivitiesPage from "@/pages/activities/ActivitiesPage";
+import TestPage from "./pages/test/TestPage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       </Route>
 
       <Route element={<PublicLayout />}>
+        <Route path="/test" element={<TestPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="*" element={<div>404</div>} />
