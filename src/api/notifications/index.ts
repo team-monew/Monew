@@ -1,6 +1,6 @@
 import { http } from "@/lib/http";
 import type * as T from "@/api/notifications/types";
-import type { UserId } from "@/types/ids";
+import type { UserId, NotificationId } from "@/types/ids";
 
 /* 알림 목록 조회 */
 export async function getNotifications(
@@ -28,7 +28,7 @@ export async function checkAllNotifications(
 
 /* 알림 확인(개별) */
 export async function checkNotifications(
-  notificationId: T.NotificationId,
+  notificationId: NotificationId,
   requestUserId: UserId
 ): Promise<void> {
   await http.patch<void>(`/notifications/${notificationId}`, undefined, {
