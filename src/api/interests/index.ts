@@ -16,7 +16,7 @@ export async function getInterests(
 
 /* 관심사 등록 */
 export async function addInterest(
-  body: T.AddInterestParams
+  body: T.AddInterestBody
 ): Promise<T.AddInterestResponse> {
   const { data } = await http.post<T.AddInterestResponse>("/interests", body);
   return data;

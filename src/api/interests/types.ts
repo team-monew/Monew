@@ -33,7 +33,7 @@ export type GetInterestsResponse = {
 };
 
 /* 관심사 등록 */
-export type AddInterestParams = {
+export type AddInterestBody = {
   name: string;
   keywords: string[];
 };
