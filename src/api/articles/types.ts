@@ -1,7 +1,8 @@
-import type { UserId, ArticleId } from "@/types/ids";
+import type { UserId, ArticleId, InterestId, ArticleViewId } from "@/types/ids";
+import type { SortDirection } from "@/types/direction";
 
 export type ArticleListItem = {
-  id: string;
+  id: ArticleId;
   source: string;
   sourceUrl: string;
   title: string;
@@ -12,9 +13,11 @@ export type ArticleListItem = {
   viewedByMe: boolean;
 };
 
+/* 기사 출처 */
+export type ArticleSource = string;
+
 /* 기사 정렬 아이템 */
 export type ArticlesOrderBy = "publishDate" | "viewCount" | "commentCount";
-export type SortDirection = "ASC" | "DESC"; // 오름차순, 내림차순
 
 /* 기사 뷰 등록 */
 export type AddArticleViewParams = {
@@ -24,10 +27,10 @@ export type AddArticleViewParams = {
 
 /* 기사 뷰 등록 - 응답 래퍼 */
 export type AddArticleViewResponse = {
-  id: string;
-  viewedBy: string;
+  id: ArticleViewId;
+  viewedBy: UserId;
   createdAt: string;
-  articleId: string;
+  articleId: ArticleId;
   source: ArticleSource;
   sourceUrl: string;
   articleTitle: string;
@@ -40,7 +43,7 @@ export type AddArticleViewResponse = {
 /* 뉴스 기사 목록 조회 */
 export type GetArticlesParams = {
   keyword?: string;
-  interestId?: string;
+  interestId?: InterestId;
   sourceIn?: string[];
   publishDateFrom?: string;
   publishDateTo?: string;
@@ -61,9 +64,6 @@ export type GetArticlesResponse = {
   hasNext: boolean;
 };
 
-/* 출처 목록 조회 */
-export type ArticleSource = string;
-
 /* 뉴스 복구 */
 export type RestoreArticlesParams = {
   from: string;
@@ -73,6 +73,6 @@ export type RestoreArticlesParams = {
 /* 뉴스 복구 - 응답 래퍼 */
 export type RestoreArticlesResponse = {
   restoreDate: string;
-  restoredArticleIds: string[];
+  restoredArticleIds: ArticleId[];
   restoredArticleCount: number;
 };
