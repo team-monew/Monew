@@ -16,7 +16,7 @@ export type ArticleListItem = {
 /* 기사 출처 */
 export type ArticleSource = string;
 
-/* 기사 정렬 아이템 */
+/* 기사 정렬 키 */
 export type ArticlesOrderBy = "publishDate" | "viewCount" | "commentCount";
 
 /* 기사 뷰 등록 */
@@ -25,7 +25,7 @@ export type AddArticleViewParams = {
   requestUserId: UserId;
 };
 
-/* 기사 뷰 등록 - 응답 래퍼 */
+/* 기사 뷰 등록 - 응답 */
 export type AddArticleViewResponse = {
   id: ArticleViewId;
   viewedBy: UserId;
@@ -54,7 +54,7 @@ export type GetArticlesParams = {
   limit: number;
 };
 
-/* 뉴스 기사 목록 조회 - 응답 래퍼 */
+/* 뉴스 기사 목록 조회 - 응답 */
 export type GetArticlesResponse = {
   content: ArticleListItem[];
   nextCursor: string | null;
@@ -70,7 +70,7 @@ export type RestoreArticlesParams = {
   to: string;
 };
 
-/* 뉴스 복구 - 응답 래퍼 */
+/* 뉴스 복구 - 응답 */
 export type RestoreArticlesResponse = {
   restoreDate: string;
   restoredArticleIds: ArticleId[];

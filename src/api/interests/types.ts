@@ -9,7 +9,7 @@ export type InterestListItem = {
   subscribedByMe: boolean;
 };
 
-/* 관심사 정렬 아이템 */
+/* 관심사 정렬 키 */
 export type InterestOrderBy = "name" | "subscriberCount";
 
 /* 관심사 목록 조회 */
@@ -22,7 +22,7 @@ export type GetInterestsParams = {
   limit: number;
 };
 
-/* 관심사 목록 조회 - 응답 래퍼 */
+/* 관심사 목록 조회 - 응답 */
 export type GetInterestsResponse = {
   content: InterestListItem[];
   nextCursor: string | null;
@@ -38,7 +38,7 @@ export type AddInterestBody = {
   keywords: string[];
 };
 
-/* 관심사 등록 - 응답 래퍼 */
+/* 관심사 등록 - 응답 */
 export type AddInterestResponse = InterestListItem;
 
 /* 관심사 구독 */
@@ -46,7 +46,7 @@ export type SubscriptionInterestParams = {
   interestId: InterestId;
 };
 
-/* 관심사 구독 - 응답 래퍼 */
+/* 관심사 구독 - 응답 */
 export type SubscriptionInterestResponse = {
   id: string;
   interestId: InterestId;
@@ -62,5 +62,5 @@ export type UpdateInterestParams = {
   keywords: string[];
 };
 
-/* 관심사 정보 수정 - 응답 래퍼 */
+/* 관심사 정보 수정 - 응답 */
 export type UpdateInterestResponse = InterestListItem;

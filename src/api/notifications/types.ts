@@ -1,5 +1,7 @@
+import type { NotificationId } from "@/types/ids";
+
 export type NotificationsItem = {
-  id: string;
+  id: NotificationId;
   createdAt: string;
   updatedAt: string;
   confirmed: boolean;
@@ -8,8 +10,6 @@ export type NotificationsItem = {
   resourceType: "interest" | "comment";
   resourceId: string;
 };
-
-export type NotificationId = string;
 
 /* 알림 목록 조회 */
 export type GetNotificationsParams = {

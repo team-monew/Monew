@@ -12,7 +12,7 @@ export type CommentItem = {
   createdAt: string;
 };
 
-/* 댓글 정렬 아이템 */
+/* 댓글 정렬 키 */
 export type CommentsOrderBy = "createdAt" | "likeCount";
 
 /* 댓글 목록 조회 */
@@ -25,7 +25,7 @@ export type GetCommentsParams = {
   limit: number;
 };
 
-/* 댓글 목록 조회 - 응답 래퍼 */
+/* 댓글 목록 조회 - 응답 */
 export type GetCommentsResponse = {
   content: CommentItem[];
   nextCursor: string | null;
@@ -48,7 +48,7 @@ export type LikeCommentParams = {
   requestUserId: UserId;
 };
 
-/* 댓글 좋아요 등록 - 응답 래퍼*/
+/* 댓글 좋아요 등록 - 응답 */
 export type LikeCommentResponse = {
   id: CommentLikeId;
   likedBy: UserId;
