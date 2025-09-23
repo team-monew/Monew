@@ -57,8 +57,7 @@ export type SubscriptionInterestResponse = {
 };
 
 /* 관심사 정보 수정 */
-export type UpdateInterestParams = {
-  interestId: InterestId;
+export type UpdateInterestBody = {
   keywords: string[];
 };
 

@@ -23,10 +23,10 @@ export async function createComment(
 }
 
 /* 댓글 좋아요 등록 */
-export async function addLikeComment({
-  commentId,
-  requestUserId,
-}: T.LikeCommentParams): Promise<T.LikeCommentResponse> {
+export async function addLikeComment(
+  commentId: CommentId,
+  requestUserId: UserId
+): Promise<T.LikeCommentResponse> {
   const { data } = await http.post<T.LikeCommentResponse>(
     `/comments/${commentId}/comment-likes`,
     undefined,

@@ -42,12 +42,6 @@ export type CreateCommentBody = {
   content: string;
 };
 
-/* 댓글 좋아요 등록 */
-export type LikeCommentParams = {
-  commentId: CommentId;
-  requestUserId: UserId;
-};
-
 /* 댓글 좋아요 등록 - 응답 */
 export type LikeCommentResponse = {
   id: CommentLikeId;

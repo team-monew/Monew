@@ -36,10 +36,10 @@ export async function subscribeInterest(
 }
 
 /* 관심사 정보 수정 */
-export async function updateInterest({
-  interestId,
-  keywords,
-}: T.UpdateInterestParams): Promise<T.UpdateInterestResponse> {
+export async function updateInterest(
+  interestId: InterestId,
+  keywords: T.UpdateInterestBody
+): Promise<T.UpdateInterestResponse> {
   const { data } = await http.patch<T.UpdateInterestResponse>(
     `/interests/${interestId}`,
     { keywords }

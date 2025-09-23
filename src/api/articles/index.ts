@@ -3,13 +3,10 @@ import type * as T from "@/api/articles/types";
 import type { UserId, ArticleId } from "@/types/ids";
 
 /* 기사 뷰 등록 */
-export async function addArticleView({
-  articleId,
-  requestUserId,
-}: {
-  articleId: ArticleId;
-  requestUserId: UserId;
-}): Promise<T.AddArticleViewResponse> {
+export async function addArticleView(
+  articleId: ArticleId,
+  requestUserId: UserId
+): Promise<T.AddArticleViewResponse> {
   const { data } = await http.post<T.AddArticleViewResponse>(
     `/articles/${articleId}/article-views`,
     undefined,

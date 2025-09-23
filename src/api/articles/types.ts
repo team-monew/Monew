@@ -19,12 +19,6 @@ export type ArticleSource = string;
 /* 기사 정렬 키 */
 export type ArticlesOrderBy = "publishDate" | "viewCount" | "commentCount";
 
-/* 기사 뷰 등록 */
-export type AddArticleViewParams = {
-  articleId: ArticleId;
-  requestUserId: UserId;
-};
-
 /* 기사 뷰 등록 - 응답 */
 export type AddArticleViewResponse = {
   id: ArticleViewId;
@@ -52,6 +46,7 @@ export type GetArticlesParams = {
   cursor?: string;
   after?: string;
   limit: number;
+  requestUserId: UserId;
 };
 
 /* 뉴스 기사 목록 조회 - 응답 */
