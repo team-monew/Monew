@@ -17,20 +17,20 @@ export async function getComments(
 /* 댓글 등록 */
 export async function createComment(
   body: T.CreateCommentBody
-): Promise<T.CreateCommentBody> {
+): Promise<T.CommentItem> {
   const { data } = await http.post<T.CommentItem>("/comments", body);
   return data;
 }
 
 /* 댓글 좋아요 등록 */
-export async function AddLikeComment({
+export async function addLikeComment({
   commentId,
   requestUserId,
 }: T.LikeCommentParams): Promise<T.LikeCommentResponse> {
   const { data } = await http.post<T.LikeCommentResponse>(
     `/comments/${commentId}/comment-likes`,
+    undefined,
     {
-      undefined,
       headers: { "Monew-Request-User-ID": requestUserId },
     }
   );
