@@ -2,14 +2,12 @@ import DropdownItem from "./DropdownItem";
 
 interface DropdownProps {
   items: string[];
-  value?: string;
   onChange: (value: string) => void;
   className?: string;
 }
 
 export default function Dropdown({
   items,
-  value,
   onChange,
   className,
 }: DropdownProps) {
@@ -19,14 +17,13 @@ export default function Dropdown({
 
   return (
     <div
-      className={`w-24 box-border bg-white border border-gray-200 rounded-lg overflow-hidden ${className}`}
+      className={`box-border bg-white border border-gray-200 rounded-lg overflow-hidden ${className}`}
     >
-      <ul className={`w-24 py-1 max-h-60 overflow-y-auto`}>
+      <ul className={`py-1 max-h-60 overflow-y-auto cursor-pointer`}>
         {items.map((item, index) => (
           <DropdownItem
             key={index}
             label={item}
-            isSelected={item === value}
             onClick={() => handleSelect(item)}
           />
         ))}
