@@ -2,22 +2,13 @@ import { useEffect, useState } from "react";
 import Input from "../Input";
 import ModalLayout from "./ModalLayout";
 import Button from "../common/button/Button";
-
-type UUID = `${string}-${string}-${string}-${string}-${string}`; // 머지되면 바꿀게요
-
-type UserId = UUID; // 머지되면 바꿀게요
-
-type User = {
-  id: UserId;
-  email: string;
-  nickname: string;
-  createdAt: string;
-}; // 머지되면 바꿀게요
+import type { UpdateUserBody, User } from "@/api/users/types";
+import type { UserId } from "@/types/ids";
 
 interface EditModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSave: (data: { userId: UserId; nickname: string }) => void; // 머지되면 바꿀게요
+  onSave: (data: UpdateUserBody & { userId: UserId }) => void;
   user: User;
 }
 

@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import Input from "../Input";
 import ModalLayout from "./ModalLayout";
 import Button from "../common/button/Button";
+import type { AddInterestBody } from "@/api/interests/types";
 
 interface UpdateModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSave: (data: { name: string; keywords: string[] }) => void; // 머지되면 바꿀게요
+  onSave: (data: AddInterestBody) => void;
 }
 
 export default function UpdateModal({

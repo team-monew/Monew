@@ -1,8 +1,5 @@
+import type { UserId } from "@/types/ids";
 import { useState } from "react";
-
-type UUID = `${string}-${string}-${string}-${string}-${string}`; // 머지되면 바꿀게요
-
-type UserId = UUID; // 머지되면 바꿀게요
 
 export default function useEditModal() {
   const [isOpen, setIsOpen] = useState(false);

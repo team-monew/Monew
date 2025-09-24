@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import Input from "../Input";
 import ModalLayout from "./ModalLayout";
 import Button from "../common/button/Button";
+import type { RestoreArticlesParams } from "@/api/articles/types";
 
 interface ArticleModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSave: (data: { fromDate: string; toDate: string }) => void; // 머지되면 바꿀게요
+  onSave: (data: RestoreArticlesParams) => void;
 }
 
 export default function ArticleModal({
@@ -31,8 +32,8 @@ export default function ArticleModal({
 
     if (isFormValid) {
       onSave({
-        fromDate,
-        toDate,
+        from: fromDate,
+        to: toDate,
       });
       onClose();
     }
