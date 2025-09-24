@@ -2,6 +2,7 @@ import { useNavigate } from "react-router";
 import { ROUTES } from "@/shared/constants/routes";
 import { login } from "@/api/users";
 import Button from "@/components/common/button/Button";
+import { toast } from "react-toastify";
 
 const testEmail = {
   email: "mmgg@codeit.com",
@@ -16,11 +17,12 @@ export default function TestPage() {
       const user = await login(testEmail);
       sessionStorage.setItem("user", JSON.stringify(user));
       console.log("로그인 성공", user);
+      toast.success("환영합니다! 로그인이 완료되었습니다.");
 
       navigate(ROUTES.ARTICLES);
     } catch (error) {
       console.error("로그인 실패", error);
-      alert("로그인 실패");
+      toast.error("잠시 후 다시 시도해 주세요.");
     }
   };
 
