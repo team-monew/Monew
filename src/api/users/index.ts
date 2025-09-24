@@ -17,7 +17,7 @@ export async function login(body: T.LoginBody): Promise<T.User> {
 /* 사용자 정보 수정 */
 export async function updateUser(
   userId: UserId,
-  body: T.UpdateUserBody
+  body: T.UpdateUserBody,
 ): Promise<T.User> {
   const { data } = await http.patch<T.User>(`/users/${userId}`, body);
   return data;
