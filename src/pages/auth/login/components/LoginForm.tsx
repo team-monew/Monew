@@ -39,7 +39,7 @@ export default function LoginForm() {
   const runPasswordValidate = (value: string) => {
     if (!value.trim()) return "비밀번호를 입력해 주세요.";
     if (!validatePassword(value))
-      return "비밀번호는 숫자와 영문자를 포함한 8자 이상 입력해 주세요.";
+      return "영문과 숫자를 포함해 8자 이상 입력해 주세요";
     return "";
   };
 
