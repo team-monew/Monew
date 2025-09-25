@@ -19,14 +19,15 @@ export default function LoginForm() {
 
   const [emailError, setEmailError] = useState<string>("");
   const [passwordError, setPasswordError] = useState<string>("");
-  const [touched, setTouched] = useState<{ email: boolean; password: boolean }>(
-    {
-      email: false,
-      password: false,
-    }
-  );
+  const [touchedField, setTouchedField] = useState<{
+    email: boolean;
+    password: boolean;
+  }>({
+    email: false,
+    password: false,
+  });
 
-  const [submitting, setSubmitting] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string>("");
 
   // 입력 필드별 유효성 검증
@@ -47,21 +48,22 @@ export default function LoginForm() {
   const onChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setEmail(value);
-    if (touched.email) setEmailError(runEmailValidate(value));
+    if (touchedField.email) setEmailError(runEmailValidate(value));
   };
   const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setPassword(value);
-    if (touched.password) setPasswordError(runPasswordValidate(value));
+    if (touchedField.password) setPasswordError(runPasswordValidate(value));
   };
 
   // blur 시 에러 노출
   const onBlurEmail = () => {
-    if (!touched.email) setTouched((t) => ({ ...t, email: true }));
+    if (!touchedField.email) setTouchedField((t) => ({ ...t, email: true }));
     setEmailError(runEmailValidate(email));
   };
   const onBlurPassword = () => {
-    if (!touched.password) setTouched((t) => ({ ...t, password: true }));
+    if (!touchedField.password)
+      setTouchedField((t) => ({ ...t, password: true }));
     setPasswordError(runPasswordValidate(password));
   };
 
@@ -76,10 +78,10 @@ export default function LoginForm() {
     const passwordErr = runPasswordValidate(password);
     setEmailError(emailErr);
     setPasswordError(passwordErr);
-    setTouched({ email: true, password: true });
+    setTouchedField({ email: true, password: true });
     if (emailErr || passwordErr) return;
 
-    setSubmitting(true);
+    setIsSubmitting(true);
     setSubmitError("");
     try {
       await loginAndStore({ email, password });
@@ -91,7 +93,7 @@ export default function LoginForm() {
       setSubmitError(message);
       toast.error("잠시 후 다시 시도해 주세요.");
     } finally {
-      setSubmitting(false);
+      setIsSubmitting(false);
     }
   };
 
@@ -107,7 +109,7 @@ export default function LoginForm() {
         value={email}
         onChange={onChangeEmail}
         onBlur={onBlurEmail}
-        error={touched.email ? emailError : ""}
+        error={touchedField.email ? emailError : ""}
         autoComplete="username"
         inputMode="email"
       />
@@ -119,7 +121,7 @@ export default function LoginForm() {
         value={password}
         onChange={onChangePassword}
         onBlur={onBlurPassword}
-        error={touched.password ? passwordError : ""}
+        error={touchedField.password ? passwordError : ""}
         autoComplete="current-password"
       />
       {submitError && (
@@ -130,9 +132,9 @@ export default function LoginForm() {
       <Button
         type="submit"
         className="w-full mt-8"
-        disabled={!formValid || submitting}
+        disabled={!formValid || isSubmitting}
       >
-        {submitting ? "로그인 중..." : "로그인하기"}
+        {isSubmitting ? "로그인 중..." : "로그인하기"}
       </Button>
     </form>
   );
