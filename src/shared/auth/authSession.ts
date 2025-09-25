@@ -14,16 +14,30 @@ function read(): AuthUser {
   }
 }
 
-function write(user: User) {
-  sessionStorage.setItem(KEY, JSON.stringify(user));
-  // same-tab 변경 알림
-  // (세션스토리지는 같은 탭에 'storage' 이벤트가 발생하지 않음)
-  dispatchEvent(new CustomEvent(AUTH_CHANGE));
+function write(user: User): boolean {
+  let ok = true;
+  try {
+    sessionStorage.setItem(KEY, JSON.stringify(user));
+  } catch (error) {
+    ok = false;
+    console.error("[authSession] write failed", error);
+  } finally {
+    dispatchEvent(new CustomEvent(AUTH_CHANGE)); // same-tab에 변경 알림
+  }
+  return ok;
 }
 
-function clear() {
-  sessionStorage.removeItem(KEY);
-  dispatchEvent(new CustomEvent(AUTH_CHANGE));
+function clear(): boolean {
+  let ok = true;
+  try {
+    sessionStorage.removeItem(KEY);
+  } catch (error) {
+    ok = false;
+    console.error("[authSession] clear failed", error);
+  } finally {
+    dispatchEvent(new CustomEvent(AUTH_CHANGE));
+  }
+  return ok;
 }
 
 export function withUserHeader() {
