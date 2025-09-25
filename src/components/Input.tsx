@@ -37,13 +37,13 @@ export default function Input({
   return (
     <div>
       {label && (
-        <label htmlFor={inputId} className="text-16-m text-gray-600">
+        <label htmlFor={inputId} className="pl-1 text-16-m text-gray-600">
           {label}
         </label>
       )}
 
       <div
-        className={`w-full min-h-14 border rounded-lg mt-1 py-4 px-5 gap-2.5 bg-white ${error ? "border-error" : "border-gray-200"} focus-within:border-cyan-500 ${className || ""}`}
+        className={`w-full min-h-14 border rounded-lg mt-1.5 py-4 px-5 gap-2.5 bg-white ${error ? "border-error" : "border-gray-200"} focus-within:border-cyan-500 ${className || ""}`}
       >
         <div className="flex items-center justify-between">
           <input
@@ -79,7 +79,7 @@ export default function Input({
           )}
         </div>
       </div>
-      {error && <p className="text-14-m text-error mt-1.5 px-1">{error}</p>}
+      {error && <p className="mt-1.5 px-1 text-14-m text-error">{error}</p>}
     </div>
   );
 }

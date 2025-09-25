@@ -83,12 +83,13 @@ export default function LoginForm() {
     setSubmitError("");
     try {
       await loginAndStore({ email, password });
-      toast.success("로그인되었습니다.");
+      toast.success("환영합니다! 로그인이 완료되었습니다.");
       nav(loc?.state?.from?.pathname ?? ROUTES.ARTICLES, { replace: true });
-    } catch (err) {
-      const message = (err as Error)?.message ?? "로그인에 실패했습니다.";
+    } catch (error) {
+      const message =
+        (error as Error)?.message ?? "잠시 후 다시 시도해 주세요.";
       setSubmitError(message);
-      toast.error("로그인에 실패했습니다.");
+      toast.error("잠시 후 다시 시도해 주세요.");
     } finally {
       setSubmitting(false);
     }
@@ -122,7 +123,7 @@ export default function LoginForm() {
         autoComplete="current-password"
       />
       {submitError && (
-        <p className="mt-3 px-1 text-14-r text-error" role="alert">
+        <p className="mt-1.5 px-1 text-14-m text-error" role="alert">
           {submitError}
         </p>
       )}
