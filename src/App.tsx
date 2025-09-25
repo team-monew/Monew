@@ -7,6 +7,7 @@ import SignUpPage from "@/pages/auth/signup/SignUpPage";
 import ArticlesPage from "@/pages/articles/ArticlesPage";
 import InterestsPage from "@/pages/interests/InterestsPage";
 import ActivitiesPage from "@/pages/activities/ActivitiesPage";
+import NotFound from "@/pages/not-found";
 import TestPage from "./pages/test/TestPage";
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
         <Route path="/test" element={<TestPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
-        <Route path="*" element={<div>404</div>} />
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   );
