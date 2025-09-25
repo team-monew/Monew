@@ -1,4 +1,5 @@
 import type { User } from "@/api/users/types";
+import { AUTH_CHANGE } from "@/shared/constants/events";
 
 const KEY = "user";
 
@@ -15,12 +16,14 @@ function read(): AuthUser {
 
 function write(user: User) {
   sessionStorage.setItem(KEY, JSON.stringify(user));
-  dispatchEvent(new CustomEvent("auth:change"));
+  // same-tab 변경 알림
+  // (세션스토리지는 같은 탭에 'storage' 이벤트가 발생하지 않음)
+  dispatchEvent(new CustomEvent(AUTH_CHANGE));
 }
 
 function clear() {
   sessionStorage.removeItem(KEY);
-  dispatchEvent(new CustomEvent("auth:change"));
+  dispatchEvent(new CustomEvent(AUTH_CHANGE));
 }
 
 export function withUserHeader() {

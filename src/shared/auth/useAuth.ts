@@ -1,13 +1,16 @@
+// 커스텀 이벤트(AUTH_CHANGE)로 'storage' 변경 알림을 브로드캐스트
+
 import { useSyncExternalStore } from "react";
 import { authSession } from "@/shared/auth/authSession";
 import type { AuthUser } from "@/shared/auth/authSession";
+import { AUTH_CHANGE } from "@/shared/constants/events";
 
-function subscribe(callback: () => void) {
-  const onCustom = () => callback();
+function subscribe(onStoreChange: () => void) {
+  const handler: EventListener = () => onStoreChange();
 
-  window.addEventListener("auth:change", onCustom as EventListener);
+  window.addEventListener(AUTH_CHANGE, handler);
   return () => {
-    window.removeEventListener("auth:change", onCustom as EventListener);
+    window.removeEventListener(AUTH_CHANGE, handler);
   };
 }
 

@@ -1,4 +1,4 @@
-import * as U from "@/api/users";
+import { login, signUp } from "@/api/users";
 import type * as T from "@/api/users/types";
 import { authSession } from "@/shared/auth/authSession";
 
@@ -13,7 +13,7 @@ function normalizeError(err: unknown): Error {
 
 export async function loginAndStore(body: T.LoginBody) {
   try {
-    const user = await U.login(body);
+    const user = await login(body);
     authSession.write(user);
     return user;
   } catch (error) {
@@ -23,7 +23,7 @@ export async function loginAndStore(body: T.LoginBody) {
 
 export async function signUpAndStore(body: T.SignUpBody) {
   try {
-    const user = await U.signUp(body);
+    const user = await signUp(body);
     authSession.write(user);
     return user;
   } catch (error) {
