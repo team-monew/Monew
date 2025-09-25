@@ -5,7 +5,7 @@ import type { UserId, CommentId } from "@/types/ids";
 /* 댓글 목록 조회 */
 export async function getComments(
   params: T.GetCommentsParams,
-  requestUserId: UserId
+  requestUserId: UserId,
 ): Promise<T.GetCommentsResponse> {
   const { data } = await http.get<T.GetCommentsResponse>(`/comments`, {
     params,
@@ -16,7 +16,7 @@ export async function getComments(
 
 /* 댓글 등록 */
 export async function createComment(
-  body: T.CreateCommentBody
+  body: T.CreateCommentBody,
 ): Promise<T.CommentItem> {
   const { data } = await http.post<T.CommentItem>("/comments", body);
   return data;
@@ -25,14 +25,14 @@ export async function createComment(
 /* 댓글 좋아요 등록 */
 export async function addLikeComment(
   commentId: CommentId,
-  requestUserId: UserId
+  requestUserId: UserId,
 ): Promise<T.LikeCommentResponse> {
   const { data } = await http.post<T.LikeCommentResponse>(
     `/comments/${commentId}/comment-likes`,
     undefined,
     {
       headers: { "Monew-Request-User-ID": requestUserId },
-    }
+    },
   );
   return data;
 }
@@ -41,12 +41,12 @@ export async function addLikeComment(
 export async function updateComment(
   commentId: CommentId,
   body: T.UpdateCommentBody,
-  requestUserId: UserId
+  requestUserId: UserId,
 ): Promise<T.CommentItem> {
   const { data } = await http.patch<T.CommentItem>(
     `/comments/${commentId}`,
     body,
-    { headers: { "Monew-Request-User-ID": requestUserId } }
+    { headers: { "Monew-Request-User-ID": requestUserId } },
   );
   return data;
 }
@@ -54,7 +54,7 @@ export async function updateComment(
 /* 댓글 좋아요 취소 */
 export async function deleteLikeComment(
   commentId: CommentId,
-  requestUserId: UserId
+  requestUserId: UserId,
 ): Promise<void> {
   await http.delete<void>(`/comments/${commentId}/comment-likes`, {
     headers: { "Monew-Request-User-ID": requestUserId },
