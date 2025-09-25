@@ -1,18 +1,18 @@
 import { NavLink } from "react-router";
 import { ROUTES } from "@/shared/constants/routes";
 
-type HeaderTabButtonVariant = "feed" | "interests" | "history";
+type HeaderTabButtonVariant = "articles" | "interests" | "activities";
 
 const HEADER_TAB_BUTTON_TEXT: Record<HeaderTabButtonVariant, string> = {
-  feed: "뉴스",
+  articles: "뉴스",
   interests: "관심사",
-  history: "활동내역",
+  activities: "활동내역",
 };
 
 const TAB_TO_PATH: Record<HeaderTabButtonVariant, string> = {
-  feed: ROUTES.FEED,
+  articles: ROUTES.ARTICLES,
   interests: ROUTES.INTERESTS,
-  history: ROUTES.HISTORY,
+  activities: ROUTES.ACTIVITIES,
 };
 
 type HeaderTabButtonProps = {
