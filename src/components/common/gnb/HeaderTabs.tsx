@@ -6,9 +6,9 @@ export default function HeaderTabs() {
       aria-label="GNB tabs"
       className="flex items-center justify-center md:gap-2 gap-1 max-w-[252px] h-[40px]"
     >
-      <HeaderTabButton variant="feed" />
+      <HeaderTabButton variant="articles" />
       <HeaderTabButton variant="interests" />
-      <HeaderTabButton variant="history" />
+      <HeaderTabButton variant="activities" />
     </nav>
   );
 }
