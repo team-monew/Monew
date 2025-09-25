@@ -5,6 +5,7 @@ import { useId, useState } from "react";
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   error?: string;
   label?: string;
+  inputSize?: "sm" | "md";
 }
 
 export default function Input({
@@ -14,6 +15,7 @@ export default function Input({
   value,
   onChange,
   label,
+  inputSize = "md",
   className,
   ...props
 }: InputProps) {
@@ -34,8 +36,13 @@ export default function Input({
     return showPassword ? "text" : "password";
   };
 
+  const sizeClasses = {
+    sm: "min-h-10 py-1.5 px-3",
+    md: "min-h-14 py-4 px-5",
+  };
+
   return (
-    <div>
+    <div className={className}>
       {label && (
         <label
           htmlFor={inputId}
@@ -46,7 +53,7 @@ export default function Input({
       )}
 
       <div
-        className={`w-full min-h-14 border rounded-lg mt-1 py-4 px-5 gap-2.5 bg-white ${error ? "border-error" : "border-slate-200"} focus-within:border-blue-500 ${className || ""}`}
+        className={`w-full border rounded-lg mt-1 gap-2.5 bg-white ${sizeClasses[inputSize]} ${error ? "border-error" : "border-slate-200"} focus-within:border-blue-500 ${className || ""}`}
       >
         <div className="flex items-center justify-between">
           <input
