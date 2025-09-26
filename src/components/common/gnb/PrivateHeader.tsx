@@ -1,13 +1,17 @@
+import { Link } from "react-router";
 import Logo from "@/components/common/gnb/Logo";
 import HeaderTab from "@/components/common/gnb/HeaderTabs";
 import HeaderUserMenu from "@/components/common/gnb/HeaderUserMenu";
 import { headerStyle } from "@/components/common/gnb/header.styles";
+import { ROUTES } from "@/shared/constants/routes";
 
 export default function PrivateHeader() {
   return (
     <header className={`${headerStyle}`}>
       <div className="flex items-center justify-between w-full">
-        <Logo className="md:block hidden h-[48px]" />
+        <Link to={ROUTES.ARTICLES} aria-label="articles">
+          <Logo className="md:block hidden h-[48px]" />
+        </Link>
         <HeaderTab />
         <HeaderUserMenu />
       </div>
