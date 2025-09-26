@@ -1,8 +1,8 @@
-import type { NotificationsItem } from "@/api/notifications/types";
-import { formatTimeAgo } from "@/shared/utils/formatTimeAgo";
 import bellIconUrl from "@/assets/icons/bell.svg";
 import heartIconUrl from "@/assets/icons/like-active.svg";
 import closeIconUrl from "@/assets/icons/close-secondary-24.svg";
+import { formatTimeAgo } from "@/shared/utils/formatTimeAgo";
+import type { NotificationsItem } from "@/api/notifications/types";
 
 type NotificationCardProps = {
   item: NotificationsItem;
@@ -38,10 +38,7 @@ export default function NotificationCard({
 
         <div className="flex items-start justify-between w-full">
           <div className="flex flex-col gap-1">
-            {/* 스웨거 테스트 결과 동적 데이터+문구가 한 문장으로 나와서, css 다르게 줄 수 없음 */}
-            <p className="text-[15px] leading-5 text-gray-900">
-              {item.content}
-            </p>
+            <p className="text-16-m text-gray-700">{item.content}</p>
             <p className="text-14-m text-gray-400">{timeText}</p>
           </div>
 
@@ -54,11 +51,7 @@ export default function NotificationCard({
               onConfirm(item.id);
             }}
           >
-            <img
-              src={closeIconUrl}
-              alt="notification close"
-              className="top-0 h-6"
-            />
+            <img src={closeIconUrl} alt="notification close" className="h-6" />
           </button>
         </div>
       </div>
