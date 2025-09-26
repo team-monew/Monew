@@ -4,6 +4,7 @@ import type * as T from "@/api/users/types";
 import { authSession } from "@/features/auth/utils/authSession";
 
 function getDataMessage(data: unknown): string | undefined {
+  if (typeof data === "string") return data;
   if (data && typeof data === "object" && "message" in data) {
     const msg = (data as { message?: unknown }).message;
     return typeof msg === "string" ? msg : undefined;
