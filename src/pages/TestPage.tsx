@@ -3,7 +3,7 @@ import { ROUTES } from "@/shared/constants/routes";
 import { login } from "@/api/users";
 import Button from "@/components/button/Button";
 import { toast } from "react-toastify";
-import NotificationPanel from "@/components/common/notification/NotificationPanel";
+import NotificationPanel from "@/features/notifications/NotificationPanel";
 
 const testEmail = {
   email: "mmgg@codeit.com",
