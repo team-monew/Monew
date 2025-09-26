@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, useLocation } from "react-router";
+import { useNavigate } from "react-router";
 import Input from "@/components/Input";
 import Button from "@/components/button/Button";
 import { loginAndStore } from "@/features/auth/actions";
@@ -12,7 +12,6 @@ import { ROUTES } from "@/shared/constants/routes";
 
 export default function LoginForm() {
   const nav = useNavigate();
-  const loc = useLocation() as any;
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -86,7 +85,7 @@ export default function LoginForm() {
     try {
       await loginAndStore({ email, password });
       toast.success("환영합니다! 로그인이 완료되었습니다.");
-      nav(loc?.state?.from?.pathname ?? ROUTES.ARTICLES, { replace: true });
+      nav(ROUTES.ARTICLES, { replace: true });
     } catch (error) {
       const message =
         (error as Error)?.message ?? "잠시 후 다시 시도해 주세요.";
