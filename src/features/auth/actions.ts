@@ -1,11 +1,24 @@
+import axios from "axios";
 import { login, signUp } from "@/api/users";
 import type * as T from "@/api/users/types";
 import { authSession } from "@/features/auth/utils/authSession";
 
+function getDataMessage(data: unknown): string | undefined {
+  if (data && typeof data === "object" && "message" in data) {
+    const msg = (data as { message?: unknown }).message;
+    return typeof msg === "string" ? msg : undefined;
+  }
+  return undefined;
+}
+
 function normalizeError(err: unknown): Error {
-  if (err && typeof err === "object" && "response" in (err as any)) {
-    const res = (err as any).response;
-    const msg = res?.data?.message ?? res?.statusText ?? "Request failed";
+  if (axios.isAxiosError(err)) {
+    const res = err.response;
+    const msg =
+      getDataMessage(res?.data) ??
+      res?.statusText ??
+      err.message ??
+      "Request failed";
     return new Error(msg);
   }
   return err instanceof Error ? err : new Error("Unknown error");
