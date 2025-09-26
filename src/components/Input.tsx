@@ -44,22 +44,19 @@ export default function Input({
   return (
     <div className={className}>
       {label && (
-        <label
-          htmlFor={inputId}
-          className="font-pretendard font-medium text-base leading-6 text-slate-600"
-        >
+        <label htmlFor={inputId} className="pl-1 text-16-m text-gray-600">
           {label}
         </label>
       )}
 
       <div
-        className={`w-full border rounded-lg mt-1 gap-2.5 bg-white ${sizeClasses[inputSize]} ${error ? "border-error" : "border-slate-200"} focus-within:border-blue-500 ${className || ""}`}
+        className={`w-full border rounded-lg mt-1.5 gap-2.5 bg-white ${sizeClasses[inputSize]} ${error ? "border-error" : "border-slate-200"} focus-within:border-cyan-500 ${className || ""}`}
       >
         <div className="flex items-center justify-between">
           <input
             type={getInputType()}
             placeholder={placeholder}
-            className="flex-1 outline-none bg-transparent font-pretendard font-medium text-base leading-6 text-slate-900 pr-2"
+            className="flex-1 outline-none bg-transparent text-16-m text-gray-900 pr-2"
             value={value}
             onChange={onChange}
             id={inputId}
@@ -89,11 +86,7 @@ export default function Input({
           )}
         </div>
       </div>
-      {error && (
-        <p className="font-pretendard font-medium text-sm leading-5 text-red-500 mt-1 px-1">
-          {error}
-        </p>
-      )}
+      {error && <p className="mt-1.5 px-1 text-14-m text-error">{error}</p>}
     </div>
   );
 }
