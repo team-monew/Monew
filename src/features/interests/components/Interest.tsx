@@ -1,10 +1,10 @@
 import kebabMenuIcon from "@/assets/icons/kebab-menu-32.svg";
 import personIcon from "@/assets/icons/person.svg";
 import checkIcon from "@/assets/icons/check-default.svg";
-import Button from "../common/button/Button";
+import Button from "@/components/button/Button";
 import { useEffect, useRef, useState } from "react";
 import type { InterestId } from "@/types/ids";
-import Dropdown from "../dropdown";
+import Dropdown from "@/components/dropdown";
 import { useClosePopup } from "@/shared/hooks/useClosePopup";
 
 interface InterestProps {

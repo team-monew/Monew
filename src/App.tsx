@@ -1,12 +1,12 @@
 import { Routes, Route, Navigate } from "react-router";
 import PrivateLayout from "@/layouts/PrivateLayout";
 import PublicLayout from "@/layouts/PublicLayout";
-import LoginPage from "@/pages/auth/login/LoginPage";
-import SignUpPage from "@/pages/auth/signup/SignUpPage";
-import ArticlesPage from "@/pages/articles/ArticlesPage";
-import InterestsPage from "@/pages/interests/InterestsPage";
-import ActivitiesPage from "@/pages/activities/ActivitiesPage";
-import TestPage from "./pages/test/TestPage";
+import LoginPage from "@/pages/LoginPage";
+import SignUpPage from "@/pages/SignUpPage";
+import ArticlesPage from "@/pages/ArticlesPage";
+import InterestsPage from "@/pages/InterestsPage";
+import ActivitiesPage from "@/pages/ActivitiesPage";
+import TestPage from "./pages/TestPage";
 
 function App() {
   return (

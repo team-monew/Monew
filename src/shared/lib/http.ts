@@ -9,7 +9,7 @@ if (import.meta.env.DEV) {
   http.interceptors.request.use((cfg) => {
     console.log(
       `[REQ] ${cfg.method?.toUpperCase()} ${cfg.baseURL}${cfg.url}`,
-      cfg.data,
+      cfg.data
     );
     return cfg;
   });
@@ -21,9 +21,9 @@ if (import.meta.env.DEV) {
     (err) => {
       console.warn(
         `[ERR] ${err?.response?.status} ${err?.config?.url}`,
-        err?.response?.data,
+        err?.response?.data
       );
       return Promise.reject(err);
-    },
+    }
   );
 }

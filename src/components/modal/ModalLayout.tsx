@@ -39,6 +39,6 @@ export default function ModalLayout({
         {children}
       </div>
     </div>,
-    document.body,
+    document.body
   );
 }

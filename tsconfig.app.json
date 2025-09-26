@@ -28,13 +28,5 @@
     "noUncheckedSideEffectImports": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": [
-    "src",
-    "src/shared/store/.gitkeep",
-    "src/shared/hooks/.gitkeep",
-    "src/shared/api/.gitkeep",
-    "src/components/Modal/.gitkeep",
-    "src/components/Header/.gitkeep",
-    "src/components/common/button/.gitkeep"
-  ]
+  "include": ["src"]
 }

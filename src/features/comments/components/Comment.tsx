@@ -3,8 +3,8 @@ import likeActive from "@/assets/icons/like-active.svg";
 import { formatDistanceToNow } from "date-fns";
 import { ko } from "date-fns/locale";
 import type { CommentId } from "@/types/ids";
-import Input from "../Input";
-import Button from "../common/button/Button";
+import Input from "../../../components/Input";
+import Button from "../../../components/button/Button";
 import { useState } from "react";
 
 interface CommentProps {

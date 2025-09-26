@@ -1,4 +1,4 @@
-import { http } from "@/lib/http";
+import { http } from "@/shared/lib/http";
 import type * as T from "@/api/user-activities/types";
 import type { UserId } from "@/types/ids";
 
