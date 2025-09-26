@@ -1,5 +1,6 @@
-import LandingBox from "@/pages/landing/components/LandingBox";
-/* 추후 로그인 기능 추가 시 경로 설정 '/' */
+function LandingBox() {
+  return <div></div>;
+}
 
 export default function LandingPage() {
   return (

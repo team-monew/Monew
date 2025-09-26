@@ -1,6 +1,6 @@
 import { login, signUp } from "@/api/users";
 import type * as T from "@/api/users/types";
-import { authSession } from "@/shared/auth/authSession";
+import { authSession } from "@/features/auth/utils/authSession";
 
 function normalizeError(err: unknown): Error {
   if (err && typeof err === "object" && "response" in (err as any)) {

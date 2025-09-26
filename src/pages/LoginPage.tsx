@@ -1,4 +1,4 @@
-import LoginForm from "@/pages/auth/login/components/LoginForm";
+import LoginForm from "@/features/auth/components/LoginForm";
 import { Link } from "react-router";
 import { ROUTES } from "@/shared/constants/routes";
 

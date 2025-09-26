@@ -1,4 +1,4 @@
-import { logout } from "@/shared/auth/actions";
+import { logout } from "@/features/auth/actions";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import logoutIcon from "@/assets/icons/logout.svg";

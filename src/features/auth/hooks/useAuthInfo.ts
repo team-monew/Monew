@@ -1,4 +1,4 @@
-import { useAuth } from "@/shared/auth/useAuth";
+import { useAuth } from "@/features/auth/hooks/useAuth";
 
 export function useAuthInfo() {
   const user = useAuth();

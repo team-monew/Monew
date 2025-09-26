@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import { ROUTES } from "@/shared/constants/routes";
 import { login } from "@/api/users";
-import Button from "@/components/common/button/Button";
+import Button from "@/components/button/Button";
 import { toast } from "react-toastify";
 
 const testEmail = {

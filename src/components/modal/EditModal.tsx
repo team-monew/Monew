@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Input from "../Input";
 import ModalLayout from "./ModalLayout";
-import Button from "../common/button/Button";
+import Button from "../button/Button";
 import type { UpdateUserBody, User } from "@/api/users/types";
 import type { UserId } from "@/types/ids";
 

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router";
 import Input from "@/components/Input";
-import Button from "@/components/common/button/Button";
-import { loginAndStore } from "@/shared/auth/actions";
+import Button from "@/components/button/Button";
+import { loginAndStore } from "@/features/auth/actions";
 import {
   validateEmail,
   validatePassword,
