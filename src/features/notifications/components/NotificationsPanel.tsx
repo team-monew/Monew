@@ -28,7 +28,7 @@ export default function NotificationsPanel({
       aria-label="알림"
     >
       {/* Header */}
-      <div className="flex flex-col max-w-[390px] w-full">
+      <div className="flex flex-col items-center max-w-[390px] w-full h-full">
         <div className="flex items-center justify-between w-full px-1">
           <h2 className="text-24-b text-gray-900">알림</h2>
           <button onClick={onClose}>
@@ -57,7 +57,11 @@ export default function NotificationsPanel({
             onConfirm={(id) => void confirmOne(id)}
           />
         )}
-        {items.length === 0 && <EmptyState message="알림이 없습니다." />}
+        {items.length === 0 && (
+          <div className="flex items-center h-full">
+            <EmptyState message="알림이 없습니다." />
+          </div>
+        )}
       </div>
     </aside>
   );
