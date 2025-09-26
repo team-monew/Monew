@@ -1,6 +1,6 @@
-import NotificationsCardList from "./NotificationsCardList";
+import NotificationsCardList from "@/features/notifications/components/NotificationsCardList";
 import EmptyState from "@/components/EmptyState";
-import { useNotifications } from "../hooks/useNotifications";
+import { useNotifications } from "@/features/notifications/hooks/useNotifications";
 import { useAuthInfo } from "@/features/auth/hooks/useAuthInfo";
 import closeIconUrl from "@/assets/icons/close-primary-24.svg";
 
@@ -27,8 +27,8 @@ export default function NotificationsPanel({
       role="dialog"
       aria-label="알림"
     >
-      {/* Header */}
       <div className="flex flex-col items-center max-w-[390px] w-full h-full">
+        {/* Header */}
         <div className="flex items-center justify-between w-full px-1">
           <h2 className="text-24-b text-gray-900">알림</h2>
           <button onClick={onClose}>

@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import Logo from "@/components/gnb/Logo";
+import Logo from "@/components/Logo";
 import { headerStyle } from "@/components/gnb/header.styles";
 import { ROUTES } from "@/shared/constants/routes";
 
