@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import Input from "@/components/Input";
 import Button from "@/components/button/Button";
-import { signUp } from "@/api/users";
+import { signUpAction } from "@/features/auth/actions";
 import { useFormField } from "@/shared/hooks/useFormField";
 import {
   required,
@@ -14,6 +14,7 @@ import {
 } from "@/shared/utils/validation";
 import Skeleton from "@/components/Skeleton";
 import { toast } from "react-toastify";
+import { toastApiError } from "@/shared/utils/toastApiError";
 import { ROUTES } from "@/shared/constants/routes";
 
 export default function SignUpForm() {
@@ -68,7 +69,7 @@ export default function SignUpForm() {
     setIsSubmitting(true);
     setSubmitError("");
     try {
-      await signUp({
+      await signUpAction({
         email: emailField.value,
         password: passwordField.value,
         nickname: nicknameField.value,
@@ -79,7 +80,7 @@ export default function SignUpForm() {
       const message =
         (error as Error)?.message ?? "잠시 후 다시 시도해 주세요.";
       setSubmitError(message);
-      toast.error("잠시 후 다시 시도해 주세요.");
+      toastApiError(error);
     } finally {
       setIsSubmitting(false);
     }

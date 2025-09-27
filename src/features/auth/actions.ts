@@ -1,37 +1,23 @@
-import axios from "axios";
-import { login } from "@/api/users";
-import type * as T from "@/api/users/types";
+import { login, signUp } from "@/api/users";
 import { authSession } from "@/features/auth/utils/authSession";
-
-function getDataMessage(data: unknown): string | undefined {
-  if (typeof data === "string") return data;
-  if (data && typeof data === "object" && "message" in data) {
-    const msg = (data as { message?: unknown }).message;
-    return typeof msg === "string" ? msg : undefined;
-  }
-  return undefined;
-}
-
-function normalizeError(err: unknown): Error {
-  if (axios.isAxiosError(err)) {
-    const res = err.response;
-    const msg =
-      getDataMessage(res?.data) ??
-      res?.statusText ??
-      err.message ??
-      "Request failed";
-    return new Error(msg);
-  }
-  return err instanceof Error ? err : new Error("Unknown error");
-}
+import { normalizeError } from "@/shared/lib/http";
+import type * as T from "@/api/users/types";
 
 export async function loginAndStore(body: T.LoginBody) {
   try {
     const user = await login(body);
     authSession.write(user);
     return user;
-  } catch (error) {
-    throw normalizeError(error);
+  } catch (err) {
+    throw normalizeError(err);
+  }
+}
+
+export async function signUpAction(body: T.SignUpBody) {
+  try {
+    await signUp(body);
+  } catch (err) {
+    throw normalizeError(err);
   }
 }
 
