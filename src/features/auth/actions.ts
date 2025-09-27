@@ -8,16 +8,16 @@ export async function loginAndStore(body: T.LoginBody) {
     const user = await login(body);
     authSession.write(user);
     return user;
-  } catch (err) {
-    throw normalizeError(err);
+  } catch (error) {
+    throw normalizeError(error);
   }
 }
 
 export async function signUpAction(body: T.SignUpBody) {
   try {
     await signUp(body);
-  } catch (err) {
-    throw normalizeError(err);
+  } catch (error) {
+    throw normalizeError(error);
   }
 }
 
