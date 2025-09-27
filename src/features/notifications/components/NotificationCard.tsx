@@ -1,5 +1,4 @@
-import bellIconUrl from "@/assets/icons/bell.svg";
-import heartIconUrl from "@/assets/icons/like-active.svg";
+import NotificationsTypeIcon from "@/features/notifications/components/NotificationsTypeIcon";
 import closeIconUrl from "@/assets/icons/close-secondary-24.svg";
 import { formatTimeAgo } from "@/shared/utils/formatTimeAgo";
 import type { NotificationsItem } from "@/api/notifications/types";
@@ -8,18 +7,6 @@ type NotificationCardProps = {
   item: NotificationsItem;
   onConfirm: (id: NotificationsItem["id"]) => void;
 };
-
-type TypeIconProps = {
-  type: NotificationsItem["resourceType"];
-  className?: string;
-};
-
-function TypeIcon({ type, className }: TypeIconProps) {
-  if (type === "comment") {
-    return <img src={heartIconUrl} alt="" className={`${className}`} />;
-  }
-  return <img src={bellIconUrl} alt="" className={`${className}`} />;
-}
 
 export default function NotificationCard({
   item,
@@ -34,7 +21,7 @@ export default function NotificationCard({
       role="listitem"
     >
       <div className="flex items-start w-full">
-        <TypeIcon type={item.resourceType} className="mr-2" />
+        <NotificationsTypeIcon type={item.resourceType} className="mr-2" />
 
         <div className="flex items-start justify-between w-full">
           <div className="flex flex-col gap-1">
@@ -44,14 +31,14 @@ export default function NotificationCard({
 
           <button
             type="button"
-            aria-label="알림 삭제"
-            title="알림 삭제"
+            aria-label="알림 제거"
+            title="알림 제거"
             onClick={(e) => {
               e.stopPropagation();
               onConfirm(item.id);
             }}
           >
-            <img src={closeIconUrl} alt="notification close" className="h-6" />
+            <img src={closeIconUrl} alt="" className="h-6" />
           </button>
         </div>
       </div>
