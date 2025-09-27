@@ -46,6 +46,7 @@ export function useNotifications({ userId, pageSize = 50 }: Options): Return {
   };
 
   const refresh = useCallback(async () => {
+    if (!userId) return;
     setError(null);
     setLoading(true);
     try {
