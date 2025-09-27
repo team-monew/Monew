@@ -3,6 +3,7 @@ import { ROUTES } from "@/shared/constants/routes";
 import { login } from "@/api/users";
 import Button from "@/components/common/button/Button";
 import { toast } from "react-toastify";
+import NotificationPanel from "@/components/common/notification/NotificationPanel";
 
 const testEmail = {
   email: "mmgg@codeit.com",
@@ -32,6 +33,7 @@ export default function TestPage() {
       <Button onClick={handleLogin} className="maw-w-[400px] p-4">
         테스트 계정 로그인
       </Button>
+      <NotificationPanel />
     </div>
   );
 }
