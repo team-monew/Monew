@@ -9,6 +9,7 @@ import {
 } from "@/shared/utils/inputValidation";
 import { toast } from "react-toastify";
 import { ROUTES } from "@/shared/constants/routes";
+import Skeleton from "@/components/Skeleton";
 
 export default function LoginForm() {
   const nav = useNavigate();
@@ -133,7 +134,7 @@ export default function LoginForm() {
         className="w-full mt-8"
         disabled={!formValid || isSubmitting}
       >
-        {isSubmitting ? "로그인 중..." : "로그인하기"}
+        {isSubmitting ? <Skeleton className="mx-4" /> : "로그인하기"}
       </Button>
     </form>
   );
