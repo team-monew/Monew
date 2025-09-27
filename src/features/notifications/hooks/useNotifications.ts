@@ -37,7 +37,7 @@ function toMessage(error: unknown): string {
 export function useNotifications({ userId, pageSize = 50 }: Options): Return {
   const [items, setItems] = useState<NotificationsItem[]>([]);
   const [total, setTotal] = useState(0);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   const applyPage = (page: GetNotificationsResponse) => {

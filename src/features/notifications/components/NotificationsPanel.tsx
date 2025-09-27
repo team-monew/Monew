@@ -54,15 +54,15 @@ export default function NotificationsPanel({
 
         {/* List */}
         {error && <p className="text-16-m text-error">{error}</p>}
-        {loading && items.length === 0 && <Skeleton height="80px" />}
         <div className="min-h-0 h-full w-full overflow-y-auto">
-          {items.length > 0 && (
+          {loading && items.length === 0 ? (
+            <Skeleton height="80px" />
+          ) : items.length > 0 ? (
             <NotificationsCardList
               items={items}
               onConfirm={(id) => void confirmOne(id)}
             />
-          )}
-          {items.length === 0 && (
+          ) : (
             <EmptyState message="알림이 없습니다." className="h-full" />
           )}
         </div>
