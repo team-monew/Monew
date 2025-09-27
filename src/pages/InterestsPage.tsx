@@ -231,8 +231,6 @@ function InterestsPage() {
         keywords: keywords,
       };
 
-      console.log(updateBody);
-
       await updateInterest(interestId, updateBody);
 
       await fetchInitialData();
