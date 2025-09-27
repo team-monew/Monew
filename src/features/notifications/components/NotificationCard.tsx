@@ -1,4 +1,5 @@
 import NotificationsTypeIcon from "@/features/notifications/components/NotificationsTypeIcon";
+import NotificationContentText from "./NotificationContentText";
 import closeIconUrl from "@/assets/icons/close-secondary-24.svg";
 import { formatTimeAgo } from "@/shared/utils/formatTimeAgo";
 import type { NotificationsItem } from "@/api/notifications/types";
@@ -25,7 +26,7 @@ export default function NotificationCard({
 
         <div className="flex items-start justify-between w-full">
           <div className="flex flex-col gap-1">
-            <p className="text-16-m text-gray-700">{item.content}</p>
+            <NotificationContentText item={item} />
             <p className="text-14-m text-gray-400">{timeText}</p>
           </div>
 
