@@ -52,7 +52,7 @@ export default function LoginForm() {
         email: emailField.value,
         password: passwordField.value,
       });
-      toast.success("환영합니다! 로그인이 완료되었습니다.");
+      toast.success("로그인이 완료되었습니다.");
       nav(ROUTES.ARTICLES, { replace: true });
     } catch (error) {
       const message =
@@ -77,7 +77,7 @@ export default function LoginForm() {
         onChange={emailField.onChange}
         onBlur={emailField.onBlur}
         error={emailField.touched ? emailField.error : ""}
-        autoComplete="username"
+        autoComplete="email"
         inputMode="email"
       />
       <Input

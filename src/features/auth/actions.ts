@@ -1,5 +1,5 @@
 import axios from "axios";
-import { login, signUp } from "@/api/users";
+import { login } from "@/api/users";
 import type * as T from "@/api/users/types";
 import { authSession } from "@/features/auth/utils/authSession";
 
@@ -28,16 +28,6 @@ function normalizeError(err: unknown): Error {
 export async function loginAndStore(body: T.LoginBody) {
   try {
     const user = await login(body);
-    authSession.write(user);
-    return user;
-  } catch (error) {
-    throw normalizeError(error);
-  }
-}
-
-export async function signUpAndStore(body: T.SignUpBody) {
-  try {
-    const user = await signUp(body);
     authSession.write(user);
     return user;
   } catch (error) {

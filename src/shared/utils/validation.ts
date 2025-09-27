@@ -13,7 +13,7 @@ export const isPassword =
   (v: string) =>
     /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(v) ? "" : msg;
 
-export const equalsTo =
+export const isPasswordConfirm =
   (getOther: () => string, msg = "비밀번호가 일치하지 않습니다.") =>
   (v: string) =>
     v === getOther() ? "" : msg;
