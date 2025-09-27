@@ -1,5 +1,5 @@
 import NotificationsTypeIcon from "@/features/notifications/components/NotificationsTypeIcon";
-import NotificationContentText from "./NotificationContentText";
+import NotificationContentText from "@/features/notifications/components/NotificationContentText";
 import closeIconUrl from "@/assets/icons/close-secondary-24.svg";
 import { formatTimeAgo } from "@/shared/utils/formatTimeAgo";
 import type { NotificationsItem } from "@/api/notifications/types";

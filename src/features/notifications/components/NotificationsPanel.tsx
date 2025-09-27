@@ -3,6 +3,7 @@ import EmptyState from "@/components/EmptyState";
 import { useNotifications } from "@/features/notifications/hooks/useNotifications";
 import { useAuthInfo } from "@/features/auth/hooks/useAuthInfo";
 import closeIconUrl from "@/assets/icons/close-primary-24.svg";
+import Skeleton from "@/components/Skeleton";
 
 type NotificationsPanelProps = {
   onClose?: () => void;
@@ -53,9 +54,7 @@ export default function NotificationsPanel({
 
         {/* List */}
         {error && <p className="text-16-m text-error">{error}</p>}
-        {loading && items.length === 0 && (
-          <p className="text-16-m text-gray-600">불러오는 중…</p>
-        )}
+        {loading && items.length === 0 && <Skeleton className="h-[80px]" />}
         <div className="min-h-0 h-full w-full overflow-y-auto">
           {items.length > 0 && (
             <NotificationsCardList
