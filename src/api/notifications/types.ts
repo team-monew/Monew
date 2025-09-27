@@ -1,14 +1,14 @@
-import type { NotificationId } from "@/types/ids";
+import type { NotificationId, UserId, UUID } from "@/types/ids";
 
 export type NotificationsItem = {
   id: NotificationId;
   createdAt: string;
   updatedAt: string;
   confirmed: boolean;
-  userId: string;
+  userId: UserId;
   content: string;
   resourceType: "interest" | "comment";
-  resourceId: string;
+  resourceId: UUID;
 };
 
 /* 알림 목록 조회 */

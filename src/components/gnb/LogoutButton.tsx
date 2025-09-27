@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import logoutIcon from "@/assets/icons/logout.svg";
 
-export default function HeaderLogoutButton() {
+export default function LogoutButton() {
   const nav = useNavigate();
   const onClick = () => {
     logout();
