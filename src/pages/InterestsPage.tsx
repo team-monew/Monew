@@ -43,9 +43,6 @@ function InterestsPage() {
   const sortOptions = ["이름", "구독자수"];
   const orderOptions = ["내림차순", "오름차순"];
 
-  const [sortBy, setSortBy] = useState("이름");
-  const [sortOrder, setSortOrder] = useState("내림차순");
-
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -66,7 +63,11 @@ function InterestsPage() {
   const direction: SortDirection =
     directionParam === "ASC" || directionParam === "DESC"
       ? directionParam
-      : "ASC";
+      : "DESC";
+
+  const [sortBy, setSortBy] = useState("이름");
+  const [sortOrder, setSortOrder] = useState("내림차순");
+
   const limit = searchParams.get("limit") || "6";
 
   const { userId } = useAuthInfo();
@@ -159,8 +160,10 @@ function InterestsPage() {
   }, [hasNext, isLoading, fetchMoreData]);
 
   useEffect(() => {
+    setSortBy(orderBy === "name" ? "이름" : "구독자수");
+    setSortOrder(direction === "DESC" ? "내림차순" : "오름차순");
     fetchInitialData();
-  }, [fetchInitialData]);
+  }, [fetchInitialData, orderBy, direction]);
 
   const handleSubScribeClick = async (
     interestId: InterestId,
@@ -265,6 +268,26 @@ function InterestsPage() {
     });
   };
 
+  const handleSortOptions = (value: string) => {
+    const newSort = value === "이름" ? "name" : "subscriberCount";
+
+    setSearchParams((prev) => {
+      const newParams = new URLSearchParams(prev);
+      newParams.set("orderBy", newSort);
+      return newParams;
+    });
+  };
+
+  const handleOrderOptions = (value: string) => {
+    const newOrder = value === "오름차순" ? "ASC" : "DESC";
+
+    setSearchParams((prev) => {
+      const newParams = new URLSearchParams(prev);
+      newParams.set("direction", newOrder);
+      return newParams;
+    });
+  };
+
   return (
     <div className="mt-10 max-w-4xl mx-auto">
       <div className="flex justify-between items-center">
@@ -293,13 +316,13 @@ function InterestsPage() {
           <SelectBox
             items={sortOptions}
             value={sortBy}
-            onChange={setSortBy}
+            onChange={handleSortOptions}
             className="w-24 h-10"
           />
           <SelectBox
             items={orderOptions}
             value={sortOrder}
-            onChange={setSortOrder}
+            onChange={handleOrderOptions}
             className="w-24 h-10"
           />
         </div>
