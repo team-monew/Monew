@@ -9,10 +9,10 @@ import {
   isEmail,
   isPassword,
   compose,
-} from "@/features/auth/validation";
+} from "@/shared/utils/validation";
+import Skeleton from "@/components/Skeleton";
 import { toast } from "react-toastify";
 import { ROUTES } from "@/shared/constants/routes";
-import Skeleton from "@/components/Skeleton";
 
 export default function LoginForm() {
   const nav = useNavigate();

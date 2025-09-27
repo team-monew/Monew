@@ -18,6 +18,16 @@ export const equalsTo =
   (v: string) =>
     v === getOther() ? "" : msg;
 
+export const maxLength =
+  (len: number, msg = `${len}자 이하로 입력해 주세요`) =>
+  (v: string) =>
+    v.length <= len ? "" : msg;
+
+export const minLength =
+  (len: number, msg = `${len}자 이상 입력해 주세요`) =>
+  (v: string) =>
+    v.length >= len ? "" : msg;
+
 export const compose =
   (...validators: Array<(v: string) => string>) =>
   (v: string) => {
