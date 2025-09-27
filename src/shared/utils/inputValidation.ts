@@ -14,3 +14,10 @@ export function validatePassword(value: string, minLength = 8) {
   const hasNumber = /[0-9]/.test(value);
   return value.length >= minLength && hasAlphabet && hasNumber;
 }
+
+export function validatePasswordConfirm(data: {
+  password: string;
+  passwordConfirm: string;
+}) {
+  return data.password === data.passwordConfirm;
+}
