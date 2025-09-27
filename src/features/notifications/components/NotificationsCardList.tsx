@@ -13,7 +13,7 @@ export default function NotificationsCardList({
   className,
 }: Props) {
   return (
-    <ul className={className ?? "space-y-4"}>
+    <ul className={className ?? "space-y-4 py-2"}>
       {items.map((currentItems) => (
         <li key={currentItems.id}>
           <NotificationCard item={currentItems} onConfirm={onConfirm} />
