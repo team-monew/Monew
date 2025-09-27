@@ -54,7 +54,7 @@ export default function NotificationsPanel({
 
         {/* List */}
         {error && <p className="text-16-m text-error">{error}</p>}
-        {loading && items.length === 0 && <Skeleton className="h-[80px]" />}
+        {loading && items.length === 0 && <Skeleton height="80px" />}
         <div className="min-h-0 h-full w-full overflow-y-auto">
           {items.length > 0 && (
             <NotificationsCardList
