@@ -9,6 +9,7 @@ import {
   checkNotifications,
   checkAllNotifications,
 } from "@/api/notifications";
+import { isAxiosError } from "axios";
 
 type Options = {
   userId: UserId;
@@ -27,6 +28,9 @@ type Return = {
 };
 
 function toMessage(error: unknown): string {
+  if (isAxiosError(error)) {
+    return error.response?.data?.message ?? error.message;
+  }
   return error instanceof Error ? error.message : String(error);
 }
 

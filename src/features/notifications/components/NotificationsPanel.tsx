@@ -15,10 +15,11 @@ export default function NotificationsPanel({
 }: NotificationsPanelProps) {
   const { userId } = useAuthInfo();
 
-  const { items, total, confirmOne, confirmAll } = useNotifications({
-    userId,
-    pageSize,
-  });
+  const { items, total, confirmOne, confirmAll, error, loading } =
+    useNotifications({
+      userId,
+      pageSize,
+    });
 
   return (
     <aside
@@ -51,6 +52,10 @@ export default function NotificationsPanel({
         </div>
 
         {/* List */}
+        {error && <p className="text-16-m text-error">{error}</p>}
+        {loading && items.length === 0 && (
+          <p className="text-16-m text-gray-600">불러오는 중…</p>
+        )}
         <div className="min-h-0 h-full w-full overflow-y-auto">
           {items.length > 0 && (
             <NotificationsCardList
