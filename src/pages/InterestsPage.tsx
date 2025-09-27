@@ -328,28 +328,33 @@ function InterestsPage() {
         </div>
         <SearchBar width="w-[304px]" onSearch={handleSearch} />
       </div>
-      <div className="mt-4 flex flex-wrap gap-4">
-        {interests.length === 0 && (
-          <EmptyState message="아직 등록한 관심사가 없습니다." />
-        )}
-        {interests.map((interest, index) => (
-          <div
-            className="min-w-2xs"
-            key={interest.id}
-            ref={index === interests.length - 1 ? lastElementRef : null}
-          >
-            <Interest
-              interestId={interest.id}
-              name={interest.name}
-              keywords={interest.keywords}
-              subscriberCount={interest.subscriberCount}
-              isSubscribed={interest.subscribedByMe}
-              onSubscribeClick={handleSubScribeClick}
-              onSaveKeyword={handleSaveKeyword}
-              onDeleteInterest={handleDeleteInterest}
-            />
+      <div className="mt-4">
+        {interests.length === 0 ? (
+          <div className="flex justify-center items-center min-h-[200px] mt-30">
+            <EmptyState message="아직 등록한 관심사가 없습니다." />
           </div>
-        ))}
+        ) : (
+          <div className="mt-4 flex flex-wrap gap-4">
+            {interests.map((interest, index) => (
+              <div
+                className="min-w-2xs"
+                key={interest.id}
+                ref={index === interests.length - 1 ? lastElementRef : null}
+              >
+                <Interest
+                  interestId={interest.id}
+                  name={interest.name}
+                  keywords={interest.keywords}
+                  subscriberCount={interest.subscriberCount}
+                  isSubscribed={interest.subscribedByMe}
+                  onSubscribeClick={handleSubScribeClick}
+                  onSaveKeyword={handleSaveKeyword}
+                  onDeleteInterest={handleDeleteInterest}
+                />
+              </div>
+            ))}
+          </div>
+        )}
 
         {isLoading && <div className="text-center py-8">로딩 중 ... </div>}
       </div>
