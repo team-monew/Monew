@@ -7,7 +7,7 @@ import Input from "../../../components/Input";
 import Button from "../../../components/button/Button";
 import { useState } from "react";
 
-interface CommentProps {
+interface CommentCardProps {
   userNickname: string;
   createdAt: Date;
   likeCount: number;
@@ -20,7 +20,7 @@ interface CommentProps {
   className?: string;
 }
 
-export default function Comment({
+export default function CommentCard({
   userNickname,
   createdAt,
   likeCount,
@@ -31,7 +31,7 @@ export default function Comment({
   commentId,
   isMyComment,
   className,
-}: CommentProps) {
+}: CommentCardProps) {
   const [commentValue, setCommentValue] = useState(content);
   const [isEditing, setIsEditing] = useState(false);
 

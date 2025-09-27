@@ -5,7 +5,7 @@ import likeDefault from "@/assets/icons/like-default.svg";
 import likeActive from "@/assets/icons/like-active.svg";
 import type { ArticleId, CommentId } from "@/types/ids";
 
-interface CommentHistoryProps {
+interface CommentHistoryCardProps {
   createdAt: Date;
   likeCount: number;
   content: string;
@@ -18,7 +18,7 @@ interface CommentHistoryProps {
   className?: string;
 }
 
-export default function CommentHistory({
+export default function CommentHistoryCard({
   createdAt,
   isLiked,
   likeCount,
@@ -29,7 +29,7 @@ export default function CommentHistory({
   className,
   onLikeClick,
   onTitleClick,
-}: CommentHistoryProps) {
+}: CommentHistoryCardProps) {
   const handleHeartClick = () => {
     onLikeClick(commentId);
   };

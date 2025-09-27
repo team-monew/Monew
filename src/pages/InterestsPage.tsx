@@ -3,7 +3,7 @@ import plusIcon from "@/assets/icons/plus.svg";
 import SearchBar from "@/components/SearchBar";
 import { useCallback, useEffect, useRef, useState } from "react";
 import SelectBox from "@/components/SelectBox";
-import Interest from "@/features/interests/components/Interest";
+import InterestCard from "@/features/interests/components/InterestCard";
 import { useAuthInfo } from "@/features/auth/hooks/useAuthInfo";
 import {
   addInterest,
@@ -146,7 +146,7 @@ function InterestsPage() {
         }
       },
       {
-        threshold: 1.0,
+        threshold: 0.8,
       },
     );
 
@@ -339,7 +339,7 @@ function InterestsPage() {
                 key={interest.id}
                 ref={index === interests.length - 1 ? lastElementRef : null}
               >
-                <Interest
+                <InterestCard
                   interestId={interest.id}
                   name={interest.name}
                   keywords={interest.keywords}

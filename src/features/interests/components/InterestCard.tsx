@@ -11,7 +11,7 @@ import InterestEditModal from "@/components/modal/InterestEditModal";
 import ConfirmModal from "@/components/modal/ConfirmModal";
 import useConfirmModal from "@/shared/hooks/useConfirmModal";
 
-interface InterestProps {
+interface InterestCardProps {
   interestId: InterestId;
   name: string;
   keywords: string[];
@@ -22,7 +22,7 @@ interface InterestProps {
   onDeleteInterest: (id: InterestId) => void;
 }
 
-export default function Interest({
+export default function InterestCard({
   interestId,
   name,
   keywords,
@@ -31,7 +31,7 @@ export default function Interest({
   onSubscribeClick,
   onSaveKeyword,
   onDeleteInterest,
-}: InterestProps) {
+}: InterestCardProps) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLButtonElement>(null);
 
@@ -46,7 +46,7 @@ export default function Interest({
 
   useClosePopup(dropdownRef, () => setIsDropdownOpen(false), isDropdownOpen);
 
-  const handleSubScribeClick = () => {
+  const handleSubscribeClick = () => {
     onSubscribeClick(interestId, isSubscribed);
   };
 
@@ -115,7 +115,7 @@ export default function Interest({
             variant="secondary"
             size="sm"
             className="flex gap-1 min-w-[91px]"
-            onClick={handleSubScribeClick}
+            onClick={handleSubscribeClick}
           >
             <img src={checkIcon} className="w-4 h-4" alt="체크" />
             구독 중
@@ -124,7 +124,7 @@ export default function Interest({
           <Button
             className="min-w-[80px]"
             size="sm"
-            onClick={handleSubScribeClick}
+            onClick={handleSubscribeClick}
           >
             구독하기
           </Button>

@@ -22,6 +22,7 @@ export default function Tag({ label, onClick, onRemove }: TagProps) {
           type="button"
           onClick={onRemove}
           className="w-4 h-4 flex items-center justify-center text-slate-400 hover:text-slate-600 cursor-pointer text-sm"
+          aria-label="태그 삭제"
         >
           ×
         </button>
