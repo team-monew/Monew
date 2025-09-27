@@ -28,22 +28,24 @@ export default function ConfirmModal({
 
   return (
     <ModalLayout isOpen={isOpen} onClose={onClose}>
-      <div className="w-[400px] p-6">
+      <div className="w-full p-6 text-center">
         <h2 className="text-20-b text-slate-900 mb-4">{title}</h2>
-        <p className="text-16-r text-slate-600 mb-8">{message}</p>
+        <p className="text-16-r text-slate-600 mb-8 leading-relaxed">
+          {message}
+        </p>
 
-        <div className="flex gap-3 justify-end">
+        <div className="flex gap-4 pt-4">
           <Button
             variant="secondary"
             onClick={onClose}
-            className="min-w-[80px] flex-1"
+            className="min-w-[100px] flex-1 px-6"
           >
             {cancelText}
           </Button>
           <Button
             variant="primary"
             onClick={handleConfirm}
-            className="min-w-[80px] flex-1"
+            className="min-w-[100px] flex-1 px-6"
           >
             {confirmText}
           </Button>
