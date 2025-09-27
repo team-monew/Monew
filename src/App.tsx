@@ -1,26 +1,30 @@
-import { Routes, Route, Navigate } from "react-router";
+import { Routes, Route } from "react-router";
 import PrivateLayout from "@/layouts/PrivateLayout";
 import PublicLayout from "@/layouts/PublicLayout";
-import LoginPage from "@/pages/auth/login/LoginPage";
-import SignUpPage from "@/pages/auth/signup/SignUpPage";
-import FeedPage from "@/pages/feed/FeedPage";
-import InterestsPage from "@/pages/interests/InterestsPage";
-import HistoryPage from "@/pages/history/HistoryPage";
+import LandingPage from "@/pages/LandingPage";
+import LoginPage from "@/pages/LoginPage";
+import SignUpPage from "@/pages/SignUpPage";
+import ArticlesPage from "@/pages/ArticlesPage";
+import InterestsPage from "@/pages/InterestsPage";
+import ActivitiesPage from "@/pages/ActivitiesPage";
+import NotFound from "@/pages/not-found";
+import TestPage from "@/pages/TestPage";
 
 function App() {
   return (
     <Routes>
       <Route element={<PrivateLayout />}>
-        <Route path="/" element={<Navigate to="/feed" replace />} />
-        <Route path="/feed" element={<FeedPage />} />
-        <Route path="/history" element={<HistoryPage />} />
+        <Route path="/articles" element={<ArticlesPage />} />
         <Route path="/interests" element={<InterestsPage />} />
+        <Route path="/activities" element={<ActivitiesPage />} />
       </Route>
 
       <Route element={<PublicLayout />}>
+        <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
-        <Route path="*" element={<div>404</div>} />
+        <Route path="*" element={<NotFound />} />
+        <Route path="/test" element={<TestPage />} />
       </Route>
     </Routes>
   );
