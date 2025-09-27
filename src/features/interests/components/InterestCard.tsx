@@ -2,75 +2,74 @@ import kebabMenuIcon from "@/assets/icons/kebab-menu-32.svg";
 import personIcon from "@/assets/icons/person.svg";
 import checkIcon from "@/assets/icons/check-default.svg";
 import Button from "@/components/button/Button";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import type { InterestId } from "@/types/ids";
 import Dropdown from "@/components/dropdown";
 import { useClosePopup } from "@/shared/hooks/useClosePopup";
+import useInterestEditModal from "@/shared/hooks/useInterestEditModal";
+import InterestEditModal from "@/components/modal/InterestEditModal";
+import ConfirmModal from "@/components/modal/ConfirmModal";
+import useConfirmModal from "@/shared/hooks/useConfirmModal";
 
-interface InterestProps {
+interface InterestCardProps {
   interestId: InterestId;
   name: string;
   keywords: string[];
   subscriberCount: number;
   isSubscribed?: boolean;
   onSubscribeClick: (id: InterestId, isSubscribed: boolean) => void;
-  onEditKeyword: (id: InterestId) => void;
-  onSaveKeyword: (id: InterestId, keywordText: string) => void;
-  onCancelKeyword: () => void; //키워드 수정 취소
+  onSaveKeyword: (id: InterestId, keywords: string[]) => void;
   onDeleteInterest: (id: InterestId) => void;
 }
 
-export default function Interest({
+export default function InterestCard({
   interestId,
   name,
   keywords,
   subscriberCount,
   isSubscribed = false,
   onSubscribeClick,
-  onEditKeyword,
   onSaveKeyword,
-  onCancelKeyword,
   onDeleteInterest,
-}: InterestProps) {
-  const [isSubscribe, setIsSubscribe] = useState(isSubscribed);
+}: InterestCardProps) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [isEditing, setIsEditing] = useState(false);
-  const [keywordText, setKeywordText] = useState("");
   const dropdownRef = useRef<HTMLButtonElement>(null);
+
+  const { isOpen, openModal, onClose, initialData } = useInterestEditModal();
+
+  const {
+    isOpen: isConfirmOpen,
+    openModal: openConfirmModal,
+    onClose: closeConfirmModal,
+    initialData: confirmModalData,
+  } = useConfirmModal();
 
   useClosePopup(dropdownRef, () => setIsDropdownOpen(false), isDropdownOpen);
 
-  // 편집 시작시 현재 키워드들을 텍스트로 설정하기
-  useEffect(() => {
-    if (isEditing) {
-      setKeywordText(keywords.join(", "));
-    }
-  }, [isEditing, keywords]);
-
-  const handleSubScribeClick = () => {
-    setIsSubscribe(!isSubscribe);
-    onSubscribeClick(interestId, !isSubscribe);
+  const handleSubscribeClick = () => {
+    onSubscribeClick(interestId, isSubscribed);
   };
 
   const handleDropdownChange = (selectedItem: string) => {
     if (selectedItem === "키워드 수정") {
-      setIsEditing(true);
-      onEditKeyword(interestId);
+      openModal({
+        keywords: keywords,
+      });
     } else if (selectedItem === "관심사 삭제") {
-      onDeleteInterest(interestId);
+      openConfirmModal({
+        title: "관심사 삭제",
+        message: `'${name}' 관심사를 정말 삭제하시겠습니까?\n삭제된 관심사는 복구할 수 없습니다.`,
+        confirmText: "삭제",
+        cancelText: "취소",
+        onConfirm: () => onDeleteInterest(interestId),
+      });
     }
     setIsDropdownOpen(false); //메뉴선택시 드롭다운 닫히게
   };
 
-  const handleKeywordSave = () => {
-    onSaveKeyword(interestId, keywordText);
-    setIsEditing(false);
-  };
-
-  const handleKeywordCancel = () => {
-    onCancelKeyword();
-    setIsEditing(false);
-    setKeywordText("");
+  const handleKeywordSave = (updatedKeywords: string[]) => {
+    onSaveKeyword(interestId, updatedKeywords);
+    onClose();
   };
 
   return (
@@ -92,42 +91,18 @@ export default function Interest({
           )}
         </button>
       </div>
-      {isEditing ? (
-        <div className="mb-6">
-          <textarea
-            value={keywordText}
-            onChange={(e) => setKeywordText(e.target.value)}
-            className="w-full p-3 border border-slate-300 rounded-lg resize-none"
-            rows={3}
-            placeholder="키워드를 쉼표(,)로 구분해서 입력하세요"
-          />
-          <div className="flex gap-2 mt-2">
-            <button
-              onClick={handleKeywordSave}
-              className="px-4 py-2 bg-blue-500 text-white rounded"
-            >
-              저장
-            </button>
-            <button
-              onClick={handleKeywordCancel}
-              className="px-4 py-2 bg-gray-500 text-white rounded"
-            >
-              취소
-            </button>
+
+      <div className="flex flex-wrap gap-2 mb-6">
+        {keywords.map((keyword, index) => (
+          <div
+            key={index}
+            className="rounded-lg py-1 px-2 bg-slate-100 text-16-m text-slate-500"
+          >
+            {keyword}
           </div>
-        </div>
-      ) : (
-        <div className="flex flex-wrap gap-2 mb-6">
-          {keywords.map((keyword, index) => (
-            <div
-              key={index}
-              className="rounded-lg py-1 px-2 bg-slate-100 text-16-m text-slate-500"
-            >
-              {keyword}
-            </div>
-          ))}
-        </div>
-      )}
+        ))}
+      </div>
+
       <div className="flex justify-between items-center">
         <div className="flex items-center justify-center">
           <img src={personIcon} className="w-6 h-6" alt="사람모양" />
@@ -135,12 +110,12 @@ export default function Interest({
             {subscriberCount} 구독자
           </span>
         </div>
-        {isSubscribe ? (
+        {isSubscribed ? (
           <Button
             variant="secondary"
             size="sm"
             className="flex gap-1 min-w-[91px]"
-            onClick={handleSubScribeClick}
+            onClick={handleSubscribeClick}
           >
             <img src={checkIcon} className="w-4 h-4" alt="체크" />
             구독 중
@@ -149,12 +124,30 @@ export default function Interest({
           <Button
             className="min-w-[80px]"
             size="sm"
-            onClick={handleSubScribeClick}
+            onClick={handleSubscribeClick}
           >
             구독하기
           </Button>
         )}
       </div>
+      <InterestEditModal
+        isOpen={isOpen}
+        onClose={onClose}
+        onSave={handleKeywordSave}
+        initialData={initialData}
+      />
+
+      {confirmModalData && (
+        <ConfirmModal
+          isOpen={isConfirmOpen}
+          onClose={closeConfirmModal}
+          onConfirm={confirmModalData.onConfirm}
+          title={confirmModalData.title}
+          message={confirmModalData.message}
+          confirmText={confirmModalData.confirmText}
+          cancelText={confirmModalData.cancelText}
+        />
+      )}
     </div>
   );
 }

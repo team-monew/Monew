@@ -5,19 +5,19 @@ import Button from "../button/Button";
 import type { UpdateUserBody, User } from "@/api/users/types";
 import type { UserId } from "@/types/ids";
 
-interface EditModalProps {
+interface NicknameEditModalProps {
   isOpen: boolean;
   onClose: () => void;
   onSave: (data: UpdateUserBody & { userId: UserId }) => void;
   user: User;
 }
 
-export default function EditModal({
+export default function NicknameEditModal({
   isOpen,
   onClose,
   onSave,
   user,
-}: EditModalProps) {
+}: NicknameEditModalProps) {
   const [nickname, setNickname] = useState("");
 
   const isFormValid = nickname.trim() !== "";

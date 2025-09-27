@@ -24,11 +24,16 @@ export default function SearchBar({
 
     if (onSearch && value.trim()) {
       onSearch(value.trim());
+
+      if (inputRef.current) {
+        inputRef.current.value = "";
+      }
     }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter" && onSearch) {
+    //한글 입력시 엔터 두번되는 거 방지
+    if (e.key === "Enter" && onSearch && !e.nativeEvent.isComposing) {
       e.preventDefault();
       handleSearchClick();
     }

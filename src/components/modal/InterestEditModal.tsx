@@ -2,48 +2,37 @@ import { useEffect, useState } from "react";
 import Input from "../Input";
 import ModalLayout from "./ModalLayout";
 import Button from "../button/Button";
-import type { AddInterestBody } from "@/api/interests/types";
-import Tag from "../Tag";
 import { toast } from "react-toastify";
+import Tag from "../Tag";
+import type { UpdateInterestBody } from "@/api/interests/types";
 
-interface UpdateModalProps {
+interface InterestEditModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSave: (data: AddInterestBody) => void;
+  onSave: (keywords: string[]) => void;
+  initialData?: UpdateInterestBody;
 }
 
-export default function UpdateModal({
+export default function InterestEditModal({
   isOpen,
   onClose,
   onSave,
-}: UpdateModalProps) {
-  const [interestValue, setInterestValue] = useState("");
-  const [keywords, setKeywords] = useState<string[]>([]);
+  initialData,
+}: InterestEditModalProps) {
   const [keyword, setKeyword] = useState("");
+  const [keywords, setKeywords] = useState<string[]>([]);
 
-  const isFormValid = interestValue.trim() !== "" && keywords.length > 0;
+  const isFormValid = keywords.length > 0;
 
   useEffect(() => {
-    if (!isOpen) {
-      setInterestValue("");
+    if (isOpen && initialData) {
+      setKeywords(initialData.keywords);
       setKeyword("");
-    }
-  }, [isOpen]);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (isFormValid) {
-      onSave({
-        name: interestValue,
-        keywords: keywords,
-      });
-      setInterestValue("");
+    } else if (!isOpen) {
       setKeyword("");
       setKeywords([]);
-      onClose();
     }
-  };
+  }, [isOpen, initialData]);
 
   const handleAddKeyword = () => {
     if (keyword.trim() !== "" && !keywords.includes(keyword.trim())) {
@@ -60,17 +49,20 @@ export default function UpdateModal({
     );
   };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (isFormValid) {
+      onSave(keywords);
+      onClose();
+    }
+  };
+
   return (
     <ModalLayout isOpen={isOpen} onClose={onClose}>
       <form onSubmit={handleSubmit} className="w-[438px] h-auto gap-10">
-        <h2 className="text-24-sb mb-10">관심사 등록</h2>
-        <Input
-          label="관심사 이름"
-          placeholder="관심사 이름을 입력해주세요"
-          value={interestValue}
-          onChange={(e) => setInterestValue(e.target.value)}
-          className="mb-6"
-        />
+        <h2 className="text-24-sb mb-10">관심사 수정</h2>
+
         <div className="mb-1.5 flex gap-2">
           <Input
             label="키워드"
@@ -88,24 +80,22 @@ export default function UpdateModal({
           </Button>
         </div>
 
-        <p className="px-1 gap-2.5 text-14-r text-slate-500 mb-16">
-          *설정한 키워드 기준으로 뉴스를 자동 수집합니다
-        </p>
-
         {keywords.length > 0 && (
-          <div className="max-h-20 overflow-y-auto flex flex-wrap gap-2 mb-10">
-            {keywords?.map((keyword, index) => (
-              <Tag
-                key={index}
-                label={keyword}
-                onRemove={() => handleRemoveKeyword(keyword)}
-              />
-            ))}
+          <div className="max-h-32 overflow-y-auto p-3 mb-10">
+            <div className="flex flex-wrap gap-2">
+              {keywords?.map((keyword, index) => (
+                <Tag
+                  key={index}
+                  label={keyword}
+                  onRemove={() => handleRemoveKeyword(keyword)}
+                />
+              ))}
+            </div>
           </div>
         )}
 
         <Button className="w-full" disabled={!isFormValid} type="submit">
-          등록하기
+          수정하기
         </Button>
       </form>
     </ModalLayout>
