@@ -76,7 +76,7 @@ export default function EditNicknameModal({
           disabled={!isFormValid || isSubmitting}
           type="submit"
         >
-          {isSubmitting ? <Skeleton /> : "수정하기"}
+          {isSubmitting ? <Skeleton className="mx-4" /> : "수정하기"}
         </Button>
       </form>
     </ModalLayout>
