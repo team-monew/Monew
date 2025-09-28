@@ -1,5 +1,5 @@
 import { useAuthInfo } from "@/features/auth/hooks/useAuthInfo"
-import EditProfileButton from "./EditProfileButton"
+import EditProfileButton from "./EditNicknameButton"
 
 export default function ProfileCard() {
 const {userName, userEmail} = useAuthInfo()

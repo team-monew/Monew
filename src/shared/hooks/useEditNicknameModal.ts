@@ -1,7 +1,7 @@
 import type { UserId } from "@/types/ids";
 import { useState } from "react";
 
-export default function useNicknameEditModal() {
+export default function useEditNicknameModal() {
   const [isOpen, setIsOpen] = useState(false);
   const [editUser, setEditUser] = useState<UserId | undefined>();
 
