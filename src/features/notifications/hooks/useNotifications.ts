@@ -9,7 +9,7 @@ import {
   checkNotifications,
   checkAllNotifications,
 } from "@/api/notifications";
-import { isAxiosError } from "axios";
+import { normalizeError } from "@/shared/lib/http";
 
 type Options = {
   userId: UserId;
@@ -27,14 +27,10 @@ type Return = {
   confirmAll: () => Promise<void>;
 };
 
-function toMessage(error: unknown): string {
-  if (isAxiosError(error)) {
-    return error.response?.data?.message ?? error.message;
-  }
-  return error instanceof Error ? error.message : String(error);
-}
-
-export function useNotifications({ userId, pageSize = 50 }: Options): Return {
+export const useNotifications = ({
+  userId,
+  pageSize = 50,
+}: Options): Return => {
   const [items, setItems] = useState<NotificationsItem[]>([]);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -53,7 +49,7 @@ export function useNotifications({ userId, pageSize = 50 }: Options): Return {
       const page = await getNotifications({ limit: pageSize }, userId);
       applyPage(page);
     } catch (error) {
-      setError(toMessage(error));
+      setError(normalizeError(error).message);
     } finally {
       setLoading(false);
     }
@@ -70,7 +66,7 @@ export function useNotifications({ userId, pageSize = 50 }: Options): Return {
       } catch (error) {
         setItems(snapshot.items);
         setTotal(snapshot.total);
-        setError(toMessage(error));
+        setError(normalizeError(error).message);
       }
     },
     [items, total, userId]
@@ -85,7 +81,7 @@ export function useNotifications({ userId, pageSize = 50 }: Options): Return {
     } catch (error) {
       setItems(snapshot.items);
       setTotal(snapshot.total);
-      setError(toMessage(error));
+      setError(normalizeError(error).message);
     }
   }, [items, total, userId]);
 
@@ -94,4 +90,4 @@ export function useNotifications({ userId, pageSize = 50 }: Options): Return {
   }, [refresh]);
 
   return { items, total, loading, error, refresh, confirmOne, confirmAll };
-}
+};
