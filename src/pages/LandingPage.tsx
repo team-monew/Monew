@@ -1,3 +1,6 @@
+import { Link } from "react-router";
+import { ROUTES } from "@/shared/constants/routes";
+
 function LandingBox() {
   return <div></div>;
 }
@@ -11,7 +14,7 @@ export default function LandingPage() {
         <LandingBox />
         <LandingBox />
       </div>
-      <button>지금 시작하기</button>
+      <Link to={ROUTES.AUTH_LOGIN}>지금 시작하기</Link>
     </main>
   );
 }
