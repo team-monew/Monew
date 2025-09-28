@@ -1,10 +1,11 @@
+import ActivitiesTabs from "@/features/activities/components/ActivitiesTabs";
 import ProfileCard from "@/features/activities/components/ProfileCard";
 
 function ActivitiesPage() {
   return (
-    <div>
-      <h1>activities</h1>
+    <div className="flex w-full">
       <ProfileCard/>
+      <ActivitiesTabs/>
     </div>
   );
 }
