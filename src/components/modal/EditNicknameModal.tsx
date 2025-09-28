@@ -8,6 +8,7 @@ import { updateUser } from "@/api/users/index";
 import { authSession } from "@/features/auth/utils/authSession";
 import Skeleton from "@/components/Skeleton";
 import { toast } from "react-toastify";
+import { toastApiError } from "@/shared/utils/toastApiError";
 
 interface EditNicknameModalProps {
   isOpen: boolean;
@@ -49,7 +50,7 @@ export default function EditNicknameModal({
       toast.success("닉네임이 수정되었습니다.");
       onClose();
     } catch (error) {
-      console.error("error", error);
+      toastApiError(error)
     } finally {
       setIsSubmitting(false);
     }
