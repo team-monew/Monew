@@ -3,7 +3,7 @@ import ProfileCard from "@/features/activities/components/ProfileCard";
 
 function ActivitiesPage() {
   return (
-    <div className="flex w-full">
+    <div className="flex justify-center gap-6 w-full px-4">
       <ProfileCard/>
       <ActivitiesTabs/>
     </div>

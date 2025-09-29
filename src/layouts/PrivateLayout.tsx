@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 
 export default function PrivateLayout() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-dvh gap-[60px]">
+    <div className="min-h-dvh flex flex-col gap-[60px]">
       <PrivateHeader />
       <main className="flex-1">
         <Outlet />
