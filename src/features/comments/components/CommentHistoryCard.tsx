@@ -6,7 +6,7 @@ import likeActive from "@/assets/icons/like-active.svg";
 import type { ArticleId, CommentId } from "@/types/ids";
 
 interface CommentHistoryCardProps {
-  type?: "articles" | "activities";
+  mode?: "articles" | "activities";
   createdAt: Date;
   likeCount: number;
   content: string;
@@ -20,7 +20,7 @@ interface CommentHistoryCardProps {
 }
 
 export default function CommentHistoryCard({
-  type = "articles",
+  mode = "articles",
   createdAt,
   isLiked,
   likeCount,
@@ -44,7 +44,7 @@ export default function CommentHistoryCard({
       className={[
         "w-full h-auto px-8 pb-10 pt-8",
 
-        type === "articles"
+        mode === "articles"
           ? "bg-white border border-gray-300"
           : "bg-transparent border-none",
 

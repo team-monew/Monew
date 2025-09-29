@@ -64,7 +64,7 @@ export default function RecentCommentList({
       {items.map((c) => (
         <li key={c.id}>
           <CommentHistoryCard
-            type="activities"
+            mode="activities"
             createdAt={new Date(c.createdAt)}
             likeCount={c.likeCount}
             content={c.content}
