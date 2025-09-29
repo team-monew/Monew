@@ -6,7 +6,7 @@ import likeActive from "@/assets/icons/like-active.svg";
 import type { ArticleId, CommentId } from "@/types/ids";
 
 interface CommentHistoryCardProps {
-  mode?: "articles" | "activities";
+  mode?: "recent" | "liked";
   createdAt: Date;
   likeCount: number;
   content: string;
@@ -20,7 +20,7 @@ interface CommentHistoryCardProps {
 }
 
 export default function CommentHistoryCard({
-  mode = "articles",
+  mode = "recent",
   createdAt,
   isLiked,
   likeCount,
@@ -28,7 +28,6 @@ export default function CommentHistoryCard({
   articleId,
   title,
   content,
-  className,
   onLikeClick,
   onTitleClick,
 }: CommentHistoryCardProps) {
@@ -40,17 +39,7 @@ export default function CommentHistoryCard({
     onTitleClick(articleId);
   };
   return (
-    <div
-      className={[
-        "w-full h-auto px-8 pb-10 pt-8",
-
-        mode === "articles"
-          ? "bg-white border border-gray-300"
-          : "bg-transparent border-none",
-
-        className ?? "",
-      ].join("")}
-    >
+    <div className="w-full h-auto px-8 py-8 bg-transparent border-none">
       <div className="flex mb-5">
         <div>
           <button
@@ -59,7 +48,9 @@ export default function CommentHistoryCard({
           >
             {title}
           </button>
-          <span className="text-16-r">에 남긴 댓글</span>
+          <span className="text-16-r">
+            {mode === "recent" ? "에 남긴 댓글" : "에 좋아요한 댓글"}
+          </span>
         </div>
         <div className="flex gap-1 ml-1">
           <span className="text-14-m text-slate-500 mt-0.5">·</span>

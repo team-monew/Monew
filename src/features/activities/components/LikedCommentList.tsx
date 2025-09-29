@@ -2,22 +2,22 @@ import { useEffect, useState } from "react";
 import CommentHistoryCard from "@/features/comments/components/CommentHistoryCard";
 import { getUserActivities } from "@/api/user-activities";
 import type { ArticleId } from "@/types/ids";
-import type { ActivityComment } from "@/api/user-activities/types";
+import type { ActivityCommentLike } from "@/api/user-activities/types";
 import { useAuthInfo } from "@/features/auth/hooks/useAuthInfo";
 import Skeleton from "@/components/Skeleton";
 
-type RecentCommentListProps = {
+type LikedCommentListProps = {
   onTitleClick: (articleId: ArticleId) => void;
   className?: string;
 };
 
 const PER_PAGE = 4;
 
-export default function RecentCommentList({
+export default function LikedCommentList({
   onTitleClick,
   className,
-}: RecentCommentListProps) {
-  const [items, setItems] = useState<ActivityComment[] | null>(null);
+}: LikedCommentListProps) {
+  const [items, setItems] = useState<ActivityCommentLike[] | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const { userId } = useAuthInfo();
@@ -29,10 +29,10 @@ export default function RecentCommentList({
       try {
         setError(null);
         const data = await getUserActivities(userId);
-        const recent = (data.comments ?? []).slice(0, PER_PAGE);
-        if (!cancelled) setItems(recent);
+        const liked = (data.commentLikes ?? []).slice(0, PER_PAGE);
+        if (!cancelled) setItems(liked);
       } catch {
-        if (!cancelled) setError("최근 댓글을 불러오지 못했습니다.");
+        if (!cancelled) setError("좋아요한 댓글을 불러오지 못했습니다.");
       }
     })();
 
@@ -54,7 +54,7 @@ export default function RecentCommentList({
   if (items.length === 0) {
     return (
       <div className={className}>
-        <p className="text-14-r text-slate-500">작성한 댓글이 없습니다.</p>
+        <p className="text-14-r text-slate-500">좋아요한 댓글이 없습니다.</p>
       </div>
     );
   }
@@ -64,10 +64,10 @@ export default function RecentCommentList({
       {items.map((c) => (
         <li key={c.id}>
           <CommentHistoryCard
-            mode="recent"
+            mode="liked"
             createdAt={new Date(c.createdAt)}
-            likeCount={c.likeCount}
-            content={c.content}
+            likeCount={c.commentLikeCount}
+            content={c.commentContent}
             isLiked={false}
             commentId={c.id}
             articleId={c.articleId}

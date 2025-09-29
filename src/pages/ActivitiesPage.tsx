@@ -3,13 +3,13 @@ import { useNavigate, useSearchParams } from "react-router";
 import ProfileCard from "@/features/activities/components/ProfileCard";
 import ActivitiesTabs from "@/features/activities/components/ActivitiesTabs";
 import RecentCommentList from "@/features/activities/components/RecentCommentList";
+import LikedCommentList from "@/features/activities/components/LikedCommentList";
 import {
   ACTIVITIES_TABS,
   DEFAULT_ACTIVITIES_TAB,
 } from "@/shared/constants/routes";
 import type { ArticleId } from "@/types/ids";
 import { ROUTES } from "@/shared/constants/routes";
-
 
 export default function ActivitiesPage() {
   const [sp, setSp] = useSearchParams();
@@ -31,7 +31,7 @@ export default function ActivitiesPage() {
   };
 
   return (
-    <div className="flex justify-center gap-6 w-full px-4">
+    <div className="flex justify-center gap-6 w-full px-4 overflow-x-auto">
       <ProfileCard />
 
       <div className="flex flex-col">
@@ -39,12 +39,12 @@ export default function ActivitiesPage() {
         {/* 탭별 콘텐츠 */}
         <div className="mt-6 flex flex-col gap-4">
           {tab === "recent" && (
-            <RecentCommentList
-              onTitleClick={handleTitleClick}
-            />
+            <RecentCommentList onTitleClick={handleTitleClick} />
           )}
 
-          {tab === "liked" && <div>좋아요한 댓글 탭 (구현 예정)</div>}
+          {tab === "liked" && (
+            <LikedCommentList onTitleClick={handleTitleClick} />
+          )}
 
           {tab === "viewed" && <div>최근 본 기사 탭 (구현 예정)</div>}
         </div>
