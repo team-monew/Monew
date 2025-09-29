@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router";
 import ProfileCard from "@/features/activities/components/ProfileCard";
+import SubscriptionPanel from "@/features/activities/components/SubscriptionPanel";
 import ActivitiesTabs from "@/features/activities/components/ActivitiesTabs";
 import RecentCommentList from "@/features/activities/components/RecentCommentList";
 import LikedCommentList from "@/features/activities/components/LikedCommentList";
@@ -32,7 +33,10 @@ export default function ActivitiesPage() {
 
   return (
     <div className="flex justify-center gap-6 w-full px-4 overflow-x-auto">
-      <ProfileCard />
+      <div className="flex flex-col gap-4">
+        <ProfileCard />
+        <SubscriptionPanel />
+      </div>
 
       <div className="flex flex-col">
         <ActivitiesTabs />
