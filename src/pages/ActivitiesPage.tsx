@@ -7,12 +7,11 @@ import {
   ACTIVITIES_TABS,
   DEFAULT_ACTIVITIES_TAB,
 } from "@/shared/constants/routes";
-import type { ArticleId, CommentId, UserId } from "@/types/ids";
+import type { ArticleId } from "@/types/ids";
 import { ROUTES } from "@/shared/constants/routes";
 
-type ActivitiesPageProps = { userId: UserId };
 
-export default function ActivitiesPage({ userId }: ActivitiesPageProps) {
+export default function ActivitiesPage() {
   const [sp, setSp] = useSearchParams();
   const navigate = useNavigate();
 
@@ -31,9 +30,6 @@ export default function ActivitiesPage({ userId }: ActivitiesPageProps) {
     navigate(ROUTES.ARTICLES + `/${articleId}`);
   };
 
-  // 히스토리에서 좋아요 불가
-  const handleLikeClick = (_commentId: CommentId) => {};
-
   return (
     <div className="flex justify-center gap-6 w-full px-4">
       <ProfileCard />
@@ -44,8 +40,6 @@ export default function ActivitiesPage({ userId }: ActivitiesPageProps) {
         <div className="mt-6 flex flex-col gap-4">
           {tab === "recent" && (
             <RecentCommentList
-              userId={userId}
-              onLikeClick={handleLikeClick}
               onTitleClick={handleTitleClick}
             />
           )}

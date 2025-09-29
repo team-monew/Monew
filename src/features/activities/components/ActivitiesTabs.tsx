@@ -17,7 +17,7 @@ export default function ActivitiesTabs() {
   const active = useActiveTab();
 
   return (
-    <nav aria-label="활동내역 탭" className="w-full max-w-[895px] min-h-[66px]">
+    <nav aria-label="활동내역 탭" className="w-[895px] min-h-[66px]">
       <div className="grid grid-cols-3 gap-2 rounded-lg bg-gray-100 p-2">
         {ACTIVITIES_TABS.map((tab) => {
           const isActive = active === tab;

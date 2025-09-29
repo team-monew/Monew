@@ -6,6 +6,7 @@ import likeActive from "@/assets/icons/like-active.svg";
 import type { ArticleId, CommentId } from "@/types/ids";
 
 interface CommentHistoryCardProps {
+  type?: "articles" | "activities";
   createdAt: Date;
   likeCount: number;
   content: string;
@@ -13,12 +14,13 @@ interface CommentHistoryCardProps {
   commentId: CommentId;
   articleId: ArticleId;
   title: string;
-  onLikeClick: (commentId: CommentId) => void;
+  onLikeClick?: (commentId: CommentId) => void;
   onTitleClick: (articleId: ArticleId) => void;
   className?: string;
 }
 
 export default function CommentHistoryCard({
+  type = "articles",
   createdAt,
   isLiked,
   likeCount,
@@ -31,7 +33,7 @@ export default function CommentHistoryCard({
   onTitleClick,
 }: CommentHistoryCardProps) {
   const handleHeartClick = () => {
-    onLikeClick(commentId);
+    onLikeClick?.(commentId);
   };
 
   const handleTitleClick = () => {
@@ -39,7 +41,15 @@ export default function CommentHistoryCard({
   };
   return (
     <div
-      className={`w-full h-auto px-8 pb-10 pt-8 bg-white border border-slate-300 ${className || ""}`}
+      className={[
+        "w-full h-auto px-8 pb-10 pt-8",
+
+        type === "articles"
+          ? "bg-white border border-gray-300"
+          : "bg-transparent border-none",
+
+        className ?? "",
+      ].join("")}
     >
       <div className="flex mb-5">
         <div>

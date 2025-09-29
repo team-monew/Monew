@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import CommentHistoryCard from "@/features/comments/components/CommentHistoryCard";
 import { getUserActivities } from "@/api/user-activities";
-import type { UserId, CommentId, ArticleId } from "@/types/ids";
+import type { ArticleId } from "@/types/ids";
 import type { ActivityComment } from "@/api/user-activities/types";
+import { useAuthInfo } from "@/features/auth/hooks/useAuthInfo";
 import Skeleton from "@/components/Skeleton";
 
 type RecentCommentListProps = {
-  userId: UserId;
-  onLikeClick: (commentId: CommentId) => void;
   onTitleClick: (articleId: ArticleId) => void;
   className?: string;
 };
@@ -15,13 +14,13 @@ type RecentCommentListProps = {
 const PER_PAGE = 4;
 
 export default function RecentCommentList({
-  userId,
-  onLikeClick,
   onTitleClick,
   className,
 }: RecentCommentListProps) {
   const [items, setItems] = useState<ActivityComment[] | null>(null);
   const [error, setError] = useState<string | null>(null);
+
+  const { userId } = useAuthInfo();
 
   useEffect(() => {
     let cancelled = false;
@@ -50,9 +49,7 @@ export default function RecentCommentList({
     );
   }
   if (items === null) {
-    return (
-        <Skeleton height="132px"/>
-    );
+    return <Skeleton height="132px" />;
   }
   if (items.length === 0) {
     return (
@@ -63,10 +60,11 @@ export default function RecentCommentList({
   }
 
   return (
-    <ul className={["flex flex-col gap-4", className ?? ""].join(" ")}>
+    <ul className={["flex flex-col gap-4 divide-y divide-gray-300", className ?? ""].join(" ")}>
       {items.map((c) => (
         <li key={c.id}>
           <CommentHistoryCard
+            type="activities"
             createdAt={new Date(c.createdAt)}
             likeCount={c.likeCount}
             content={c.content}
@@ -74,7 +72,6 @@ export default function RecentCommentList({
             commentId={c.id}
             articleId={c.articleId}
             title={c.articleTitle}
-            onLikeClick={onLikeClick}
             onTitleClick={onTitleClick}
           />
         </li>
