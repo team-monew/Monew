@@ -9,8 +9,8 @@ const LABEL: Record<(typeof ACTIVITIES_TABS)[number], string> = {
 
 function useActiveTab() {
   const [sp] = useSearchParams();
-  const t = (sp.get("tab") ?? DEFAULT_ACTIVITIES_TAB) as typeof ACTIVITIES_TABS[number];
-  return (ACTIVITIES_TABS as readonly string[]).includes(t) ? t : DEFAULT_ACTIVITIES_TAB;
+  const current = (sp.get("tab") ?? DEFAULT_ACTIVITIES_TAB) as typeof ACTIVITIES_TABS[number];
+  return (ACTIVITIES_TABS as readonly string[]).includes(current) ? current : DEFAULT_ACTIVITIES_TAB;
 }
 
 export default function ActivitiesTabs() {

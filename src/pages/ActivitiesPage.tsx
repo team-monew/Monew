@@ -1,13 +1,60 @@
-import ActivitiesTabs from "@/features/activities/components/ActivitiesTabs";
+import { useEffect } from "react";
+import { useNavigate, useSearchParams } from "react-router";
 import ProfileCard from "@/features/activities/components/ProfileCard";
+import ActivitiesTabs from "@/features/activities/components/ActivitiesTabs";
+import RecentCommentList from "@/features/activities/components/RecentCommentList";
+import {
+  ACTIVITIES_TABS,
+  DEFAULT_ACTIVITIES_TAB,
+} from "@/shared/constants/routes";
+import type { ArticleId, CommentId, UserId } from "@/types/ids";
+import { ROUTES } from "@/shared/constants/routes";
 
-function ActivitiesPage() {
+type ActivitiesPageProps = { userId: UserId };
+
+export default function ActivitiesPage({ userId }: ActivitiesPageProps) {
+  const [sp, setSp] = useSearchParams();
+  const navigate = useNavigate();
+
+  const tab = (sp.get("tab") ??
+    DEFAULT_ACTIVITIES_TAB) as (typeof ACTIVITIES_TABS)[number];
+  const isValid = (ACTIVITIES_TABS as readonly string[]).includes(tab);
+
+  // 잘못된 tab일 경우 기본값으로 교정
+  useEffect(() => {
+    if (!isValid) {
+      setSp({ tab: DEFAULT_ACTIVITIES_TAB }, { replace: true });
+    }
+  }, [isValid, setSp]);
+
+  const handleTitleClick = (articleId: ArticleId) => {
+    navigate(ROUTES.ARTICLES + `/${articleId}`);
+  };
+
+  // 히스토리에서 좋아요 불가
+  const handleLikeClick = (_commentId: CommentId) => {};
+
   return (
     <div className="flex justify-center gap-6 w-full px-4">
-      <ProfileCard/>
-      <ActivitiesTabs/>
+      <ProfileCard />
+
+      <div className="flex flex-col">
+        <ActivitiesTabs />
+        {/* 탭별 콘텐츠 */}
+        <div className="mt-6 flex flex-col gap-4">
+          {tab === "recent" && (
+            <RecentCommentList
+              userId={userId}
+              onLikeClick={handleLikeClick}
+              onTitleClick={handleTitleClick}
+            />
+          )}
+
+          {tab === "liked" && <div>좋아요한 댓글 탭 (구현 예정)</div>}
+
+          {tab === "viewed" && <div>최근 본 기사 탭 (구현 예정)</div>}
+        </div>
+      </div>
     </div>
   );
 }
-
-export default ActivitiesPage;
