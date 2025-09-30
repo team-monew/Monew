@@ -1,5 +1,9 @@
 import { Link, useSearchParams } from "react-router";
-import { ACTIVITIES_TABS, DEFAULT_ACTIVITIES_TAB, activitiesPath } from "@/shared/constants/routes";
+import {
+  ACTIVITIES_TABS,
+  DEFAULT_ACTIVITIES_TAB,
+  activitiesPath,
+} from "@/shared/constants/routes";
 
 const LABEL: Record<(typeof ACTIVITIES_TABS)[number], string> = {
   recent: "최근 작성한 댓글",
@@ -9,8 +13,11 @@ const LABEL: Record<(typeof ACTIVITIES_TABS)[number], string> = {
 
 function useActiveTab() {
   const [sp] = useSearchParams();
-  const current = (sp.get("tab") ?? DEFAULT_ACTIVITIES_TAB) as typeof ACTIVITIES_TABS[number];
-  return (ACTIVITIES_TABS as readonly string[]).includes(current) ? current : DEFAULT_ACTIVITIES_TAB;
+  const current = (sp.get("tab") ??
+    DEFAULT_ACTIVITIES_TAB) as (typeof ACTIVITIES_TABS)[number];
+  return (ACTIVITIES_TABS as readonly string[]).includes(current)
+    ? current
+    : DEFAULT_ACTIVITIES_TAB;
 }
 
 export default function ActivitiesTabs() {
@@ -25,8 +32,7 @@ export default function ActivitiesTabs() {
             <Link
               key={tab}
               to={activitiesPath(tab)}
-              role="tab"
-              aria-selected={isActive}
+              aria-current={isActive ? "page" : undefined}
               className={[
                 "inline-flex justify-center w-full rounded-lg py-3 transition",
                 "md:text-16-m text-14-m",

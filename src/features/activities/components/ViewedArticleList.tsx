@@ -32,7 +32,7 @@ export default function ViewedArticleList({
         if (!isActive) return;
         setItems(viewed);
       } catch {
-        if (!isActive) setError("최근 댓글을 불러오지 못했습니다.");
+        if (!isActive) setError("최근 본 기사를 불러오지 못했습니다.");
       }
     })();
 
