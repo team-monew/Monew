@@ -58,9 +58,8 @@ export default function SubscriptionPanel() {
   }
 
   return (
-    <div
-      role="dialog"
-      aria-label="구독 중인 관심사"
+    <aside
+      aria-labelledby="subs-heading"
       className="w-[260px] min-h-0 rounded-2xl p-6 bg-white border border-gray-200"
     >
       {/* Header */}
@@ -88,6 +87,6 @@ export default function SubscriptionPanel() {
           ))}
         </ul>
       )}
-    </div>
+    </aside>
   );
 }
