@@ -217,8 +217,12 @@ export default function ArticleDetailModal({
       title: "댓글 삭제",
       message: "정말 삭제하시겠습니까?",
       onConfirm: async () => {
+        console.log("onConfirm 함수 실행 시작");
+
         try {
+          console.log("deleteComment 호출 전");
           await deleteComment(commentId);
+          console.log("deleteComment 호출 후");
           toast.success("댓글이 삭제되었습니다.");
           await fetchInitialData();
         } catch (error) {
@@ -237,106 +241,111 @@ export default function ArticleDetailModal({
   const labelSrc = SOURCE_LOGOS[data.source as keyof typeof SOURCE_LOGOS] || "";
 
   return (
-    <ModalLayout
-      isOpen={isOpen}
-      onClose={onClose}
-      width="w-[894px]"
-      noPadding={true}
-    >
-      <div className="h-auto rounded-tr-3xl rounded-tl-3xl pt-10 px-10 pb-6 bg-white">
-        <div className="text-20-b text-slate-900 mb-2">{data.title}</div>
+    <>
+      <ModalLayout
+        isOpen={isOpen}
+        onClose={onClose}
+        width="w-[894px]"
+        noPadding={true}
+        disableClose={isConfirmOpen}
+      >
+        <div className="h-auto rounded-tr-3xl rounded-tl-3xl pt-10 px-10 pb-6 bg-white">
+          <div className="text-20-b text-slate-900 mb-2">{data.title}</div>
 
-        <div className="flex items-center gap-4  pb-6 mb-6 border-b border-slate-200">
-          <Label src={labelSrc} label={data.source} />
-          <div className="flex items-center gap-3">
-            <span className="text-14-r text-slate-400">{formattedDate}</span>
-            <span className="text-slate-300">|</span>
-            <div className="flex items-center gap-1">
-              <span className="text-14-r text-slate-400">읽음</span>
-              <span className="text-14-r text-slate-400">{data.viewCount}</span>
-            </div>
-            <span className="text-slate-300">|</span>
-            <div className="flex items-center gap-1">
-              <img src={commentIcon} className="w-5 h-5" alt="댓글" />
-              <span className="text-14-r text-slate-400">
-                {data.commentCount}
-              </span>
+          <div className="flex items-center gap-4  pb-6 mb-6 border-b border-slate-200">
+            <Label src={labelSrc} label={data.source} />
+            <div className="flex items-center gap-3">
+              <span className="text-14-r text-slate-400">{formattedDate}</span>
+              <span className="text-slate-300">|</span>
+              <div className="flex items-center gap-1">
+                <span className="text-14-r text-slate-400">읽음</span>
+                <span className="text-14-r text-slate-400">
+                  {data.viewCount}
+                </span>
+              </div>
+              <span className="text-slate-300">|</span>
+              <div className="flex items-center gap-1">
+                <img src={commentIcon} className="w-5 h-5" alt="댓글" />
+                <span className="text-14-r text-slate-400">
+                  {data.commentCount}
+                </span>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="text-18-r text-slate-500 mb-6">{data.summary}</div>
+          <div className="text-18-r text-slate-500 mb-6">{data.summary}</div>
 
-        <div className="mt-4 mb-10 border-b-slate-200">
-          <Button
-            size="sm"
-            className="w-[162px]"
-            variant="secondary"
-            onClick={handleClick}
-          >
-            전체 기사 보러가기 →
-          </Button>
-        </div>
-      </div>
-
-      <div className="rounded-br-3xl rounded-bl-3xl pt-3 px-10 pb-8 bg-slate-100">
-        <div className="mb-2 w-[110px]">
-          <SelectBox
-            items={commentItems}
-            value={orderByDisplayValue}
-            onChange={handleApplyFilters}
-            placeholder="등록순"
-            noBorder={true}
-            textClassName="text-14-m text-slate-400"
-            noBackground={true}
-          />
-        </div>
-        <div className="flex items-center gap-2.5 mb-2">
-          <Input
-            placeholder="2025.01.01 부터"
-            className="flex-1"
-            value={writtenComment}
-            onChange={(e) => setWrittenComment(e.target.value)}
-          />
-          <Button
-            className="w-[92px]"
-            onClick={() => handleAddComment(writtenComment)}
-          >
-            댓글 작성
-          </Button>
-        </div>
-        <div>
-          {comments.map((comment, index) => (
-            <div
-              key={comment.id}
-              ref={index === comments.length - 1 ? lastElementRef : null}
+          <div className="mt-4 mb-10 border-b-slate-200">
+            <Button
+              size="sm"
+              className="w-[162px]"
+              variant="secondary"
+              onClick={handleClick}
             >
-              <CommentCard
-                userNickname={comment.userNickname}
-                createdAt={new Date(comment.createdAt)}
-                likeCount={comment.likeCount}
-                content={comment.content}
-                isLiked={comment.likedByMe}
-                onLikeClick={handleLikeClick}
-                onEditSave={handleEditSave}
-                commentId={comment.id}
-                isMyComment={comment.userId === userId}
-                onDelete={handleDeleteComment}
-              />
-            </div>
-          ))}
-          {confirmData && (
-            <ConfirmModal
-              isOpen={isConfirmOpen}
-              onClose={closeConfirmModal}
-              onConfirm={confirmData.onConfirm}
-              title={confirmData.title}
-              message={confirmData.message}
-              confirmText={confirmData.confirmText}
-              cancelText={confirmData.cancelText}
-            />
-          )}
+              전체 기사 보러가기 →
+            </Button>
+          </div>
         </div>
-      </div>
-    </ModalLayout>
+
+        <div className="rounded-br-3xl rounded-bl-3xl pt-3 px-10 pb-8 bg-slate-100">
+          <div className="mb-2 w-[110px]">
+            <SelectBox
+              items={commentItems}
+              value={orderByDisplayValue}
+              onChange={handleApplyFilters}
+              placeholder="등록순"
+              noBorder={true}
+              textClassName="text-14-m text-slate-400"
+              noBackground={true}
+            />
+          </div>
+          <div className="flex items-center gap-2.5 mb-2">
+            <Input
+              placeholder="2025.01.01 부터"
+              className="flex-1"
+              value={writtenComment}
+              onChange={(e) => setWrittenComment(e.target.value)}
+            />
+            <Button
+              className="w-[92px]"
+              onClick={() => handleAddComment(writtenComment)}
+            >
+              댓글 작성
+            </Button>
+          </div>
+          <div>
+            {comments.map((comment, index) => (
+              <div
+                key={comment.id}
+                ref={index === comments.length - 1 ? lastElementRef : null}
+              >
+                <CommentCard
+                  userNickname={comment.userNickname}
+                  createdAt={new Date(comment.createdAt)}
+                  likeCount={comment.likeCount}
+                  content={comment.content}
+                  isLiked={comment.likedByMe}
+                  onLikeClick={handleLikeClick}
+                  onEditSave={handleEditSave}
+                  commentId={comment.id}
+                  isMyComment={comment.userId === userId}
+                  onDelete={handleDeleteComment}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </ModalLayout>
+      {confirmData && (
+        <ConfirmModal
+          isOpen={isConfirmOpen}
+          onClose={closeConfirmModal}
+          onConfirm={confirmData.onConfirm}
+          title={confirmData.title}
+          message={confirmData.message}
+          confirmText={confirmData.confirmText}
+          cancelText={confirmData.cancelText}
+        />
+      )}
+    </>
   );
 }
