@@ -1,43 +1,39 @@
-import { formatDistanceToNow } from "date-fns";
-import { ko } from "date-fns/locale";
+import { useNavigate } from "react-router";
 import subDirectoryIcon from "@/assets/icons/subdirectory.svg";
 import likeDefault from "@/assets/icons/like-default.svg";
 import likeActive from "@/assets/icons/like-active.svg";
-import type { ArticleId, CommentId } from "@/types/ids";
+import type { ActivityComment } from "@/api/user-activities/types";
+import type { CommentId } from "@/types/ids";
+import { ROUTES } from "@/shared/constants/routes";
+import { formatTimeAgo } from "@/shared/utils/formatTimeAgo";
 
-interface CommentHistoryCardProps {
+type CommentHistoryCardProps = ActivityComment & {
   mode?: "recent" | "liked";
-  createdAt: Date;
-  likeCount: number;
-  content: string;
-  isLiked: boolean;
-  commentId: CommentId;
-  articleId: ArticleId;
-  title: string;
+  isLiked: boolean
   onLikeClick?: (commentId: CommentId) => void;
-  onTitleClick: (articleId: ArticleId) => void;
-  className?: string;
-}
+};
 
 export default function CommentHistoryCard({
   mode = "recent",
+  id,
+  articleId,
+  articleTitle,
+  content,
+  likeCount,
   createdAt,
   isLiked,
-  likeCount,
-  commentId,
-  articleId,
-  title,
-  content,
   onLikeClick,
-  onTitleClick,
 }: CommentHistoryCardProps) {
+  const navigate = useNavigate();
+
   const handleHeartClick = () => {
-    onLikeClick?.(commentId);
+    onLikeClick?.(id);
   };
 
   const handleTitleClick = () => {
-    onTitleClick(articleId);
+    navigate(ROUTES.ARTICLES + `/${articleId}`);
   };
+
   return (
     <div className="w-full h-auto px-8 py-8 bg-transparent border-none">
       <div className="flex mb-5">
@@ -46,16 +42,16 @@ export default function CommentHistoryCard({
             className="text-16-r text-cyan-500 hover:text-cyan-600 hover:underline cursor-pointer"
             onClick={handleTitleClick}
           >
-            {title}
+            {articleTitle}
           </button>
           <span className="text-16-r">
             {mode === "recent" ? "에 남긴 댓글" : "에 좋아요한 댓글"}
           </span>
         </div>
         <div className="flex gap-1 ml-1">
-          <span className="text-14-m text-slate-500 mt-0.5">·</span>
-          <span className="text-14-m text-slate-500 mt-0.5">
-            {formatDistanceToNow(createdAt, { addSuffix: true, locale: ko })}
+          <span className="text-14-m text-gray-500 mt-0.5">·</span>
+          <span className="text-14-m text-gray-500 mt-0.5">
+            {formatTimeAgo(createdAt)}
           </span>
         </div>
       </div>
@@ -74,7 +70,7 @@ export default function CommentHistoryCard({
           ) : (
             <img src={likeDefault} className="w-6 h-6" alt="비활성화 하트" />
           )}
-          <p className="text-14-r text-slate-500">{likeCount}</p>
+          <p className="text-14-r text-gray-500">{likeCount}</p>
         </button>
       </div>
     </div>

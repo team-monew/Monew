@@ -1,15 +1,9 @@
 import { useUserActivitiesList } from "@/features/activities/hooks/useUserActivitiesList";
-import type { ArticleId } from "@/types/ids";
+import type { ActivityComment } from "@/api/user-activities/types";
 import CommentHistoryCard from "@/features/comments/components/CommentHistoryCard";
 import Skeleton from "@/components/Skeleton";
 
-type LikedCommentListProps = {
-  onTitleClick: (articleId: ArticleId) => void;
-};
-
-export default function LikedCommentList({
-  onTitleClick,
-}: LikedCommentListProps) {
+export default function LikedCommentList() {
   const { items, error, loading, empty } = useUserActivitiesList(
     "likedComments",
     4
@@ -28,22 +22,26 @@ export default function LikedCommentList({
   }
 
   return (
+    // LikedCommentList.tsx (핵심 부분만)
     <ul className="flex flex-col gap-4 divide-y divide-gray-300">
-      {items.map((c) => (
-        <li key={c.id}>
-          <CommentHistoryCard
-            mode="liked"
-            createdAt={new Date(c.createdAt)}
-            likeCount={c.commentLikeCount}
-            content={c.commentContent}
-            isLiked={false}
-            commentId={c.id}
-            articleId={c.articleId}
-            title={c.articleTitle}
-            onTitleClick={onTitleClick}
-          />
-        </li>
-      ))}
+      {items.map((c) => {
+        const normalized = {
+          id: c.commentId,
+          articleId: c.articleId,
+          articleTitle: c.articleTitle,
+          userId: c.commentUserId,
+          userNickname: c.commentUserNickname,
+          content: c.commentContent,
+          likeCount: c.commentLikeCount,
+          createdAt: c.commentCreatedAt,
+        } satisfies ActivityComment;
+
+        return (
+          <li key={c.id}>
+            <CommentHistoryCard mode="liked" isLiked={true} {...normalized} />
+          </li>
+        );
+      })}
     </ul>
   );
 }

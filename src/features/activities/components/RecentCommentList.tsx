@@ -1,15 +1,9 @@
 import { useUserActivitiesList } from "@/features/activities/hooks/useUserActivitiesList";
-import type { ArticleId } from "@/types/ids";
+import type { ActivityComment } from "@/api/user-activities/types";
 import CommentHistoryCard from "@/features/comments/components/CommentHistoryCard";
 import Skeleton from "@/components/Skeleton";
 
-type RecentCommentListProps = {
-  onTitleClick: (articleId: ArticleId) => void;
-};
-
-export default function RecentCommentList({
-  onTitleClick,
-}: RecentCommentListProps) {
+export default function RecentCommentList() {
   const { items, error, loading, empty } = useUserActivitiesList(
     "recentComments",
     4
@@ -29,21 +23,24 @@ export default function RecentCommentList({
 
   return (
     <ul className="flex flex-col gap-4 divide-y divide-gray-300">
-      {items.map((c) => (
-        <li key={c.id}>
-          <CommentHistoryCard
-            mode="recent"
-            createdAt={new Date(c.createdAt)}
-            likeCount={c.likeCount}
-            content={c.content}
-            isLiked={false}
-            commentId={c.id}
-            articleId={c.articleId}
-            title={c.articleTitle}
-            onTitleClick={onTitleClick}
-          />
-        </li>
-      ))}
+      {items.map((c) => {
+        const normalized = {
+          id: c.id,
+          articleId: c.articleId,
+          articleTitle: c.articleTitle,
+          userId: c.userId,
+          userNickname: c.userNickname,
+          content: c.content,
+          likeCount: c.likeCount,
+          createdAt: c.createdAt,
+        } satisfies ActivityComment;
+
+        return (
+          <li key={c.id}>
+            <CommentHistoryCard mode="recent" isLiked={false} {...normalized} />
+          </li>
+        );
+      })}
     </ul>
   );
 }

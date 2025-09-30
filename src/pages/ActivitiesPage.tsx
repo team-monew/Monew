@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useNavigate, useSearchParams } from "react-router";
+import { useSearchParams } from "react-router";
 import ProfileCard from "@/features/activities/components/ProfileCard";
 import SubscriptionPanel from "@/features/activities/components/SubscriptionPanel";
 import ActivitiesTabs from "@/features/activities/components/ActivitiesTabs";
@@ -10,12 +10,9 @@ import {
   ACTIVITIES_TABS,
   DEFAULT_ACTIVITIES_TAB,
 } from "@/shared/constants/routes";
-import type { ArticleId } from "@/types/ids";
-import { ROUTES } from "@/shared/constants/routes";
 
 export default function ActivitiesPage() {
   const [sp, setSp] = useSearchParams();
-  const navigate = useNavigate();
 
   const tab = (sp.get("tab") ??
     DEFAULT_ACTIVITIES_TAB) as (typeof ACTIVITIES_TABS)[number];
@@ -28,10 +25,6 @@ export default function ActivitiesPage() {
     }
   }, [isValid, setSp]);
 
-  const handleTitleClick = (articleId: ArticleId) => {
-    navigate(ROUTES.ARTICLES + `/${articleId}`);
-  };
-
   return (
     <div className="flex justify-center gap-6 w-full px-4 overflow-x-auto">
       <div className="flex flex-col gap-4">
@@ -43,14 +36,8 @@ export default function ActivitiesPage() {
       <div className="flex flex-col">
         <ActivitiesTabs />
         <div className="mt-6 flex flex-col gap-4">
-          {tab === "recent" && (
-            <RecentCommentList onTitleClick={handleTitleClick} />
-          )}
-
-          {tab === "liked" && (
-            <LikedCommentList onTitleClick={handleTitleClick} />
-          )}
-
+          {tab === "recent" && <RecentCommentList />}
+          {tab === "liked" && <LikedCommentList />}
           {tab === "viewed" && <ViewedArticleList />}
         </div>
       </div>
