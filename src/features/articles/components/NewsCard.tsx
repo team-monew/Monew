@@ -11,7 +11,7 @@ interface NewsCardProps {
   summary: string;
   source: string;
   sourceUrl: string;
-  publishDate: Date;
+  publishDate: string;
   viewCount: number;
   commentCount: number;
 }
