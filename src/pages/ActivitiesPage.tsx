@@ -5,6 +5,7 @@ import SubscriptionPanel from "@/features/activities/components/SubscriptionPane
 import ActivitiesTabs from "@/features/activities/components/ActivitiesTabs";
 import RecentCommentList from "@/features/activities/components/RecentCommentList";
 import LikedCommentList from "@/features/activities/components/LikedCommentList";
+import ViewedArticleList from "@/features/activities/components/ViewedArticleList";
 import {
   ACTIVITIES_TABS,
   DEFAULT_ACTIVITIES_TAB,
@@ -50,7 +51,7 @@ export default function ActivitiesPage() {
             <LikedCommentList onTitleClick={handleTitleClick} />
           )}
 
-          {tab === "viewed" && <div>최근 본 기사 탭 (구현 예정)</div>}
+          {tab === "viewed" && <ViewedArticleList />}
         </div>
       </div>
     </div>

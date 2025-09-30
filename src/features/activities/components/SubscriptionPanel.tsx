@@ -19,24 +19,25 @@ export default function SubscriptionPanel() {
   const { userId } = useAuthInfo();
 
   useEffect(() => {
-    let cancelled = false;
+    let isActive = true;
 
     (async () => {
+      setError(null);
+      
       try {
-        setError(null);
         const data = await getUserActivities(userId);
         const list = data.subscriptions ?? [];
-        if (!cancelled) {
-          setTotalCount(list.length);
-          setItems(list.slice(0, PER_PAGE));
-        }
+        if (!isActive) return;
+
+        setTotalCount(list.length);
+        setItems(list.slice(0, PER_PAGE));
       } catch {
-        if (!cancelled) setError("구독 정보를 불러오지 못했습니다.");
+        if (!isActive) setError("구독 정보를 불러오지 못했습니다.");
       }
     })();
 
     return () => {
-      cancelled = true;
+      isActive = false
     };
   }, [userId]);
 

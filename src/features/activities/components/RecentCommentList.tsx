@@ -23,21 +23,24 @@ export default function RecentCommentList({
   const { userId } = useAuthInfo();
 
   useEffect(() => {
-    let cancelled = false;
+    let isActive = true;
 
     (async () => {
+      setError(null);
+
       try {
-        setError(null);
         const data = await getUserActivities(userId);
         const recent = (data.comments ?? []).slice(0, PER_PAGE);
-        if (!cancelled) setItems(recent);
+        if (!isActive) return;
+
+        setItems(recent);
       } catch {
-        if (!cancelled) setError("최근 댓글을 불러오지 못했습니다.");
+        if (!isActive) setError("최근 댓글을 불러오지 못했습니다.");
       }
     })();
 
     return () => {
-      cancelled = true;
+      isActive = false;
     };
   }, [userId]);
 
@@ -54,13 +57,18 @@ export default function RecentCommentList({
   if (items.length === 0) {
     return (
       <div className={className}>
-        <p className="text-14-r text-slate-500">작성한 댓글이 없습니다.</p>
+        <p className="text-14-r text-slate-500">최근 작성한 댓글이 없습니다.</p>
       </div>
     );
   }
 
   return (
-    <ul className={["flex flex-col gap-4 divide-y divide-gray-300", className ?? ""].join(" ")}>
+    <ul
+      className={[
+        "flex flex-col gap-4 divide-y divide-gray-300",
+        className ?? "",
+      ].join(" ")}
+    >
       {items.map((c) => (
         <li key={c.id}>
           <CommentHistoryCard
