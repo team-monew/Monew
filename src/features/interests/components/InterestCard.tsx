@@ -73,7 +73,7 @@ export default function InterestCard({
   };
 
   return (
-    <div className="w-full h-auto border border-slate-200 rounded-2xl p-6 bg-white">
+    <div className="w-full h-[232px] border border-slate-200 rounded-2xl p-6 bg-white flex flex-col">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-20-b text-slate-900">{name}</h2>
         <button
@@ -92,11 +92,11 @@ export default function InterestCard({
         </button>
       </div>
 
-      <div className="flex flex-wrap gap-2 mb-6">
+      <div className="flex flex-wrap gap-2 mb-6 flex-1 overflow-y-auto">
         {keywords.map((keyword, index) => (
           <div
             key={index}
-            className="rounded-lg py-1 px-2 bg-slate-100 text-16-m text-slate-500"
+            className="rounded-lg py-1 px-2 bg-slate-100 text-16-m text-slate-500 h-fit"
           >
             {keyword}
           </div>

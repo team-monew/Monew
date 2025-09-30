@@ -46,7 +46,7 @@ export type GetArticlesParams = {
   cursor?: string;
   after?: string;
   limit: number;
-  requestUserId: UserId;
+  requestUserId?: UserId;
 };
 
 /* 뉴스 기사 목록 조회 - 응답 */

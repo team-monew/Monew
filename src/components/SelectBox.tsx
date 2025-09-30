@@ -8,6 +8,9 @@ interface SelectBarProps {
   value?: string;
   onChange: (value: string) => void;
   className?: string;
+  noBorder?: boolean;
+  textClassName?: string;
+  noBackground?: boolean;
 }
 
 export default function SelectBox({
@@ -16,6 +19,9 @@ export default function SelectBox({
   value,
   onChange,
   className = "w-full h-10",
+  noBorder = false,
+  textClassName = "text-14-m",
+  noBackground = false,
 }: SelectBarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const selectRef = useRef<HTMLDivElement>(null);
@@ -49,18 +55,18 @@ export default function SelectBox({
     <div ref={selectRef} className={`relative ${className}`}>
       <button
         type="button"
-        className={`border rounded-lg border-slate-200 py-2.5 px-3 bg-white cursor-pointer w-full h-full focus:outline-none`}
+        className={`${noBorder ? "" : "border rounded-lg border-slate-200"} ${noBackground ? "" : "bg-white"} py-2.5 px-3 cursor-pointer w-full h-full focus:outline-none`}
         onClick={handleSelectBarClick}
       >
         <div className="flex justify-between items-center">
           <p
-            className={`text-14-m ${!value ? "text-slate-400" : "text-gray-900"}`}
+            className={`${textClassName} ${!value ? "text-slate-400" : noBorder ? "text-cyan-600" : "text-gray-900"}`}
           >
             {value || placeholder}
           </p>
           <img
             src={chevronDown}
-            className={`transform transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+            className={`transform transition-transform duration-200 ${isOpen ? "rotate-180" : ""} ${noBorder ? "ml-3" : ""}`}
             alt="chevron"
           />
         </div>

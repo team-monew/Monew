@@ -5,7 +5,10 @@ import { ko } from "date-fns/locale";
 import type { CommentId } from "@/types/ids";
 import Input from "../../../components/Input";
 import Button from "../../../components/button/Button";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import kebabIcon from "@/assets/icons/kebab-menu-20.svg";
+import { useClosePopup } from "@/shared/hooks/useClosePopup";
+import Dropdown from "@/components/dropdown";
 
 interface CommentCardProps {
   userNickname: string;
@@ -17,6 +20,7 @@ interface CommentCardProps {
   isMyComment: boolean;
   onLikeClick: (commentId: CommentId) => void;
   onEditSave: (commentId: CommentId, newContent: string) => void;
+  onDelete: (commentId: CommentId) => void;
   className?: string;
 }
 
@@ -28,20 +32,24 @@ export default function CommentCard({
   isLiked,
   onLikeClick,
   onEditSave,
+  onDelete,
   commentId,
   isMyComment,
   className,
 }: CommentCardProps) {
   const [commentValue, setCommentValue] = useState(content);
   const [isEditing, setIsEditing] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const kebabRef = useRef<HTMLButtonElement>(null);
+
+  useClosePopup(kebabRef, () => setIsDropdownOpen(false), isDropdownOpen);
 
   const handleHeartClick = () => {
     onLikeClick(commentId);
   };
 
-  const handleEditClick = () => {
-    setIsEditing(true);
-    setCommentValue(content);
+  const handleKebabClick = () => {
+    setIsDropdownOpen(!isDropdownOpen);
   };
 
   const handleCancelEdit = () => {
@@ -56,6 +64,15 @@ export default function CommentCard({
     }
   };
 
+  const handleDropdownChange = (value: string) => {
+    if (value === "수정하기") {
+      setIsEditing(true);
+      setCommentValue(content);
+    } else if (value === "삭제하기") {
+      onDelete(commentId);
+    }
+  };
+
   return (
     <div
       className={`w-full h-auto border-slate-300 py-4 px-4 bg-slate-100 rounded-lg ${className || ""}`}
@@ -67,16 +84,30 @@ export default function CommentCard({
           <span className="text-14-m text-slate-500">
             {formatDistanceToNow(createdAt, { addSuffix: true, locale: ko })}
           </span>
+          {isMyComment && (
+            <span className="ml-1 text-14-m text-cyan-500">내 댓글</span>
+          )}
         </div>
 
         <div className="flex items-center gap-2">
           {/* 본인 댓글이고 수정 모드가 아닐 때 수정 버튼 나오게 */}
           {isMyComment && !isEditing && (
             <button
-              onClick={handleEditClick}
-              className="text-14-r text-slate-400 hover:text-slate-600"
+              ref={kebabRef}
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
             >
-              수정
+              <img
+                src={kebabIcon}
+                className="w-5 h-5"
+                alt="케밥"
+                onClick={handleKebabClick}
+              />
+              {isDropdownOpen && (
+                <Dropdown
+                  items={["수정하기", "삭제하기"]}
+                  onChange={handleDropdownChange}
+                />
+              )}
             </button>
           )}
 

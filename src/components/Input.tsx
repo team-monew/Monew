@@ -50,13 +50,13 @@ export default function Input({
       )}
 
       <div
-        className={`w-full border rounded-lg mt-1.5 gap-2.5 bg-white ${sizeClasses[inputSize]} ${error ? "border-error" : "border-slate-200"} focus-within:border-cyan-500 ${className || ""}`}
+        className={`w-full border rounded-lg mt-1.5 gap-2.5 ${props.disabled ? "bg-gray-50" : "bg-white"} ${sizeClasses[inputSize]} ${error ? "border-error" : "border-slate-200"} focus-within:border-cyan-500 ${className || ""}`}
       >
         <div className="flex items-center justify-between">
           <input
             type={getInputType()}
             placeholder={placeholder}
-            className="flex-1 outline-none bg-transparent text-16-m text-gray-900 pr-2"
+            className={`flex-1 outline-none bg-transparent text-16-m pr-2 ${props.disabled ? "text-gray-400 cursor-not-allowed" : "text-gray-900"}`}
             value={value}
             onChange={onChange}
             id={inputId}
