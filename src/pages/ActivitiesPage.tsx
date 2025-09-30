@@ -39,9 +39,9 @@ export default function ActivitiesPage() {
         <SubscriptionPanel />
       </div>
 
+      {/* tabs : 최근 작성한 댓글 / 좋아요한 댓글 / 최근 본 기사 */}
       <div className="flex flex-col">
         <ActivitiesTabs />
-        {/* 탭별 콘텐츠 */}
         <div className="mt-6 flex flex-col gap-4">
           {tab === "recent" && (
             <RecentCommentList onTitleClick={handleTitleClick} />

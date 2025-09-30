@@ -8,14 +8,12 @@ import Skeleton from "@/components/Skeleton";
 
 type RecentCommentListProps = {
   onTitleClick: (articleId: ArticleId) => void;
-  className?: string;
 };
 
 const PER_PAGE = 4;
 
 export default function RecentCommentList({
   onTitleClick,
-  className,
 }: RecentCommentListProps) {
   const [items, setItems] = useState<ActivityComment[] | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -45,30 +43,19 @@ export default function RecentCommentList({
   }, [userId]);
 
   if (error) {
-    return (
-      <div className={className}>
-        <p className="text-14-r text-error">{error}</p>
-      </div>
-    );
+    return <p className="text-14-r text-error">{error}</p>;
   }
   if (items === null) {
     return <Skeleton height="132px" />;
   }
   if (items.length === 0) {
     return (
-      <div className={className}>
-        <p className="text-14-r text-slate-500">최근 작성한 댓글이 없습니다.</p>
-      </div>
+      <p className="text-14-r text-slate-500">최근 작성한 댓글이 없습니다.</p>
     );
   }
 
   return (
-    <ul
-      className={[
-        "flex flex-col gap-4 divide-y divide-gray-300",
-        className ?? "",
-      ].join(" ")}
-    >
+    <ul className="flex flex-col gap-4 divide-y divide-gray-300">
       {items.map((c) => (
         <li key={c.id}>
           <CommentHistoryCard

@@ -77,9 +77,9 @@ export default function SubscriptionPanel() {
       {!empty && <div className="mt-6 h-[1px] w-[212px] bg-gray-200" />}
 
       {!empty && (
-        <ul className="flex flex-col items-aline divide-y divide-gray-200">
+        <ul className="flex flex-col divide-y divide-gray-200">
           {items.map((s) => (
-            <li key={s.interestId} className="first:pt-0">
+            <li key={s.interestId}>
               <SubscriptionCard
                 name={s.interestName}
                 keywords={s.interestKeywords}
