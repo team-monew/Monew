@@ -37,7 +37,7 @@ export default function ViewedArticleList() {
     <ul className="flex flex-col gap-4 divide-y divide-gray-300">
       {items.map((a) => {
         const article: ArticleListItem = {
-          id: a.id,
+          id: a.articleId,
           title: a.articleTitle,
           summary: a.articleSummary,
           source: a.source,

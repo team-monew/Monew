@@ -335,7 +335,7 @@ export default function ArticlesPage() {
   }, [fetchInitialData, orderBy, direction]);
 
   useEffect(() => {
-    if (articleId && !detailIsOpen) {
+    if (articleId) {
       if (stateArticle && stateArticle.id === articleId) {
         detailOpenModal(stateArticle);
       } else if (articles.length > 0) {
@@ -345,7 +345,7 @@ export default function ArticlesPage() {
         }
       }
     }
-  }, [articleId, articles, stateArticle, detailIsOpen]);
+  }, [articleId, articles, stateArticle]);
 
   const handleRestoreArticle = (data: RestoreArticlesParams) => {
     try {

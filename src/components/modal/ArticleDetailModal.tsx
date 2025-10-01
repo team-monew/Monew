@@ -77,6 +77,7 @@ export default function ArticleDetailModal({
 
   const fetchInitialData = useCallback(async () => {
     setIsLoading(true);
+
     if (!data) return;
     try {
       const params = {
