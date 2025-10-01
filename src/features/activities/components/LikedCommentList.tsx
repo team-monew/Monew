@@ -7,7 +7,7 @@ import Skeleton from "@/components/Skeleton";
 export default function LikedCommentList() {
   const { items, error, loading, empty } = useUserActivitiesList(
     "likedComments",
-    4,
+    4
   );
 
   if (error) {
@@ -17,7 +17,11 @@ export default function LikedCommentList() {
     return <Skeleton height="132px" />;
   }
   if (empty) {
-    return <EmptyState message="아직 좋아요한 댓글이 없습니다." />;
+    return (
+      <div className="min-h-[600px]">
+        <EmptyState message="아직 좋아요한 댓글이 없습니다." />
+      </div>
+    );
   }
 
   return (

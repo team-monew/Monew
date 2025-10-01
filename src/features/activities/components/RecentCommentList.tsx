@@ -17,7 +17,11 @@ export default function RecentCommentList() {
     return <Skeleton height="132px" />;
   }
   if (empty) {
-    return <EmptyState message="아직 작성한 댓글이 없습니다." />;
+    return (
+      <div className="min-h-[600px]">
+        <EmptyState message="아직 작성한 댓글이 없습니다." />
+      </div>
+    );
   }
 
   return (

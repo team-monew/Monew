@@ -9,7 +9,7 @@ import ArticleDetailModal from "@/components/modal/ArticleDetailModal";
 export default function ViewedArticleList() {
   const { items, error, loading, empty } = useUserActivitiesList(
     "viewedArticles",
-    5,
+    5
   );
 
   const { isOpen, openModal, onClose, initialData } = useArticleDetailModal();
@@ -21,7 +21,11 @@ export default function ViewedArticleList() {
     return <Skeleton height="132px" />;
   }
   if (empty) {
-    return <EmptyState message="최근 본 기사가 없습니다." />;
+    return (
+      <div className="min-h-[600px]">
+        <EmptyState message="최근 본 기사가 없습니다." />
+      </div>
+    );
   }
 
   return (
