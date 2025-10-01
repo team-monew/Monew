@@ -10,7 +10,7 @@ export default function Tag({ label, onClick, onRemove }: TagProps) {
       className={`w-fit h-8 px-2 py-1 rounded-lg bg-slate-100 flex items-center gap-1`}
     >
       <p
-        className={`text-16-m text-slate-500 ${
+        className={`text-16-m text-gray-500 ${
           onClick ? "cursor-pointer" : ""
         }`}
         onClick={onClick}

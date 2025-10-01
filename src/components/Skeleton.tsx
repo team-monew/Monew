@@ -11,7 +11,7 @@ export default function Skeleton({
   rounded = "rounded-md",
   className,
 }: SkeletonProps) {
-  const classes = ["animate-pulse", "bg-gray-400", rounded, className]
+  const classes = ["animate-pulse", "bg-gray-200", rounded, className]
     .filter(Boolean)
     .join(" ");
 

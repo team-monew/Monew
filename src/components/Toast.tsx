@@ -7,7 +7,7 @@ export default function Toast() {
       hideProgressBar={true}
       closeButton={false}
       limit={2}
-      position="top-center"
+      position="bottom-center"
       autoClose={3000}
       newestOnTop={true}
       transition={Slide}
