@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import Input from "../Input";
-import ModalLayout from "./ModalLayout";
-import Button from "../button/Button";
+import Input from "@/shared/components/Input";
+import ModalLayout from "@/shared/components/modal/ModalLayout";
+import Button from "@/shared/components/button/Button";
+import Tag from "@/shared/components/Tag";
 import { toast } from "react-toastify";
-import Tag from "../Tag";
 import type { UpdateInterestBody } from "@/api/interests/types";
 
 interface InterestEditModalProps {
@@ -45,7 +45,7 @@ export default function InterestEditModal({
 
   const handleRemoveKeyword = (keywordToRemove: string) => {
     setKeywords((prev) =>
-      prev.filter((keyword) => keyword !== keywordToRemove),
+      prev.filter((keyword) => keyword !== keywordToRemove)
     );
   };
 

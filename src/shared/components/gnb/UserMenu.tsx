@@ -1,5 +1,5 @@
-import NotificationButton from "@/components/gnb/NotificationButton";
-import LogoutButton from "@/components/gnb/LogoutButton";
+import NotificationButton from "@/shared/components/gnb/NotificationButton";
+import LogoutButton from "@/shared/components/gnb/LogoutButton";
 
 export default function UserMenu() {
   return (

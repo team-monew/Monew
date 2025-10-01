@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import Input from "../Input";
-import ModalLayout from "./ModalLayout";
-import Button from "../button/Button";
+import ModalLayout from "@/shared/components/modal/ModalLayout";
+import Input from "@/shared/components/Input";
+import Button from "@/shared/components/button/Button";
 import type { RestoreArticlesParams } from "@/api/articles/types";
 
 interface ArticleModalProps {

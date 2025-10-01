@@ -1,5 +1,5 @@
-import Button from "../button/Button";
-import ModalLayout from "./ModalLayout";
+import ModalLayout from "@/shared/components/modal/ModalLayout";
+import Button from "@/shared/components/button/Button";
 
 interface ConfirmModalProps {
   isOpen: boolean;

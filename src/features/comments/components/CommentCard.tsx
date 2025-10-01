@@ -3,12 +3,12 @@ import likeActive from "@/assets/icons/like-active.svg";
 import { formatDistanceToNow } from "date-fns";
 import { ko } from "date-fns/locale";
 import type { CommentId } from "@/types/ids";
-import Input from "../../../components/Input";
-import Button from "../../../components/button/Button";
+import Input from "@/shared/components/Input";
+import Button from "@/shared/components/button/Button";
 import { useRef, useState } from "react";
 import kebabIcon from "@/assets/icons/kebab-menu-20.svg";
 import { useClosePopup } from "@/shared/hooks/useClosePopup";
-import Dropdown from "@/components/dropdown";
+import Dropdown from "@/shared/components/dropdown";
 
 interface CommentCardProps {
   userNickname: string;

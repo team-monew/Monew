@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import Input from "@/components/Input";
-import ModalLayout from "@/components/modal/ModalLayout";
-import Button from "@/components/button/Button";
+import ModalLayout from "@/shared/components/modal/ModalLayout";
+import Input from "@/shared/components/Input";
+import Button from "@/shared/components/button/Button";
 import type { User } from "@/api/users/types";
 import type { UserId } from "@/types/ids";
 import { updateUser } from "@/api/users/index";
 import { authSession } from "@/features/auth/utils/authSession";
-import Skeleton from "@/components/Skeleton";
+import Skeleton from "@/shared/components/Skeleton";
 import { toast } from "react-toastify";
 import { toastApiError } from "@/shared/utils/toastApiError";
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import Input from "@/components/Input";
-import Button from "@/components/button/Button";
+import Input from "@/shared/components/Input";
+import Button from "@/shared/components/button/Button";
 import { loginAndStore } from "@/features/auth/actions";
 import { useFormField } from "@/shared/hooks/useFormField";
 import {
@@ -10,7 +10,7 @@ import {
   isPassword,
   compose,
 } from "@/shared/utils/validation";
-import Skeleton from "@/components/Skeleton";
+import Skeleton from "@/shared/components/Skeleton";
 import { toast } from "react-toastify";
 import { toastApiError } from "@/shared/utils/toastApiError";
 import { ROUTES } from "@/shared/constants/routes";

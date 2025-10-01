@@ -1,9 +1,9 @@
 import NotificationsCardList from "@/features/notifications/components/NotificationsCardList";
-import EmptyState from "@/components/EmptyState";
+import EmptyState from "@/shared/components/EmptyState";
 import { useNotifications } from "@/features/notifications/hooks/useNotifications";
 import { useAuthInfo } from "@/features/auth/hooks/useAuthInfo";
 import closeIconUrl from "@/assets/icons/close-primary-24.svg";
-import Skeleton from "@/components/Skeleton";
+import Skeleton from "@/shared/components/Skeleton";
 
 type NotificationsPanelProps = {
   onClose?: () => void;

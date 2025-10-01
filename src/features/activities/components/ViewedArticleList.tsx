@@ -1,10 +1,10 @@
 import { useUserActivitiesList } from "@/features/activities/hooks/useUserActivitiesList";
 import NewsCard from "@/features/articles/components/NewsCard";
-import EmptyState from "@/components/EmptyState";
-import Skeleton from "@/components/Skeleton";
+import EmptyState from "@/shared/components/EmptyState";
+import Skeleton from "@/shared/components/Skeleton";
 import type { ArticleListItem } from "@/api/articles/types";
 import useArticleDetailModal from "@/shared/hooks/useArticleDetailModal";
-import ArticleDetailModal from "@/components/modal/ArticleDetailModal";
+import ArticleDetailModal from "@/shared/components/modal/ArticleDetailModal";
 
 export default function ViewedArticleList() {
   const { items, error, loading, empty } = useUserActivitiesList(

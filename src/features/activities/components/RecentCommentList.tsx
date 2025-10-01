@@ -1,8 +1,8 @@
 import { useUserActivitiesList } from "@/features/activities/hooks/useUserActivitiesList";
 import type { ActivityComment } from "@/api/user-activities/types";
 import CommentHistoryCard from "@/features/comments/components/CommentHistoryCard";
-import EmptyState from "@/components/EmptyState";
-import Skeleton from "@/components/Skeleton";
+import EmptyState from "@/shared/components/EmptyState";
+import Skeleton from "@/shared/components/Skeleton";
 
 export default function RecentCommentList() {
   const { items, error, loading, empty } = useUserActivitiesList(

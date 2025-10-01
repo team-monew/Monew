@@ -1,4 +1,4 @@
-import Tag from "@/components/Tag";
+import Tag from "@/shared/components/Tag";
 
 type SubscriptionCardProps = {
   name: string;
