@@ -2,7 +2,7 @@ import SignUpForm from "@/features/auth/components/SignUpForm";
 import NavigationButton from "@/features/auth/components/NavigationButton";
 import { ROUTES } from "@/shared/constants/routes";
 
-function SignUpPage() {
+export default function SignUpPage() {
   return (
     <div className="flex flex-col items-center justify-center w-full">
       <SignUpForm />
@@ -14,5 +14,3 @@ function SignUpPage() {
     </div>
   );
 }
-
-export default SignUpPage;

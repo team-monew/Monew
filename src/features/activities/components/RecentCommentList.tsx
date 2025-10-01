@@ -7,7 +7,7 @@ import Skeleton from "@/components/Skeleton";
 export default function RecentCommentList() {
   const { items, error, loading, empty } = useUserActivitiesList(
     "recentComments",
-    4,
+    4
   );
 
   if (error) {
@@ -17,11 +17,15 @@ export default function RecentCommentList() {
     return <Skeleton height="132px" />;
   }
   if (empty) {
-    return <EmptyState message="아직 작성한 댓글이 없습니다." />;
+    return (
+      <div className="min-h-[600px]">
+        <EmptyState message="아직 작성한 댓글이 없습니다." />
+      </div>
+    );
   }
 
   return (
-    <ul className="flex flex-col gap-4 divide-y divide-gray-300">
+    <ul className="flex flex-col divide-y divide-gray-300">
       {items.map((c) => {
         const normalized = {
           id: c.id,

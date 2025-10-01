@@ -27,6 +27,7 @@ import useUpdateModal from "@/shared/hooks/useUpdateModal";
 import { useSearchParams } from "react-router-dom";
 import EmptyState from "@/components/EmptyState";
 import type { AxiosError } from "axios";
+import Skeleton from "@/components/Skeleton";
 
 interface ApiErrorResponse {
   message: string;
@@ -37,7 +38,7 @@ interface ApiErrorResponse {
   status?: number;
 }
 
-function InterestsPage() {
+export default function InterestsPage() {
   const [interests, setInterests] = useState<InterestListItem[]>([]);
 
   const sortOptions = ["이름", "구독자수"];
@@ -147,7 +148,7 @@ function InterestsPage() {
       },
       {
         threshold: 0.8,
-      },
+      }
     );
 
     if (lastElementRef.current) {
@@ -167,7 +168,7 @@ function InterestsPage() {
 
   const handleSubScribeClick = async (
     interestId: InterestId,
-    currentSubscribed: boolean,
+    currentSubscribed: boolean
   ) => {
     if (!userId) return;
 
@@ -187,8 +188,8 @@ function InterestsPage() {
                   ? interest.subscriberCount - 1
                   : interest.subscriberCount + 1,
               }
-            : interest,
-        ),
+            : interest
+        )
       );
     } catch (error) {
       console.error(error);
@@ -222,7 +223,7 @@ function InterestsPage() {
 
   const handleSaveKeyword = async (
     interestId: InterestId,
-    keywords: string[],
+    keywords: string[]
   ) => {
     if (!userId) return;
 
@@ -287,7 +288,7 @@ function InterestsPage() {
   };
 
   return (
-    <div className="mt-10 max-w-4xl mx-auto">
+    <div className="max-w-4xl mx-auto">
       <div className="flex justify-between items-center">
         <div className="text-left">
           <h1 className="text-24-b text-slate-900">관심사 목록</h1>
@@ -358,10 +359,8 @@ function InterestsPage() {
           </div>
         )}
 
-        {isLoading && <div className="text-center py-8">로딩 중 ... </div>}
+        {isLoading && <Skeleton className="mx-4" />}
       </div>
     </div>
   );
 }
-
-export default InterestsPage;

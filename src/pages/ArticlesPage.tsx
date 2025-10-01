@@ -37,7 +37,7 @@ const INTEREST_ORDER_BY = "name" as InterestOrderBy;
 const INTEREST_DIRECTION = "DESC" as SortDirection;
 const INTEREST_LIMIT = 9999;
 
-function ArticlesPage() {
+export default function ArticlesPage() {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const { articleId } = useParams();
@@ -110,10 +110,10 @@ function ArticlesPage() {
   };
 
   const [sortValue, setSortValue] = useState(
-    reverseSortMap[orderBy] || "게시일",
+    reverseSortMap[orderBy] || "게시일"
   );
   const [directionValue, setDirectionValue] = useState(
-    direction === "DESC" ? "내림차순" : "오름차순",
+    direction === "DESC" ? "내림차순" : "오름차순"
   );
 
   const fetchInitialData = useCallback(async () => {
@@ -219,7 +219,7 @@ function ArticlesPage() {
       },
       {
         threshold: 0.8,
-      },
+      }
     );
     if (lastElementRef.current) {
       observerRef.current.observe(lastElementRef.current);
@@ -232,13 +232,13 @@ function ArticlesPage() {
 
   const interestNames = useMemo(
     () => interests.map((interest) => interest.name),
-    [interests],
+    [interests]
   );
 
   const handleInterestChange = (value: string) => {
     setSelectedInterest(value);
     const selectedInterestData = interests.find(
-      (interest) => interest.name === value,
+      (interest) => interest.name === value
     );
 
     if (selectedInterestData) {
@@ -284,13 +284,13 @@ function ArticlesPage() {
 
       newParams.set(
         "direction",
-        directionValue === "오름차순" ? "ASC" : "DESC",
+        directionValue === "오름차순" ? "ASC" : "DESC"
       );
 
       if (fromDate) {
         newParams.set(
           "publishDateFrom",
-          `${fromDate.replace(/\./g, "-")}T00:00:00`,
+          `${fromDate.replace(/\./g, "-")}T00:00:00`
         );
       } else {
         newParams.delete("publishDateFrom");
@@ -298,7 +298,7 @@ function ArticlesPage() {
       if (toDate) {
         newParams.set(
           "publishDateTo",
-          `${toDate.replace(/\./g, "-")}T23:59:59`,
+          `${toDate.replace(/\./g, "-")}T23:59:59`
         );
       } else {
         newParams.delete("publishDateTo");
@@ -363,7 +363,7 @@ function ArticlesPage() {
   };
 
   return (
-    <div className="flex gap-12 mt-15 justify-center">
+    <div className="flex gap-12 justify-center">
       <div className="max-w-3xs min-h-[564px] h-auto">
         <div className="mb-6">
           <SearchBar height="h-11" onSearch={handleSearch} />
@@ -488,5 +488,3 @@ function ArticlesPage() {
     </div>
   );
 }
-
-export default ArticlesPage;

@@ -11,7 +11,7 @@ export default function EmptyState({ message, className }: EmptyStateProps) {
       role="status"
       aria-live="polite"
       aria-atomic="true"
-      className={`flex flex-col items-center justify-center text-center gap-4
+      className={`flex flex-col items-center justify-center text-center gap-4 h-full
         ${className ? `${className}` : ""}`}
     >
       <img

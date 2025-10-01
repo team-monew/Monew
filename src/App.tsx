@@ -8,7 +8,6 @@ import ArticlesPage from "@/pages/ArticlesPage";
 import InterestsPage from "@/pages/InterestsPage";
 import ActivitiesPage from "@/pages/ActivitiesPage";
 import NotFound from "@/pages/not-found";
-import TestPage from "@/pages/TestPage";
 import { RequireAuth } from "@/features/auth/guards/RequireAuth";
 
 function App() {
@@ -30,7 +29,6 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="/test" element={<TestPage />} />
       </Route>
     </Routes>
   );

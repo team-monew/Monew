@@ -12,7 +12,7 @@ export default function LandingPage() {
   const link = user ? ROUTES.ARTICLES : ROUTES.AUTH_LOGIN;
 
   return (
-    <main className="flex flex-col items-center px-4 w-full">
+    <div className="flex flex-col items-center px-4 w-full">
       <h2 className="sm:mb-10 mb-6 text-center sm:text-[32px] text-[18px]">
         마음대로 골라 보는 모든 뉴스
         <p className="sm:text-[36px] text-[24px] font-bold text-cyan-500">
@@ -47,6 +47,6 @@ export default function LandingPage() {
       <Link to={link}>
         <Button className="sm:mt-15 mt-10 w-[250px]">지금 시작하기</Button>
       </Link>
-    </main>
+    </div>
   );
 }

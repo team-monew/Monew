@@ -2,7 +2,7 @@ import LoginForm from "@/features/auth/components/LoginForm";
 import NavigationButton from "@/features/auth/components/NavigationButton";
 import { ROUTES } from "@/shared/constants/routes";
 
-function LoginPage() {
+export default function LoginPage() {
   return (
     <div className="flex flex-col items-center justify-center w-full">
       <LoginForm />
@@ -14,5 +14,3 @@ function LoginPage() {
     </div>
   );
 }
-
-export default LoginPage;
