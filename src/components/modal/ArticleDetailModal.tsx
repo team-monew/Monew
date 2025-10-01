@@ -27,6 +27,7 @@ import yonhapLogo from "@/assets/logos/news/yonhap-news.svg";
 import commentIcon from "@/assets/icons/comment.svg";
 import useConfirmModal from "@/shared/hooks/useConfirmModal";
 import ConfirmModal from "./ConfirmModal";
+import { useNavigate } from "react-router";
 
 interface ArticleDetailModalProps {
   isOpen: boolean;
@@ -46,6 +47,7 @@ export default function ArticleDetailModal({
   onClose,
   data,
 }: ArticleDetailModalProps) {
+  const navigate = useNavigate();
   const commentItems = ["등록순", "좋아요순"];
 
   const limit = 5;
@@ -119,8 +121,11 @@ export default function ArticleDetailModal({
   }, [orderBy, direction, limit, nextCursor, data, hasNext, isLoading, userId]);
 
   useEffect(() => {
+    if (isOpen && data) {
+      navigate(`/articles/${data.id}`, { replace: true });
+    }
     fetchInitialData();
-  }, [fetchInitialData]);
+  }, [fetchInitialData, data, isOpen, navigate]);
 
   useEffect(() => {
     if (isLoading) return;
@@ -149,6 +154,11 @@ export default function ArticleDetailModal({
       }
     };
   }, [hasNext, isLoading, fetchMoreData]);
+
+  const handleCloseModal = () => {
+    navigate("/articles");
+    onClose();
+  };
 
   const handleClick = () => {
     if (data) {
@@ -244,7 +254,7 @@ export default function ArticleDetailModal({
     <>
       <ModalLayout
         isOpen={isOpen}
-        onClose={onClose}
+        onClose={handleCloseModal}
         width="w-[894px]"
         noPadding={true}
         disableClose={isConfirmOpen}

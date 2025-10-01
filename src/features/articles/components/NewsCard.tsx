@@ -5,12 +5,11 @@ import koreanLogo from "@/assets/logos/news/korean-economy.svg";
 import yonhapLogo from "@/assets/logos/news/yonhap-news.svg";
 import commentIcon from "@/assets/icons/comment.svg";
 import { format } from "date-fns";
-import useArticleDetailModal from "@/shared/hooks/useArticleDetailModal";
 import type { ArticleListItem } from "@/api/articles/types";
-import ArticleDetailModal from "@/components/modal/ArticleDetailModal";
 
 interface NewsCardProps {
   article: ArticleListItem;
+  onClick: () => void;
 }
 
 const SOURCE_LOGOS = {
@@ -20,23 +19,17 @@ const SOURCE_LOGOS = {
   KOREAN: koreanLogo,
 } as const;
 
-export default function NewsCard({ article }: NewsCardProps) {
+export default function NewsCard({ article, onClick }: NewsCardProps) {
   const labelSrc =
     SOURCE_LOGOS[article.source as keyof typeof SOURCE_LOGOS] || "";
 
   const formattedDate = format(article.publishDate, "yyyy.MM.dd");
 
-  const { isOpen, openModal, onClose, initialData } = useArticleDetailModal();
-
-  const handleClick = () => {
-    openModal(article);
-  };
-
   return (
     <>
       <div
         className="max-w-4xl w-auto min-h-48 h-auto cursor-pointer"
-        onClick={handleClick}
+        onClick={onClick}
       >
         <div className="my-6 mx-1">
           <div className="text-20-b text-slate-900 mb-2">{article.title}</div>
@@ -63,11 +56,6 @@ export default function NewsCard({ article }: NewsCardProps) {
           </div>
         </div>
       </div>
-      <ArticleDetailModal
-        isOpen={isOpen}
-        onClose={onClose}
-        data={initialData}
-      />
     </>
   );
 }

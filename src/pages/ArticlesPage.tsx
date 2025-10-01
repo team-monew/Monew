@@ -9,17 +9,19 @@ import type { InterestListItem, InterestOrderBy } from "@/api/interests/types";
 import Button from "@/components/button/Button";
 import EmptyState from "@/components/EmptyState";
 import Input from "@/components/Input";
+import ArticleDetailModal from "@/components/modal/ArticleDetailModal";
 import ArticleModal from "@/components/modal/ArticleModal";
 import SearchBar from "@/components/SearchBar";
 import SelectBox from "@/components/SelectBox";
 import NewsCard from "@/features/articles/components/NewsCard";
 import { useAuthInfo } from "@/features/auth/hooks/useAuthInfo";
+import useArticleDetailModal from "@/shared/hooks/useArticleDetailModal";
 import useArticleRecoveryModal from "@/shared/hooks/useArticleRecoveryModal";
 import type { SortDirection } from "@/types/direction";
 import type { InterestId } from "@/types/ids";
 import type { AxiosError } from "axios";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router";
+import { useNavigate, useParams, useSearchParams } from "react-router";
 import { toast } from "react-toastify";
 
 interface ApiErrorResponse {
@@ -37,6 +39,15 @@ const INTEREST_LIMIT = 9999;
 
 function ArticlesPage() {
   const [searchParams, setSearchParams] = useSearchParams();
+
+  const { articleId } = useParams();
+
+  const {
+    isOpen: detailIsOpen,
+    openModal: detailOpenModal,
+    onClose: detailOnClose,
+    initialData: detailData,
+  } = useArticleDetailModal();
 
   const sortOptions = ["게시일", "조회수", "댓글수"];
   const directionOptions = ["내림차순", "오름차순"];
@@ -80,7 +91,11 @@ function ArticlesPage() {
 
   const { userId } = useAuthInfo();
 
-  const { isOpen, openModal, onClose } = useArticleRecoveryModal();
+  const {
+    isOpen: recoveryIsOpen,
+    openModal: recoveryOpenModal,
+    onClose: recoveryOnClose,
+  } = useArticleRecoveryModal();
 
   const sortMap: Record<string, string> = {
     게시일: "publishDate",
@@ -311,6 +326,15 @@ function ArticlesPage() {
     fetchInitialData();
   }, [fetchInitialData, orderBy, direction]);
 
+  useEffect(() => {
+    if (articleId && articles.length > 0) {
+      const article = articles.find((a) => a.id === articleId);
+      if (article) {
+        detailOpenModal(article);
+      }
+    }
+  }, [articleId, articles]);
+
   const handleRestoreArticle = (data: RestoreArticlesParams) => {
     try {
       const formattedData = {
@@ -324,7 +348,7 @@ function ArticlesPage() {
 
       toast.success("기사가 복구되었습니다.");
 
-      onClose();
+      recoveryOnClose();
     } catch (error) {
       console.error(error);
 
@@ -388,13 +412,13 @@ function ArticlesPage() {
           className="w-full"
           variant="secondary"
           size="sm"
-          onClick={openModal}
+          onClick={recoveryOpenModal}
         >
           기사 복구하기
         </Button>
         <ArticleModal
-          isOpen={isOpen}
-          onClose={onClose}
+          isOpen={recoveryIsOpen}
+          onClose={recoveryOnClose}
           onSave={handleRestoreArticle}
         />
       </div>
@@ -447,12 +471,20 @@ function ArticlesPage() {
                 key={article.id}
                 ref={index === articles.length - 1 ? lastElementRef : null}
               >
-                <NewsCard article={article} />
+                <NewsCard
+                  article={article}
+                  onClick={() => detailOpenModal(article)}
+                />
               </div>
             ))}
           </div>
         )}
       </div>
+      <ArticleDetailModal
+        isOpen={detailIsOpen}
+        onClose={detailOnClose}
+        data={detailData}
+      />
     </div>
   );
 }
