@@ -5,7 +5,7 @@
 ### 🖐️ 프로젝트 소개
 
 <div align="center">
-  <img src='https://github.com/user-attachments/assets/0203327b-4112-4b47-9aec-506213f817e3'/>
+  <img src="https://github.com/user-attachments/assets/069d4255-0275-4a6f-a20d-4e61f99c687f"/>
   </br>
   </br>
   <blockquote>여러 뉴스 API를 통합하여 사용자에게 맞춤형 뉴스를 제공하고, 의견을 나눌 수 있는 소셜 기능을 갖춘 서비스
@@ -51,27 +51,6 @@
     <h3>⏬아래 링크를 클릭하시면 더 다양한 기능들을 만날 수 있습니다!⏬</h3>
     <a href="https://monew.vercel.app">⏩지금 Monew 사용하러 가보기!⏪</a>
   </section>
-</div>
-<h2 id="진행과정">🔥 Monew 팀의 경험</h2>
-
-<div align="center">
-
-### 📜 이슈 관리
-
-Monew 팀은 이슈 관리 도구로 Notion을 채택하여 개발했습니다.
-프로젝트 작업 시트를 만들어서, 서로 무슨 작업을 진행했고, 완료했는지 한눈에 파악할 수 있게 했습니다.
-
-<div align='center'>
-  <img src='https://github.com/user-attachments/assets/d6b177cb-d265-4db5-8365-b17c572f602a' width=600/>
-</div>
-
-### ✏️ 기록
-
-<div align="center">
-  <p>⏬아래 링크를 클릭하시면 Monew를 어떻게 만들었는지 알 수 있습니다.⏬</p>
-  <a href="https://www.notion.so/FE-26c2c744f86a801b9ee6d3b5476de411">⏩Monew 팀의 Notion 구경하기⏪</a>
-</div>
-
 </div>
 
 <br />
@@ -145,6 +124,8 @@ npm run build
 <br />
 
 <h2 id="팀원소개">🧑 팀원 소개</h2>
+
+<a href="https://www.notion.so/26f2c744f86a8000bdb0d71497422216?source=copy_link">📑 프로젝트 협업 문서(노션) 바로가기</a>
 
 <div align="center">
   <table>
