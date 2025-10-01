@@ -148,7 +148,7 @@ export default function InterestsPage() {
       },
       {
         threshold: 0.8,
-      }
+      },
     );
 
     if (lastElementRef.current) {
@@ -168,7 +168,7 @@ export default function InterestsPage() {
 
   const handleSubScribeClick = async (
     interestId: InterestId,
-    currentSubscribed: boolean
+    currentSubscribed: boolean,
   ) => {
     if (!userId) return;
 
@@ -188,8 +188,8 @@ export default function InterestsPage() {
                   ? interest.subscriberCount - 1
                   : interest.subscriberCount + 1,
               }
-            : interest
-        )
+            : interest,
+        ),
       );
     } catch (error) {
       console.error(error);
@@ -223,7 +223,7 @@ export default function InterestsPage() {
 
   const handleSaveKeyword = async (
     interestId: InterestId,
-    keywords: string[]
+    keywords: string[],
   ) => {
     if (!userId) return;
 
@@ -288,78 +288,80 @@ export default function InterestsPage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto">
-      <div className="flex justify-between items-center">
-        <div className="text-left">
-          <h1 className="text-24-b text-slate-900">관심사 목록</h1>
-          <p className="text-16-m text-slate-500 mt-3">
-            구독 중인 관심사를 관리하고, 새로운 관심사를 등록해보세요.
-          </p>
-        </div>
-        <Button
-          className="min-w-[186px] flex justify-center items-center"
-          onClick={openModal}
-        >
-          <img src={plusIcon} className="w-5 h-5" alt="추가" />
-          관심사 등록
-        </Button>
+    <div className="mt-10">
+      <div className="w-[1200px] mx-auto">
+        <div className="flex justify-between items-center">
+          <div className="text-left">
+            <h1 className="text-24-b text-slate-900">관심사 목록</h1>
+            <p className="text-16-m text-slate-500 mt-3">
+              구독 중인 관심사를 관리하고, 새로운 관심사를 등록해보세요.
+            </p>
+          </div>
+          <Button
+            className="min-w-[186px] flex justify-center items-center"
+            onClick={openModal}
+          >
+            <img src={plusIcon} className="w-5 h-5" alt="추가" />
+            관심사 등록
+          </Button>
 
-        <UpdateModal
-          isOpen={isOpen}
-          onClose={onClose}
-          onSave={handleAddInterest}
-        />
-      </div>
-      <div className="flex justify-between items-center mt-10">
-        <div className="flex justify-center items-center gap-3 ">
-          <SelectBox
-            items={sortOptions}
-            value={sortBy}
-            onChange={handleSortOptions}
-            className="w-24 h-10"
-          />
-          <SelectBox
-            items={orderOptions}
-            value={sortOrder}
-            onChange={handleOrderOptions}
-            className="w-24 h-10"
+          <UpdateModal
+            isOpen={isOpen}
+            onClose={onClose}
+            onSave={handleAddInterest}
           />
         </div>
-        <SearchBar width="w-[304px]" onSearch={handleSearch} />
-      </div>
-      <div className="mt-4 min-w-2xs">
-        {interests.length === 0 ? (
-          <div className="flex justify-center items-center min-h-[200px] mt-30">
-            {keyword ? (
-              <EmptyState message="검색 결과가 없습니다." />
-            ) : (
-              <EmptyState message="아직 등록한 관심사가 없습니다." />
-            )}
+        <div className="flex justify-between items-center mt-10">
+          <div className="flex justify-center items-center gap-3 ">
+            <SelectBox
+              items={sortOptions}
+              value={sortBy}
+              onChange={handleSortOptions}
+              className="w-24 h-10"
+            />
+            <SelectBox
+              items={orderOptions}
+              value={sortOrder}
+              onChange={handleOrderOptions}
+              className="w-24 h-10"
+            />
           </div>
-        ) : (
-          <div className="mt-4 flex flex-wrap gap-4">
-            {interests.map((interest, index) => (
-              <div
-                className="w-[386px] h-[232px]"
-                key={interest.id}
-                ref={index === interests.length - 1 ? lastElementRef : null}
-              >
-                <InterestCard
-                  interestId={interest.id}
-                  name={interest.name}
-                  keywords={interest.keywords}
-                  subscriberCount={interest.subscriberCount}
-                  isSubscribed={interest.subscribedByMe}
-                  onSubscribeClick={handleSubScribeClick}
-                  onSaveKeyword={handleSaveKeyword}
-                  onDeleteInterest={handleDeleteInterest}
-                />
-              </div>
-            ))}
-          </div>
-        )}
+          <SearchBar width="w-[304px]" onSearch={handleSearch} />
+        </div>
+        <div className="mt-4 min-w-2xs">
+          {interests.length === 0 ? (
+            <div className="flex justify-center items-center min-h-[200px] mt-30">
+              {keyword ? (
+                <EmptyState message="검색 결과가 없습니다." />
+              ) : (
+                <EmptyState message="아직 등록한 관심사가 없습니다." />
+              )}
+            </div>
+          ) : (
+            <div className="mt-4 grid grid-cols-3 gap-4">
+              {interests.map((interest, index) => (
+                <div
+                  className="w-[386px] h-[232px]"
+                  key={interest.id}
+                  ref={index === interests.length - 1 ? lastElementRef : null}
+                >
+                  <InterestCard
+                    interestId={interest.id}
+                    name={interest.name}
+                    keywords={interest.keywords}
+                    subscriberCount={interest.subscriberCount}
+                    isSubscribed={interest.subscribedByMe}
+                    onSubscribeClick={handleSubScribeClick}
+                    onSaveKeyword={handleSaveKeyword}
+                    onDeleteInterest={handleDeleteInterest}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
 
-        {isLoading && <Skeleton className="mx-4" />}
+          {isLoading && <Skeleton className="mx-4" />}
+        </div>
       </div>
     </div>
   );
