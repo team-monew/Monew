@@ -18,6 +18,7 @@ function App() {
       <Route element={<RequireAuth />}>
         <Route element={<PrivateLayout />}>
           <Route path="/articles" element={<ArticlesPage />} />
+          <Route path="/articles/:articleId" element={<ArticlesPage />} />
           <Route path="/interests" element={<InterestsPage />} />
           <Route path="/activities" element={<ActivitiesPage />} />
         </Route>

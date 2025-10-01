@@ -4,7 +4,7 @@ import type { UserId } from "@/types/ids";
 
 export async function getUserActivities(userId: UserId) {
   const { data } = await http.get<T.GetUserActivitiesResponse>(
-    `/user-activities/${userId}`
+    `/user-activities/${userId}`,
   );
   return data;
 }

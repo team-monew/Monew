@@ -7,7 +7,7 @@ import Skeleton from "@/components/Skeleton";
 export default function LikedCommentList() {
   const { items, error, loading, empty } = useUserActivitiesList(
     "likedComments",
-    4
+    4,
   );
 
   if (error) {

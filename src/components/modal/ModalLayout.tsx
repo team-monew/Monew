@@ -1,32 +1,53 @@
 import { useClosePopup } from "@/shared/hooks/useClosePopup";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 
 interface ModalLayoutProps {
   isOpen: boolean;
   onClose: () => void;
   children: React.ReactNode;
+  width?: string;
+  noPadding?: boolean;
+  disableClose?: boolean;
 }
 
 export default function ModalLayout({
   isOpen,
   onClose,
   children,
+  width = "w-[502px]",
+  noPadding = false,
+  disableClose = false,
 }: ModalLayoutProps) {
   const modalRef = useRef<HTMLDivElement>(null);
 
-  useClosePopup(modalRef, onClose, isOpen);
+  useClosePopup(modalRef, onClose, isOpen, disableClose);
+
+  // 모달 열릴 때 body 스크롤 막기
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    // cleanup: 컴포넌트 언마운트 시 원복
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
   return createPortal(
     <div
-      className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
+      className="fixed inset-0 bg-black/50 flex items-center justify-center"
       role="dialog"
       aria-modal="true"
     >
       <div
-        className="w-[502px] min-h-80 h-auto rounded-2xl p-8 gap-2.5 bg-white relative"
+        ref={modalRef}
+        className={`${width} max-h-[90vh] overflow-y-auto h-auto rounded-2xl ${noPadding ? "" : "p-8"} gap-2.5 bg-white relative`}
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -39,6 +60,6 @@ export default function ModalLayout({
         {children}
       </div>
     </div>,
-    document.body
+    document.body,
   );
 }

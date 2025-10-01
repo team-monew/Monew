@@ -13,7 +13,7 @@ import { toastApiError } from "@/shared/utils/toastApiError";
 interface EditNicknameModalProps {
   isOpen: boolean;
   onClose: () => void;
-  user: User
+  user: User;
   onUpdated?: (args: {
     userId: UserId;
     nickname: string;
@@ -44,13 +44,13 @@ export default function EditNicknameModal({
     try {
       setIsSubmitting(true);
       const updatedUser = await updateUser(user.id, { nickname });
-      authSession.write(updatedUser)
+      authSession.write(updatedUser);
 
       onUpdated?.({ userId: user.id, nickname, updatedUser });
       toast.success("닉네임이 수정되었습니다.");
       onClose();
     } catch (error) {
-      toastApiError(error)
+      toastApiError(error);
     } finally {
       setIsSubmitting(false);
     }

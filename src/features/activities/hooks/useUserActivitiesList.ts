@@ -38,7 +38,7 @@ const ERROR_MSG = {
 
 export function useUserActivitiesList<V extends Variant>(
   variant: V,
-  perPage = 4
+  perPage = 4,
 ) {
   const { userId } = useAuthInfo();
   const [items, setItems] = useState<ActivitiesByVariant[V][]>([]);

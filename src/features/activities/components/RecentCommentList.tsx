@@ -7,7 +7,7 @@ import Skeleton from "@/components/Skeleton";
 export default function RecentCommentList() {
   const { items, error, loading, empty } = useUserActivitiesList(
     "recentComments",
-    4
+    4,
   );
 
   if (error) {

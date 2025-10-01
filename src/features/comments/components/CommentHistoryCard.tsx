@@ -9,7 +9,7 @@ import { formatTimeAgo } from "@/shared/utils/formatTimeAgo";
 
 type CommentHistoryCardProps = ActivityComment & {
   mode?: "recent" | "liked";
-  isLiked: boolean
+  isLiked: boolean;
   onLikeClick?: (commentId: CommentId) => void;
 };
 
