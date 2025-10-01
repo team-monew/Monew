@@ -26,7 +26,7 @@ export default function ActivitiesPage() {
   }, [isValid, setSp]);
 
   return (
-    <div className="flex justify-center gap-6 w-full px-4 overflow-x-auto">
+    <div className="flex justify-center gap-10 w-full px-4 overflow-x-auto">
       <div className="flex flex-col gap-4">
         <ProfileCard />
         <SubscriptionPanel />
@@ -35,7 +35,7 @@ export default function ActivitiesPage() {
       {/* tabs : 최근 작성한 댓글 / 좋아요한 댓글 / 최근 본 기사 */}
       <div className="flex flex-col">
         <ActivitiesTabs />
-        <div className="mt-6 flex flex-col gap-4">
+        <div className="mt-2 flex flex-col gap-4 h-full">
           {tab === "recent" && <RecentCommentList />}
           {tab === "liked" && <LikedCommentList />}
           {tab === "viewed" && <ViewedArticleList />}

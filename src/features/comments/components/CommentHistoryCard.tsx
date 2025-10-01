@@ -35,11 +35,11 @@ export default function CommentHistoryCard({
   };
 
   return (
-    <div className="w-full h-auto px-8 py-8 bg-transparent border-none">
-      <div className="flex mb-5">
+    <div className="w-full h-auto px-2 py-8 bg-transparent border-none">
+      <div className="flex mb-4">
         <div>
           <button
-            className="text-16-r text-cyan-500 hover:text-cyan-600 hover:underline cursor-pointer"
+            className="text-16-m text-cyan-500 hover:text-cyan-600 hover:underline cursor-pointer"
             onClick={handleTitleClick}
           >
             {articleTitle}
