@@ -49,6 +49,7 @@ export type LikeCommentResponse = {
   createdAt: string;
   commentId: CommentId;
   articleId: ArticleId;
+  articleTitle: string;
   commentUserId: UserId;
   commentUserNickname: string;
   commentContent: string;

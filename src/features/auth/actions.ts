@@ -1,30 +1,9 @@
-import axios from "axios";
 import { login, signUp } from "@/api/users";
-import type * as T from "@/api/users/types";
 import { authSession } from "@/features/auth/utils/authSession";
+import { normalizeError } from "@/shared/lib/normalizeError";
+import type * as T from "@/api/users/types";
 
-function getDataMessage(data: unknown): string | undefined {
-  if (typeof data === "string") return data;
-  if (data && typeof data === "object" && "message" in data) {
-    const msg = (data as { message?: unknown }).message;
-    return typeof msg === "string" ? msg : undefined;
-  }
-  return undefined;
-}
-
-function normalizeError(err: unknown): Error {
-  if (axios.isAxiosError(err)) {
-    const res = err.response;
-    const msg =
-      getDataMessage(res?.data) ??
-      res?.statusText ??
-      err.message ??
-      "Request failed";
-    return new Error(msg);
-  }
-  return err instanceof Error ? err : new Error("Unknown error");
-}
-
+// 로그인 및 세션 저장
 export async function loginAndStore(body: T.LoginBody) {
   try {
     const user = await login(body);
@@ -35,16 +14,16 @@ export async function loginAndStore(body: T.LoginBody) {
   }
 }
 
-export async function signUpAndStore(body: T.SignUpBody) {
+// 회원가입 액션
+export async function signUpAction(body: T.SignUpBody) {
   try {
-    const user = await signUp(body);
-    authSession.write(user);
-    return user;
+    await signUp(body);
   } catch (error) {
     throw normalizeError(error);
   }
 }
 
+// 로그아웃(세션 클리어)
 export function logout() {
   authSession.clear();
 }
