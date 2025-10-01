@@ -22,7 +22,8 @@
     <a href="#서비스소개">📅 서비스 소개</a></br>
     <a href="#진행과정">🔥 Monew 팀의 경험</a></br>
     <a href="#주요기술스택">💎 주요기술 스택</a></br>
-    <a href="#팀원소개">🧑 팀원소개</a>
+    <a href="#시작하기">🚀 시작하기</a></br>
+    <a href="#팀원소개">🧑 팀원소개</a></br>
   </nav>
 </div>
 <h2 id="서비스소개">📅 서비스 소개</h2>
@@ -91,6 +92,57 @@ Monew 팀은 이슈 관리 도구로 Notion을 채택하여 개발했습니다.
 | ![Static Badge](https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white)             | 코드 품질 향상과 일관된 코딩 스타일 유지, 잠재적 버그를 사전에 방지하기 위해 선정했습니다.                              |
 | ![Static Badge](https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=black)         | 자동 코드 포맷팅을 통한 일관된 코드 스타일 유지 및 팀원 간 코드 리뷰 시 스타일 논쟁을 줄이기 위해 선정했습니다.         |
 | ![Static Badge](https://img.shields.io/badge/Husky-000000?style=for-the-badge&logo=git&logoColor=white)                 | Git hooks를 통한 커밋 전 자동 린트 및 포맷팅 검사로 코드 품질을 보장하고, 불필요한 커밋을 방지하기 위해 선정했습니다.   |
+
+<h2 id="시작하기">🚀 시작하기</h2>
+
+### 사전 요구사항
+
+- Node.js 20.19+ 또는 22.12+ 이상 (Vite 요구사항)
+- npm 또는 yarn
+
+> ⚠️ Node.js 버전 확인
+>
+> ```bash
+> node -v
+> ```
+>
+> 버전이 낮다면 [Node.js 공식 사이트](https://nodejs.org/)에서 최신 LTS 버전을 설치하세요.
+
+### 설치방법
+
+1. **저장소 클론**
+
+```bash
+git clone https://github.com/team-monew/Monew.git .
+```
+
+2. **의존성 설치**
+
+```bash
+npm install
+# 또는
+yarn install
+```
+
+### 실행방법
+
+#### **개발 서버 실행**
+
+```bash
+npm run dev
+# 또는
+yarn dev
+```
+
+브라우저에서 `http://localhost:5173` 접속
+
+#### **프로덕션 빌드**
+
+```bash
+npm run build
+```
+
+<br />
 
 <h2 id="팀원소개">🧑 팀원 소개</h2>
 
