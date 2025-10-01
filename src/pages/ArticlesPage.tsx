@@ -363,7 +363,7 @@ export default function ArticlesPage() {
   };
 
   return (
-    <div className="flex gap-12 mt-15 justify-center">
+    <div className="flex gap-12 justify-center">
       <div className="max-w-3xs min-h-[564px] h-auto">
         <div className="mb-6">
           <SearchBar height="h-11" onSearch={handleSearch} />

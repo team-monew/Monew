@@ -288,7 +288,7 @@ export default function InterestsPage() {
   };
 
   return (
-    <div className="mt-10 max-w-4xl mx-auto">
+    <div className="max-w-4xl mx-auto">
       <div className="flex justify-between items-center">
         <div className="text-left">
           <h1 className="text-24-b text-slate-900">관심사 목록</h1>
