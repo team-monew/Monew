@@ -16,7 +16,7 @@ export default function LandingPage() {
       <h2 className="sm:mb-10 mb-6 text-center sm:text-[32px] text-[18px]">
         마음대로 골라 보는 모든 뉴스
         <p className="sm:text-[36px] text-[24px] font-bold text-cyan-500">
-          MONEW
+          모뉴
         </p>
       </h2>
 
