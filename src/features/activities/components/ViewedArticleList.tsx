@@ -3,16 +3,15 @@ import NewsCard from "@/features/articles/components/NewsCard";
 import EmptyState from "@/components/EmptyState";
 import Skeleton from "@/components/Skeleton";
 import type { ArticleListItem } from "@/api/articles/types";
-import useArticleDetailModal from "@/shared/hooks/useArticleDetailModal";
-import ArticleDetailModal from "@/components/modal/ArticleDetailModal";
+import { useNavigate } from "react-router";
 
 export default function ViewedArticleList() {
   const { items, error, loading, empty } = useUserActivitiesList(
     "viewedArticles",
-    5
+    10,
   );
 
-  const { isOpen, openModal, onClose, initialData } = useArticleDetailModal();
+  const navigate = useNavigate();
 
   if (error) {
     return <p className="text-14-r text-error">{error}</p>;
@@ -28,34 +27,36 @@ export default function ViewedArticleList() {
     );
   }
 
-  return (
-    <>
-      <ul className="flex flex-col gap-4 divide-y divide-gray-300">
-        {items.map((a) => {
-          const article: ArticleListItem = {
-            id: a.id,
-            title: a.articleTitle,
-            summary: a.articleSummary,
-            source: a.source,
-            sourceUrl: a.sourceUrl,
-            publishDate: a.articlePublishedDate,
-            viewCount: a.articleViewCount,
-            commentCount: a.articleCommentCount,
-            viewedByMe: true,
-          };
+  const handleNewsCardClick = (article: ArticleListItem) => {
+    navigate(`/articles/${article.id}`, {
+      state: { article },
+    });
+  };
 
-          return (
-            <li key={a.id}>
-              <NewsCard article={article} onClick={() => openModal(article)} />
-            </li>
-          );
-        })}
-      </ul>
-      <ArticleDetailModal
-        isOpen={isOpen}
-        onClose={onClose}
-        data={initialData}
-      />
-    </>
+  return (
+    <ul className="flex flex-col gap-4 divide-y divide-gray-300">
+      {items.map((a) => {
+        const article: ArticleListItem = {
+          id: a.articleId,
+          title: a.articleTitle,
+          summary: a.articleSummary,
+          source: a.source,
+          sourceUrl: a.sourceUrl,
+          publishDate: a.articlePublishedDate,
+          viewCount: a.articleViewCount,
+          commentCount: a.articleCommentCount,
+          viewedByMe: true,
+        };
+
+        return (
+          <li key={a.id}>
+            <NewsCard
+              article={article}
+              onClick={() => handleNewsCardClick(article)}
+            />
+          </li>
+        );
+      })}
+    </ul>
   );
 }
