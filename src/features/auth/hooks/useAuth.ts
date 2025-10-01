@@ -1,4 +1,4 @@
-/*
+/* useAuth
  - 로그인/로그아웃 등 인증 상태 변화를 감지해 현재 사용자 정보를 반환합니다.
  - 인증 상태 변경 시, 앱 전역에서 커스텀 이벤트 `AUTH_CHANGE`(window.dispatchEvent)로 브로드캐스트합니다.
  - 이 훅은 `useSyncExternalStore`를 사용해 외부 스토어(authSession)의 스냅샷을 구독/반영합니다.
