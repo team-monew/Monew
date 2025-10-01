@@ -21,7 +21,12 @@ import type { SortDirection } from "@/types/direction";
 import type { InterestId } from "@/types/ids";
 import type { AxiosError } from "axios";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { useNavigate, useParams, useSearchParams } from "react-router";
+import {
+  useLocation,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from "react-router";
 import { toast } from "react-toastify";
 
 interface ApiErrorResponse {
@@ -41,6 +46,9 @@ export default function ArticlesPage() {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const { articleId } = useParams();
+
+  const location = useLocation();
+  const stateArticle = location.state?.article;
 
   const {
     isOpen: detailIsOpen,
@@ -327,13 +335,17 @@ export default function ArticlesPage() {
   }, [fetchInitialData, orderBy, direction]);
 
   useEffect(() => {
-    if (articleId && articles.length > 0) {
-      const article = articles.find((a) => a.id === articleId);
-      if (article) {
-        detailOpenModal(article);
+    if (articleId) {
+      if (stateArticle && stateArticle.id === articleId) {
+        detailOpenModal(stateArticle);
+      } else if (articles.length > 0) {
+        const article = articles.find((a) => a.id === articleId);
+        if (article) {
+          detailOpenModal(article);
+        }
       }
     }
-  }, [articleId, articles]);
+  }, [articleId, articles, stateArticle]);
 
   const handleRestoreArticle = (data: RestoreArticlesParams) => {
     try {
@@ -360,6 +372,11 @@ export default function ArticlesPage() {
 
       toast.error(errorMessage);
     }
+  };
+
+  const handleDetailClose = () => {
+    detailOnClose();
+    navigate("/articles", { replace: true });
   };
 
   return (
@@ -482,7 +499,7 @@ export default function ArticlesPage() {
       </div>
       <ArticleDetailModal
         isOpen={detailIsOpen}
-        onClose={detailOnClose}
+        onClose={handleDetailClose}
         data={detailData}
       />
     </div>
