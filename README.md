@@ -127,6 +127,79 @@ npm run build
 
 <br />
 
+<h2 id="폴더 구조">🗂️ 폴더 구조</h2>
+
+```text
+MONEW/
+├─ public/
+│  ├─ fonts/
+│  └─ favicon.ico
+├─ src/
+│  ├─ api/                       # 리소스별 API 래퍼 : index.ts + types.ts 페어
+│  │  ├─ articles/
+│  │  ├─ comments/
+│  │  ├─ interests/
+│  │  ├─ notifications/
+│  │  ├─ user-activities/
+│  │  └─ users/
+│  ├─ app/                       # 레이아웃/라우트 프레임
+│  │  ├─ layouts/
+│  │  └─ routes/
+│  │     ├─ public/
+│  │     └─ private/
+│  ├─ assets/                    # 앱에서 쓰는 정적 에셋
+│  │  ├─ icons/
+│  │  ├─ images/
+│  │  └─ logos/
+│  ├─ features/                  # 도메인 단위 UI/로직
+│  │  ├─ activities/
+│  │  │  ├─ components/
+│  │  │  └─ hooks/
+│  │  ├─ articles/
+│  │  │  └─ components/
+│  │  ├─ auth/
+│  │  │  ├─ components/
+│  │  │  ├─ guards/
+│  │  │  └─ hooks/
+│  │  ├─ comments/
+│  │  │  ├─ components/
+│  │  │  └─ hooks/
+│  │  ├─ interests/
+│  │  │  ├─ components/
+│  │  │  └─ hooks/
+│  │  ├─ notifications/
+│  │  │  └─ components/
+│  │  └─ user/
+│  │     └─ components/
+│  ├─ shared/                    # 전역 공용 레이어
+│  │  ├─ components/
+│  │  │  ├─ button/
+│  │  │  ├─ dropdown/
+│  │  │  ├─ gnb/
+│  │  │  ├─ modal/
+│  │  │  ├─ EmptyState.tsx
+│  │  │  ├─ Footer.tsx
+│  │  │  ├─ SearchBar.tsx
+│  │  │  ├─ SelectBox.tsx
+│  │  │  ├─ Skeleton.tsx
+│  │  │  ├─ Tag.tsx
+│  │  │  └─ Toast.tsx
+│  │  ├─ constants/
+│  │  ├─ hooks/
+│  │  ├─ lib/
+│  │  ├─ utils/
+│  │  ├─ styles/
+│  │  └─ types/
+│  └─ main.tsx
+├─ index.html
+├─ vite.config.ts
+├─ vite-env.d.ts
+├─ eslint.config.js
+└─ .gitignore
+```
+
+<br/>
+
 <h2 id="팀원소개">🧑 팀원 소개</h2>
 
 <a href="https://www.notion.so/26f2c744f86a8000bdb0d71497422216?source=copy_link">📑 프로젝트 협업 문서(노션) 바로가기</a>
