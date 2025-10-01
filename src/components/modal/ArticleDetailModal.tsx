@@ -245,7 +245,7 @@ export default function ArticleDetailModal({
     });
   };
 
-  if (!isOpen || !data) return;
+  if (!isOpen || !data) return null;
 
   const formattedDate = format(data.publishDate, "yyyy.MM.dd");
   const labelSrc = SOURCE_LOGOS[data.source as keyof typeof SOURCE_LOGOS] || "";
