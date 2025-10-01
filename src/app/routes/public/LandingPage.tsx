@@ -13,19 +13,21 @@ export default function LandingPage() {
 
   return (
     <div className="flex flex-col items-center px-4 w-full">
-      <h2 className="lg:mb-10 mb-6 text-center lg:text-[32px] md:text-[26px] text-[20px]">
-        마음대로 골라 보는 모든 뉴스
-        <p className="lg:text-[36px] md:text-[30px] text-[24px] font-bold text-cyan-500">
-          모뉴
+      <div className="lg:mb-10 mb-6 md:gap-1.5 gap-0 flex flex-col text-center">
+        <p className="lg:text-[30px] md:text-[24px] text-[20px]">
+          마음대로 골라 보는 모든 뉴스
         </p>
-      </h2>
+        <h1 className="lg:text-[36px] md:text-[30px] text-[24px] font-bold text-cyan-500">
+          모뉴
+        </h1>
+      </div>
 
       <div className="lg:flex-row flex flex-col justify-center items-center gap-6 w-full">
         <LandingBox
           imageSrc={firstImageUrl}
           imageAlt="관심사 목록"
           description="관심사를 등록해보세요"
-          containerClassName="bg-cyan-100 border-3 border-cyan-400"
+          containerClassName="bg-white border-3 border-cyan-400"
           descriptionClassName="text-cyan-500"
         />
         <LandingBox
