@@ -143,7 +143,7 @@ export default function ArticleDetailModal({
       },
       {
         threshold: 0.8,
-      }
+      },
     );
     if (lastElementRef.current) {
       observerRef.current.observe(lastElementRef.current);
@@ -228,12 +228,8 @@ export default function ArticleDetailModal({
       title: "댓글 삭제",
       message: "정말 삭제하시겠습니까?",
       onConfirm: async () => {
-        console.log("onConfirm 함수 실행 시작");
-
         try {
-          console.log("deleteComment 호출 전");
           await deleteComment(commentId);
-          console.log("deleteComment 호출 후");
           toast.success("댓글이 삭제되었습니다.");
           await fetchInitialData();
         } catch (error) {
