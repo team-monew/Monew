@@ -1,5 +1,5 @@
 import EditIconUrl from "@/assets/icons/edit.svg";
-import EditNicknameModal from "@/components/modal/EditNicknameModal";
+import EditNicknameModal from "@/shared/components/modal/EditNicknameModal";
 import useEditNicknameModal from "@/shared/hooks/useEditNicknameModal";
 import { useAuth } from "@/features/auth/hooks/useAuth";
 

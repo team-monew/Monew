@@ -1,6 +1,6 @@
 import { login, signUp } from "@/api/users";
 import { authSession } from "@/features/auth/utils/authSession";
-import { normalizeError } from "@/shared/lib/http";
+import { normalizeError } from "@/shared/lib/normalizeError";
 import type * as T from "@/api/users/types";
 
 // 로그인 및 세션 저장

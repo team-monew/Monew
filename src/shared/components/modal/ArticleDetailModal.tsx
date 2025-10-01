@@ -1,10 +1,9 @@
-import ModalLayout from "./ModalLayout";
-import type { ArticleListItem } from "@/api/articles/types";
-import Button from "../button/Button";
-import SelectBox from "../SelectBox";
-import Input from "../Input";
-import CommentCard from "@/features/comments/components/CommentCard";
 import { useCallback, useEffect, useRef, useState } from "react";
+import ModalLayout from "@/shared/components/modal/ModalLayout";
+import Button from "@/shared/components/button/Button";
+import SelectBox from "@/shared/components/SelectBox";
+import Input from "@/shared/components/Input";
+import CommentCard from "@/features/comments/components/CommentCard";
 import {
   addLikeComment,
   createComment,
@@ -14,19 +13,20 @@ import {
   updateComment,
 } from "@/api/comments";
 import { useAuthInfo } from "@/features/auth/hooks/useAuthInfo";
+import type { ArticleListItem } from "@/api/articles/types";
 import type { CommentItem, CommentsOrderBy } from "@/api/comments/types";
 import type { CommentId } from "@/types/ids";
 import { toast } from "react-toastify";
 import type { SortDirection } from "@/types/direction";
 import { format } from "date-fns";
-import Label from "../Label";
+import Label from "@/shared/components/Label";
 import naverLogo from "@/assets/logos/news/naver.svg";
 import chosunLogo from "@/assets/logos/news/chosun-ilbo.svg";
 import koreanLogo from "@/assets/logos/news/korean-economy.svg";
 import yonhapLogo from "@/assets/logos/news/yonhap-news.svg";
 import commentIcon from "@/assets/icons/comment.svg";
 import useConfirmModal from "@/shared/hooks/useConfirmModal";
-import ConfirmModal from "./ConfirmModal";
+import ConfirmModal from "@/shared/components/modal/ConfirmModal";
 import { useNavigate } from "react-router";
 
 interface ArticleDetailModalProps {
@@ -143,7 +143,7 @@ export default function ArticleDetailModal({
       },
       {
         threshold: 0.8,
-      },
+      }
     );
     if (lastElementRef.current) {
       observerRef.current.observe(lastElementRef.current);

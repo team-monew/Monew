@@ -1,6 +1,6 @@
 import { Link } from "react-router";
-import Logo from "@/components/Logo";
-import { headerStyle } from "@/components/gnb/header.styles";
+import Logo from "@/shared/components/Logo";
+import { headerStyle } from "@/shared/components/gnb/header.styles";
 import { ROUTES } from "@/shared/constants/routes";
 
 export default function PublicHeader() {

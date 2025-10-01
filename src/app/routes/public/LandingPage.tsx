@@ -1,5 +1,5 @@
-import LandingBox from "@/components/LandingBox";
-import Button from "@/components/button/Button";
+import LandingBox from "@/shared/components/LandingBox";
+import Button from "@/shared/components/button/Button";
 import { useAuthInfo } from "@/features/auth/hooks/useAuthInfo";
 import { Link } from "react-router";
 import { ROUTES } from "@/shared/constants/routes";
@@ -13,9 +13,9 @@ export default function LandingPage() {
 
   return (
     <div className="flex flex-col items-center px-4 w-full">
-      <h2 className="sm:mb-10 mb-6 text-center sm:text-[32px] text-[18px]">
+      <h2 className="lg:mb-10 mb-6 text-center lg:text-[32px] md:text-[26px] text-[20px]">
         마음대로 골라 보는 모든 뉴스
-        <p className="sm:text-[36px] text-[24px] font-bold text-cyan-500">
+        <p className="lg:text-[36px] md:text-[30px] text-[24px] font-bold text-cyan-500">
           모뉴
         </p>
       </h2>
@@ -45,7 +45,7 @@ export default function LandingPage() {
       </div>
 
       <Link to={link}>
-        <Button className="sm:mt-15 mt-10 w-[250px]">지금 시작하기</Button>
+        <Button className="lg:mt-15 mt-10 w-[250px]">지금 시작하기</Button>
       </Link>
     </div>
   );

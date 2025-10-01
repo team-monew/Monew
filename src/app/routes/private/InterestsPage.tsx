@@ -1,8 +1,8 @@
-import Button from "@/components/button/Button";
+import Button from "@/shared/components/button/Button";
 import plusIcon from "@/assets/icons/plus.svg";
-import SearchBar from "@/components/SearchBar";
+import SearchBar from "@/shared/components/SearchBar";
 import { useCallback, useEffect, useRef, useState } from "react";
-import SelectBox from "@/components/SelectBox";
+import SelectBox from "@/shared/components/SelectBox";
 import InterestCard from "@/features/interests/components/InterestCard";
 import { useAuthInfo } from "@/features/auth/hooks/useAuthInfo";
 import {
@@ -22,12 +22,12 @@ import type {
 import type { SortDirection } from "@/types/direction";
 import type { InterestId } from "@/types/ids";
 import { toast } from "react-toastify";
-import UpdateModal from "@/components/modal/UpdateModal";
+import UpdateModal from "@/shared/components/modal/UpdateModal";
 import useUpdateModal from "@/shared/hooks/useUpdateModal";
 import { useSearchParams } from "react-router-dom";
-import EmptyState from "@/components/EmptyState";
+import EmptyState from "@/shared/components/EmptyState";
 import type { AxiosError } from "axios";
-import Skeleton from "@/components/Skeleton";
+import Skeleton from "@/shared/components/Skeleton";
 
 interface ApiErrorResponse {
   message: string;
@@ -148,7 +148,7 @@ export default function InterestsPage() {
       },
       {
         threshold: 0.8,
-      },
+      }
     );
 
     if (lastElementRef.current) {
@@ -168,7 +168,7 @@ export default function InterestsPage() {
 
   const handleSubScribeClick = async (
     interestId: InterestId,
-    currentSubscribed: boolean,
+    currentSubscribed: boolean
   ) => {
     if (!userId) return;
 
@@ -188,8 +188,8 @@ export default function InterestsPage() {
                   ? interest.subscriberCount - 1
                   : interest.subscriberCount + 1,
               }
-            : interest,
-        ),
+            : interest
+        )
       );
     } catch (error) {
       console.error(error);
@@ -223,7 +223,7 @@ export default function InterestsPage() {
 
   const handleSaveKeyword = async (
     interestId: InterestId,
-    keywords: string[],
+    keywords: string[]
   ) => {
     if (!userId) return;
 
@@ -288,7 +288,7 @@ export default function InterestsPage() {
   };
 
   return (
-    <div className="mt-10">
+    <div>
       <div className="w-[1200px] mx-auto">
         <div className="flex justify-between items-center">
           <div className="text-left">

@@ -1,8 +1,8 @@
 import { Link } from "react-router";
-import Logo from "@/components/Logo";
-import HeaderTabs from "@/components/gnb/HeaderTabs";
-import UserMenu from "@/components/gnb/UserMenu";
-import { headerStyle } from "@/components/gnb/header.styles";
+import Logo from "@/shared/components/Logo";
+import HeaderTabs from "@/shared/components/gnb/HeaderTabs";
+import UserMenu from "@/shared/components/gnb/UserMenu";
+import { headerStyle } from "@/shared/components/gnb/header.styles";
 import { ROUTES } from "@/shared/constants/routes";
 
 export default function PrivateHeader() {

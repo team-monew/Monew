@@ -9,7 +9,7 @@ import {
   checkNotifications,
   checkAllNotifications,
 } from "@/api/notifications";
-import { normalizeError } from "@/shared/lib/http";
+import { normalizeError } from "@/shared/lib/normalizeError";
 
 type Options = {
   userId: UserId;

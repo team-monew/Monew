@@ -6,7 +6,7 @@
  * 핵심
  - 브라우저 새 탭/새로고침 전까지는 메모리 캐시 사용 → 불필요한 JSON parse 방지
  - write()/clear(): 저장/삭제 후 항상 AUTH_CHANGE 이벤트 디스패치
- - withUserHeader(): 요청 헤더에 사용자 ID 주입하는 헬퍼
+ - withUserHeader(): 요청 헤더에 사용자 ID를 기입
  
  * 주의
  - sessionStorage는 탭별로 분리됩니다.

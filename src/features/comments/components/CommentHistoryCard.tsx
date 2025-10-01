@@ -1,10 +1,8 @@
-import { useNavigate } from "react-router";
 import subDirectoryIcon from "@/assets/icons/subdirectory.svg";
 import likeDefault from "@/assets/icons/like-default.svg";
 import likeActive from "@/assets/icons/like-active.svg";
 import type { ActivityComment } from "@/api/user-activities/types";
 import type { CommentId } from "@/types/ids";
-import { ROUTES } from "@/shared/constants/routes";
 import { formatTimeAgo } from "@/shared/utils/formatTimeAgo";
 
 type CommentHistoryCardProps = ActivityComment & {
@@ -16,7 +14,6 @@ type CommentHistoryCardProps = ActivityComment & {
 export default function CommentHistoryCard({
   mode = "recent",
   id,
-  articleId,
   articleTitle,
   content,
   likeCount,
@@ -24,33 +21,22 @@ export default function CommentHistoryCard({
   isLiked,
   onLikeClick,
 }: CommentHistoryCardProps) {
-  const navigate = useNavigate();
-
   const handleHeartClick = () => {
     onLikeClick?.(id);
   };
 
-  const handleTitleClick = () => {
-    navigate(ROUTES.ARTICLES + `/${articleId}`);
-  };
-
   return (
     <div className="w-full h-auto px-2 py-8 bg-transparent border-none">
-      <div className="flex mb-4">
-        <div>
-          <button
-            className="text-16-m text-cyan-500 hover:text-cyan-600 hover:underline cursor-pointer"
-            onClick={handleTitleClick}
-          >
-            {articleTitle}
-          </button>
+      <div className="flex mb-4 items-center">
+        <div className="flex">
+          <p className="text-16-m text-cyan-600">{articleTitle}</p>
           <span className="text-16-r">
             {mode === "recent" ? "에 남긴 댓글" : "에 좋아요한 댓글"}
           </span>
         </div>
         <div className="flex gap-1 ml-1">
-          <span className="text-14-m text-gray-500 mt-0.5">·</span>
-          <span className="text-14-m text-gray-500 mt-0.5">
+          <span className="text-14-m text-gray-500">·</span>
+          <span className="text-14-m text-gray-500">
             {formatTimeAgo(createdAt)}
           </span>
         </div>

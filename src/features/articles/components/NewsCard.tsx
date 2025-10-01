@@ -1,4 +1,4 @@
-import Label from "@/components/Label";
+import Label from "@/shared/components/Label";
 import naverLogo from "@/assets/logos/news/naver.svg";
 import chosunLogo from "@/assets/logos/news/chosun-ilbo.svg";
 import koreanLogo from "@/assets/logos/news/korean-economy.svg";

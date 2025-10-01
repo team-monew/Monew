@@ -1,6 +1,6 @@
 import chevronDown from "@/assets/icons/chevron-down-16.svg";
 import { useEffect, useRef, useState } from "react";
-import Dropdown from "./dropdown";
+import Dropdown from "@/shared/components/dropdown/Dropdown";
 
 interface SelectBarProps {
   placeholder?: string;

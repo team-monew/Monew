@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSearchParams } from "react-router";
-import ProfileCard from "@/features/activities/components/ProfileCard";
+import ProfileCard from "@/features/user/components/ProfileCard";
 import SubscriptionPanel from "@/features/activities/components/SubscriptionPanel";
 import ActivitiesTabs from "@/features/activities/components/ActivitiesTabs";
 import RecentCommentList from "@/features/activities/components/RecentCommentList";

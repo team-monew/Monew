@@ -1,14 +1,14 @@
 import { useUserActivitiesList } from "@/features/activities/hooks/useUserActivitiesList";
 import arrowIconUrl from "@/assets/icons/chevron-right.svg";
 import SubscriptionCard from "@/features/activities/components/SubscriptionCard";
-import Skeleton from "@/components/Skeleton";
+import Skeleton from "@/shared/components/Skeleton";
 import { Link } from "react-router";
 import { ROUTES } from "@/shared/constants/routes";
 
 export default function SubscriptionPanel() {
   const { items, totalCount, error, loading, empty } = useUserActivitiesList(
     "subscriptions",
-    4,
+    4
   );
 
   if (error) {
