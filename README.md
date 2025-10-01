@@ -147,43 +147,21 @@ MONEW/
 │  │  └─ routes/
 │  │     ├─ public/
 │  │     └─ private/
+│  │  └─ App.tsx
 │  ├─ assets/                    # 앱에서 쓰는 정적 에셋
 │  │  ├─ icons/
 │  │  ├─ images/
 │  │  └─ logos/
 │  ├─ features/                  # 도메인 단위 UI/로직
 │  │  ├─ activities/
-│  │  │  ├─ components/
-│  │  │  └─ hooks/
 │  │  ├─ articles/
-│  │  │  └─ components/
 │  │  ├─ auth/
-│  │  │  ├─ components/
-│  │  │  ├─ guards/
-│  │  │  └─ hooks/
 │  │  ├─ comments/
-│  │  │  ├─ components/
-│  │  │  └─ hooks/
 │  │  ├─ interests/
-│  │  │  ├─ components/
-│  │  │  └─ hooks/
 │  │  ├─ notifications/
-│  │  │  └─ components/
 │  │  └─ user/
-│  │     └─ components/
 │  ├─ shared/                    # 전역 공용 레이어
 │  │  ├─ components/
-│  │  │  ├─ button/
-│  │  │  ├─ dropdown/
-│  │  │  ├─ gnb/
-│  │  │  ├─ modal/
-│  │  │  ├─ EmptyState.tsx
-│  │  │  ├─ Footer.tsx
-│  │  │  ├─ SearchBar.tsx
-│  │  │  ├─ SelectBox.tsx
-│  │  │  ├─ Skeleton.tsx
-│  │  │  ├─ Tag.tsx
-│  │  │  └─ Toast.tsx
 │  │  ├─ constants/
 │  │  ├─ hooks/
 │  │  ├─ lib/
