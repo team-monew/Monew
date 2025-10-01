@@ -1,6 +1,7 @@
 import { useUserActivitiesList } from "@/features/activities/hooks/useUserActivitiesList";
 import type { ActivityComment } from "@/api/user-activities/types";
 import CommentHistoryCard from "@/features/comments/components/CommentHistoryCard";
+import EmptyState from "@/components/EmptyState";
 import Skeleton from "@/components/Skeleton";
 
 export default function RecentCommentList() {
@@ -16,9 +17,7 @@ export default function RecentCommentList() {
     return <Skeleton height="132px" />;
   }
   if (empty) {
-    return (
-      <p className="text-14-r text-slate-500">아직 작성한 댓글이 없습니다.</p>
-    );
+    return <EmptyState message="아직 작성한 댓글이 없습니다." />;
   }
 
   return (

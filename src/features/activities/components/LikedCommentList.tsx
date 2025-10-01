@@ -1,6 +1,7 @@
 import { useUserActivitiesList } from "@/features/activities/hooks/useUserActivitiesList";
 import type { ActivityComment } from "@/api/user-activities/types";
 import CommentHistoryCard from "@/features/comments/components/CommentHistoryCard";
+import EmptyState from "@/components/EmptyState";
 import Skeleton from "@/components/Skeleton";
 
 export default function LikedCommentList() {
@@ -16,13 +17,10 @@ export default function LikedCommentList() {
     return <Skeleton height="132px" />;
   }
   if (empty) {
-    return (
-      <p className="text-14-r text-slate-500">아직 좋아요한 댓글이 없습니다.</p>
-    );
+    return <EmptyState message="아직 좋아요한 댓글이 없습니다." />;
   }
 
   return (
-    // LikedCommentList.tsx (핵심 부분만)
     <ul className="flex flex-col gap-4 divide-y divide-gray-300">
       {items.map((c) => {
         const normalized = {
