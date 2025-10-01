@@ -1,15 +1,14 @@
 import { logout } from "@/features/auth/actions";
-import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import logoutIcon from "@/assets/icons/logout.svg";
 
 export default function LogoutButton() {
-  const nav = useNavigate();
-  const onClick = () => {
+  const onClick = async () => {
     logout();
+    window.location.replace("/");
     toast.success("로그아웃이 완료되었습니다.");
-    nav("/", { replace: true });
   };
+
   return (
     <button
       type="button"
