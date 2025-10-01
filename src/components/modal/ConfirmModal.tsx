@@ -4,7 +4,7 @@ import ModalLayout from "./ModalLayout";
 interface ConfirmModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onConfirm: () => void;
+  onConfirm: () => void | Promise<void>;
   title: string;
   message: string;
   confirmText?: string;
@@ -21,8 +21,8 @@ export default function ConfirmModal({
   cancelText = "취소",
   confirmText = "확인",
 }: ConfirmModalProps) {
-  const handleConfirm = () => {
-    onConfirm();
+  const handleConfirm = async () => {
+    await onConfirm();
     onClose();
   };
 

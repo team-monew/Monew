@@ -3,7 +3,7 @@ import { useState } from "react";
 interface ConfirmModalData {
   title: string;
   message: string;
-  onConfirm: () => void;
+  onConfirm: () => void | Promise<void>;
   confirmText?: string;
   cancelText?: string;
 }

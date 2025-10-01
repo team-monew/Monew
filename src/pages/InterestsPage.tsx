@@ -327,16 +327,20 @@ export default function InterestsPage() {
         </div>
         <SearchBar width="w-[304px]" onSearch={handleSearch} />
       </div>
-      <div className="mt-4">
+      <div className="mt-4 min-w-2xs">
         {interests.length === 0 ? (
           <div className="flex justify-center items-center min-h-[200px] mt-30">
-            <EmptyState message="아직 등록한 관심사가 없습니다." />
+            {keyword ? (
+              <EmptyState message="검색 결과가 없습니다." />
+            ) : (
+              <EmptyState message="아직 등록한 관심사가 없습니다." />
+            )}
           </div>
         ) : (
           <div className="mt-4 flex flex-wrap gap-4">
             {interests.map((interest, index) => (
               <div
-                className="min-w-2xs"
+                className="w-[386px] h-[232px]"
                 key={interest.id}
                 ref={index === interests.length - 1 ? lastElementRef : null}
               >
