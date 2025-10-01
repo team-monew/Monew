@@ -169,11 +169,6 @@ MONEW/
 │  │  ├─ styles/
 │  │  └─ types/
 │  └─ main.tsx
-├─ index.html
-├─ vite.config.ts
-├─ vite-env.d.ts
-├─ eslint.config.js
-└─ .gitignore
 ```
 
 <br/>
