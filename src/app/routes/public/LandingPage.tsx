@@ -3,9 +3,9 @@ import Button from "@/shared/components/button/Button";
 import { useAuthInfo } from "@/features/auth/hooks/useAuthInfo";
 import { Link } from "react-router";
 import { ROUTES } from "@/shared/constants/routes";
-import firstImageUrl from "@/assets/images/landing_interests.png";
-import secondImageUrl from "@/assets/images/landing_notifications.png";
-import thirdImageUrl from "@/assets/images/landing_comments.png";
+import firstImageUrl from "@/assets/images/landing_interests.svg";
+import secondImageUrl from "@/assets/images/landing_notifications.svg";
+import thirdImageUrl from "@/assets/images/landing_comments.svg";
 
 export default function LandingPage() {
   const { user } = useAuthInfo();
@@ -27,21 +27,21 @@ export default function LandingPage() {
           imageSrc={firstImageUrl}
           imageAlt="관심사 목록"
           description="관심사를 등록해보세요"
-          containerClassName="bg-white border-3 border-cyan-400"
+          containerClassName="bg-white border-cyan-400"
           descriptionClassName="text-cyan-500"
         />
         <LandingBox
           imageSrc={secondImageUrl}
           imageAlt="알림 목록"
           description="키워드에 맞는 뉴스가 수집돼요"
-          containerClassName="bg-gray-400 border-3 border-gray-200"
+          containerClassName="bg-gray-400 border-gray-200"
           descriptionClassName="text-white"
         />
         <LandingBox
           imageSrc={thirdImageUrl}
           imageAlt="댓글 목록"
           description="뉴스를 읽고 의견을 남겨보세요"
-          containerClassName="bg-gray-500 border-3 border-gray-300"
+          containerClassName="bg-gray-500 border-gray-300"
           descriptionClassName="text-white"
         />
       </div>
