@@ -5,7 +5,7 @@ import Footer from "@/shared/components/Footer";
 export default function PrivateLayout() {
   return (
     <div className="min-h-dvh flex flex-col space-y-[60px]">
-      <div className="sticky top-0 z-50">
+      <div className="sticky top-0 z-30">
         <PrivateHeader />
       </div>
 

@@ -42,7 +42,7 @@ export default function ModalLayout({
 
   return createPortal(
     <div
-      className="fixed inset-0 bg-black/50 flex items-center justify-center"
+      className="z-50 fixed inset-0 bg-black/50 flex items-center justify-center"
       role="dialog"
       aria-modal="true"
     >
@@ -61,6 +61,6 @@ export default function ModalLayout({
         {children}
       </div>
     </div>,
-    document.body,
+    document.body
   );
 }

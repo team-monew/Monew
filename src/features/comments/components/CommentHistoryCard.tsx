@@ -26,7 +26,7 @@ export default function CommentHistoryCard({
   };
 
   return (
-    <div className="w-full h-auto px-2 py-8 bg-transparent border-none">
+    <div className="w-full max-w-[895px] h-auto px-2 py-8 bg-transparent border-none">
       <div className="flex mb-4 items-center">
         <div className="flex">
           <p className="text-16-m text-cyan-600">{articleTitle}</p>
@@ -45,11 +45,11 @@ export default function CommentHistoryCard({
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
           <img src={subDirectoryIcon} className="w-6 h-6" alt="답글" />
-          <span className="text-18-sb line-clamp-1">{content}</span>
+          <span className="text-18-sb line-clamp-3">{content}</span>
         </div>
         <button
           onClick={handleHeartClick}
-          className="flex justify-center items-center gap-2"
+          className="flex justify-center items-center gap-2 shrink-0"
         >
           {isLiked ? (
             <img src={likeActive} className="w-6 h-6" alt="활성화 하트" />
