@@ -88,7 +88,7 @@ export default function UpdateModal({
           </Button>
         </div>
 
-        <p className="px-1 gap-2.5 text-14-r text-slate-500 mb-16">
+        <p className="px-1 gap-2.5 text-14-r text-gray-500 mb-16">
           *설정한 키워드 기준으로 뉴스를 자동 수집합니다
         </p>
 

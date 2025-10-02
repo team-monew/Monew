@@ -75,13 +75,13 @@ export default function CommentCard({
 
   return (
     <div
-      className={`w-full h-auto border-slate-300 py-4 px-4 bg-slate-100 rounded-lg ${className || ""}`}
+      className={`w-full h-auto border-gray-300 py-4 px-4 bg-gray-100 rounded-lg ${className || ""}`}
     >
       <div className="flex justify-between pr-1 gap-2 mb-2.5">
         <div className="gap-1 flex items-center">
-          <span className="text-14-m text-slate-500">{userNickname}</span>
-          <span className="text-14-m text-slate-500 ">·</span>
-          <span className="text-14-m text-slate-500">
+          <span className="text-14-m text-gray-500">{userNickname}</span>
+          <span className="text-14-m text-gray-500 ">·</span>
+          <span className="text-14-m text-gray-500">
             {formatDistanceToNow(createdAt, { addSuffix: true, locale: ko })}
           </span>
           {isMyComment && (
@@ -120,7 +120,7 @@ export default function CommentCard({
             ) : (
               <img src={likeDefault} className="w-6 h-6" alt="비활성화 하트" />
             )}
-            <p className="text-14-r text-slate-500">{likeCount}</p>
+            <p className="text-14-r text-gray-500">{likeCount}</p>
           </button>
         </div>
       </div>
@@ -147,7 +147,7 @@ export default function CommentCard({
         </div>
       ) : (
         <div>
-          <p className="text-16-r text-slate-700">{content}</p>
+          <p className="text-16-r text-gray-700">{content}</p>
         </div>
       )}
     </div>

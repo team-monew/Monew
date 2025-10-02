@@ -50,7 +50,7 @@ export default function Input({
       )}
 
       <div
-        className={`w-full border rounded-lg mt-1.5 gap-2.5 ${props.disabled ? "bg-gray-50" : "bg-white"} ${sizeClasses[inputSize]} ${error ? "border-error" : "border-slate-200"} focus-within:border-cyan-500 ${className || ""}`}
+        className={`w-full border rounded-lg mt-1.5 gap-2.5 ${props.disabled ? "bg-gray-50" : "bg-white"} ${sizeClasses[inputSize]} ${error ? "border-error" : "border-gray-200"} focus-within:border-cyan-500 ${className || ""}`}
       >
         <div className="flex items-center justify-between">
           <input

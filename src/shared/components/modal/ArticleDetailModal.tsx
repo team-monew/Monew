@@ -143,7 +143,7 @@ export default function ArticleDetailModal({
       },
       {
         threshold: 0.8,
-      },
+      }
     );
     if (lastElementRef.current) {
       observerRef.current.observe(lastElementRef.current);
@@ -257,31 +257,31 @@ export default function ArticleDetailModal({
         disableClose={isConfirmOpen}
       >
         <div className="h-auto rounded-tr-3xl rounded-tl-3xl pt-10 px-10 pb-6 bg-white">
-          <div className="text-20-b text-slate-900 mb-2">{data.title}</div>
+          <div className="text-20-b text-gray-900 mb-2">{data.title}</div>
 
-          <div className="flex items-center gap-4  pb-6 mb-6 border-b border-slate-200">
+          <div className="flex items-center gap-4  pb-6 mb-6 border-b border-gray-200">
             <Label src={labelSrc} label={data.source} />
             <div className="flex items-center gap-3">
-              <span className="text-14-r text-slate-400">{formattedDate}</span>
-              <span className="text-slate-300">|</span>
+              <span className="text-14-r text-gray-400">{formattedDate}</span>
+              <span className="text-gray-300">|</span>
               <div className="flex items-center gap-1">
-                <span className="text-14-r text-slate-400">읽음</span>
-                <span className="text-14-r text-slate-400">
+                <span className="text-14-r text-gray-400">읽음</span>
+                <span className="text-14-r text-gray-400">
                   {data.viewCount}
                 </span>
               </div>
-              <span className="text-slate-300">|</span>
+              <span className="text-gray-300">|</span>
               <div className="flex items-center gap-1">
                 <img src={commentIcon} className="w-5 h-5" alt="댓글" />
-                <span className="text-14-r text-slate-400">
+                <span className="text-14-r text-gray-400">
                   {data.commentCount}
                 </span>
               </div>
             </div>
           </div>
-          <div className="text-18-r text-slate-500 mb-6">{data.summary}</div>
+          <div className="text-18-r text-gray-500 mb-6">{data.summary}</div>
 
-          <div className="mt-4 mb-10 border-b-slate-200">
+          <div className="mt-4 mb-10 border-b-gray-200">
             <Button
               size="sm"
               className="w-[162px]"
@@ -293,7 +293,7 @@ export default function ArticleDetailModal({
           </div>
         </div>
 
-        <div className="rounded-br-3xl rounded-bl-3xl pt-3 px-10 pb-8 bg-slate-100">
+        <div className="rounded-br-3xl rounded-bl-3xl pt-3 px-10 pb-8 bg-gray-100">
           <div className="mb-2 w-[110px]">
             <SelectBox
               items={commentItems}
@@ -301,7 +301,7 @@ export default function ArticleDetailModal({
               onChange={handleApplyFilters}
               placeholder="등록순"
               noBorder={true}
-              textClassName="text-14-m text-slate-400"
+              textClassName="text-14-m text-gray-400"
               noBackground={true}
             />
           </div>
