@@ -360,7 +360,7 @@ export default function InterestsPage() {
             </div>
           )}
 
-          {isLoading && <Skeleton className="mx-4" />}
+          {isLoading && <Skeleton className="h-[232px] mx-4" />}
         </div>
       </div>
     </div>

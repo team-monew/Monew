@@ -462,11 +462,11 @@ export default function ArticlesPage() {
           <div className="text-24-b text-gray-900">관련 기사 목록</div>
         )}
         {articles.length === 0 ? (
-          <div className="min-w-[894px] w-full flex flex-col justify-center min-h-72 items-center gap-6 mt-30">
+          <div className="min-w-[894px] w-full flex flex-col justify-center min-h-72 items-center mt-30">
             {interestId ? (
               <EmptyState message="관련된 기사가 없습니다." />
             ) : (
-              <div>
+              <div className="flex flex-col items-center justify-center gap-6">
                 <EmptyState message="관심사를 등록하면 맞춤 기사를 확인하실 수 있어요." />
                 <Button
                   onClick={() => navigate("/interests")}
