@@ -35,9 +35,9 @@ export default function ActivitiesTabs() {
               aria-current={isActive ? "page" : undefined}
               className={[
                 "inline-flex justify-center w-full rounded-lg py-3 transition",
-                "md:text-16-m text-14-m",
+                "text-16-m",
                 isActive
-                  ? "bg-white text-black md:text-16-sb text-14-sb"
+                  ? "bg-white text-black text-16-sb"
                   : "text-gray-500 hover:bg-gray-200",
               ].join(" ")}
             >
