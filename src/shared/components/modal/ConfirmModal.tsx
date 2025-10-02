@@ -29,8 +29,8 @@ export default function ConfirmModal({
   return (
     <ModalLayout isOpen={isOpen} onClose={onClose}>
       <div className="w-full p-6 text-center">
-        <h2 className="text-20-b text-slate-900 mb-4">{title}</h2>
-        <p className="text-16-r text-slate-600 mb-8 leading-relaxed">
+        <h2 className="text-20-b text-gray-900 mb-4">{title}</h2>
+        <p className="text-16-r text-gray-600 mb-8 leading-relaxed">
           {message}
         </p>
 

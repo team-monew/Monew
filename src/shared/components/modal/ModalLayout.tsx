@@ -1,6 +1,7 @@
 import { useClosePopup } from "@/shared/hooks/useClosePopup";
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
+import closeIcon from "@/assets/icons/close-primary-24.svg";
 
 interface ModalLayoutProps {
   isOpen: boolean;
@@ -41,7 +42,7 @@ export default function ModalLayout({
 
   return createPortal(
     <div
-      className="fixed inset-0 bg-black/50 flex items-center justify-center"
+      className="z-50 fixed inset-0 bg-black/50 flex items-center justify-center"
       role="dialog"
       aria-modal="true"
     >
@@ -51,15 +52,15 @@ export default function ModalLayout({
         onClick={(e) => e.stopPropagation()}
       >
         <button
-          className="absolute top-4 right-4 hover:text-gray-700"
+          className="absolute top-9 right-7 hover:text-gray-700"
           onClick={onClose}
           aria-label="close"
         >
-          x
+          <img src={closeIcon} alt="닫기" className="w-6 h-6" />
         </button>
         {children}
       </div>
     </div>,
-    document.body,
+    document.body
   );
 }

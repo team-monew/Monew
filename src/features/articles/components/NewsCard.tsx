@@ -32,23 +32,23 @@ export default function NewsCard({ article, onClick }: NewsCardProps) {
         onClick={onClick}
       >
         <div className="my-6 mx-1">
-          <div className="text-20-b text-slate-900 mb-2">{article.title}</div>
-          <div className="text-18-r text-slate-500 mb-6">{article.summary}</div>
+          <div className="text-20-b text-gray-900 mb-2">{article.title}</div>
+          <div className="text-18-r text-gray-500 mb-6">{article.summary}</div>
           <div className="flex justify-between items-center">
             <Label src={labelSrc} label={article.source} />
             <div className="flex items-center gap-3">
-              <span className="text-14-r text-slate-400">{formattedDate}</span>
-              <span className="text-slate-300">|</span>
+              <span className="text-14-r text-gray-400">{formattedDate}</span>
+              <span className="text-gray-300">|</span>
               <div className="flex items-center gap-1">
-                <span className="text-14-r text-slate-400">읽음</span>
-                <span className="text-14-r text-slate-400">
+                <span className="text-14-r text-gray-400">읽음</span>
+                <span className="text-14-r text-gray-400">
                   {article.viewCount}
                 </span>
               </div>
-              <span className="text-slate-300">|</span>
+              <span className="text-gray-300">|</span>
               <div className="flex items-center gap-1">
                 <img src={commentIcon} className="w-5 h-5" alt="댓글" />
-                <span className="text-14-r text-slate-400">
+                <span className="text-14-r text-gray-400">
                   {article.commentCount}
                 </span>
               </div>

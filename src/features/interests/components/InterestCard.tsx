@@ -73,9 +73,9 @@ export default function InterestCard({
   };
 
   return (
-    <div className="w-full h-[232px] border border-slate-200 rounded-2xl p-6 bg-white flex flex-col">
+    <div className="w-full h-[232px] border border-gray-200 rounded-2xl p-6 bg-white flex flex-col">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-20-b text-slate-900">{name}</h2>
+        <h2 className="text-20-b text-gray-900">{name}</h2>
         <button
           className="relative"
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -96,7 +96,7 @@ export default function InterestCard({
         {keywords.map((keyword, index) => (
           <div
             key={index}
-            className="rounded-lg py-1 px-2 bg-slate-100 text-16-m text-slate-500 h-fit"
+            className="rounded-lg py-1 px-2 bg-gray-100 text-16-m text-gray-500 h-fit"
           >
             {keyword}
           </div>
@@ -106,7 +106,7 @@ export default function InterestCard({
       <div className="flex justify-between items-center">
         <div className="flex items-center justify-center">
           <img src={personIcon} className="w-6 h-6" alt="사람모양" />
-          <span className="text-14-r text-slate-500">
+          <span className="text-14-r text-gray-500">
             {subscriberCount} 구독자
           </span>
         </div>
@@ -122,7 +122,7 @@ export default function InterestCard({
           </Button>
         ) : (
           <Button
-            className="min-w-[80px]"
+            className="min-w-[91px]"
             size="sm"
             onClick={handleSubscribeClick}
           >

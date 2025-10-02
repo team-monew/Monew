@@ -17,7 +17,7 @@ export default function LandingBox({
     <section
       className={[
         "flex flex-col items-center justify-center gap-4 p-4",
-        "sm:w-[420px] h-[350px] rounded-2xl",
+        "sm:w-[420px] h-[350px] rounded-2xl border-2",
         "w-[300px]",
         containerClassName ?? "",
       ].join(" ")}
@@ -26,7 +26,7 @@ export default function LandingBox({
       <img
         src={imageSrc}
         alt={imageAlt}
-        className="w-full md:max-w-[360px] max-w-[320px] h-[250px] object-contain select-none"
+        className="w-full md:max-w-[370px] max-w-[320px] h-[265px] object-contain select-none"
         draggable={false}
       />
       <p className={["text-18-m", descriptionClassName ?? ""].join(" ")}>
