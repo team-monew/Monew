@@ -114,10 +114,10 @@ export default function ArticlesPage() {
   };
 
   const [sortValue, setSortValue] = useState(
-    reverseSortMap[orderBy] || "게시일"
+    reverseSortMap[orderBy] || "게시일",
   );
   const [directionValue, setDirectionValue] = useState(
-    direction === "DESC" ? "내림차순" : "오름차순"
+    direction === "DESC" ? "내림차순" : "오름차순",
   );
 
   const fetchInitialData = useCallback(async () => {
@@ -225,7 +225,7 @@ export default function ArticlesPage() {
       },
       {
         threshold: 0.8,
-      }
+      },
     );
     if (lastElementRef.current) {
       observerRef.current.observe(lastElementRef.current);
@@ -238,13 +238,13 @@ export default function ArticlesPage() {
 
   const interestNames = useMemo(
     () => interests.map((interest) => interest.name),
-    [interests]
+    [interests],
   );
 
   const handleInterestChange = (value: string) => {
     setSelectedInterest(value);
     const selectedInterestData = interests.find(
-      (interest) => interest.name === value
+      (interest) => interest.name === value,
     );
 
     if (selectedInterestData) {
@@ -290,13 +290,13 @@ export default function ArticlesPage() {
 
       newParams.set(
         "direction",
-        directionValue === "오름차순" ? "ASC" : "DESC"
+        directionValue === "오름차순" ? "ASC" : "DESC",
       );
 
       if (fromDate) {
         newParams.set(
           "publishDateFrom",
-          `${fromDate.replace(/\./g, "-")}T00:00:00`
+          `${fromDate.replace(/\./g, "-")}T00:00:00`,
         );
       } else {
         newParams.delete("publishDateFrom");
@@ -304,7 +304,7 @@ export default function ArticlesPage() {
       if (toDate) {
         newParams.set(
           "publishDateTo",
-          `${toDate.replace(/\./g, "-")}T23:59:59`
+          `${toDate.replace(/\./g, "-")}T23:59:59`,
         );
       } else {
         newParams.delete("publishDateTo");
@@ -325,6 +325,19 @@ export default function ArticlesPage() {
   useEffect(() => {
     fetchInterestData();
   }, [fetchInterestData]);
+
+  useEffect(() => {
+    if (interests.length > 0 && interestId) {
+      const matchedInterest = interests.find(
+        (interest) => interest.id === interestId,
+      );
+      if (matchedInterest) {
+        setSelectedInterest(matchedInterest.name);
+      }
+    } else if (!interestId) {
+      setSelectedInterest("");
+    }
+  }, [interests, interestId]);
 
   useEffect(() => {
     setSortValue(reverseSortMap[orderBy] || "게시일");
