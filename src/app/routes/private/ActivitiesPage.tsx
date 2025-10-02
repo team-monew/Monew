@@ -26,7 +26,7 @@ export default function ActivitiesPage() {
   }, [isValid, setSp]);
 
   return (
-    <div className="flex justify-center gap-10 w-full px-4 overflow-x-auto">
+    <div className="flex justify-center gap-10 w-full">
       <div className="flex flex-col gap-4">
         <ProfileCard />
         <SubscriptionPanel />

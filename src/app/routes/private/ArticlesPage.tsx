@@ -327,6 +327,19 @@ export default function ArticlesPage() {
   }, [fetchInterestData]);
 
   useEffect(() => {
+    if (interests.length > 0 && interestId) {
+      const matchedInterest = interests.find(
+        (interest) => interest.id === interestId,
+      );
+      if (matchedInterest) {
+        setSelectedInterest(matchedInterest.name);
+      }
+    } else if (!interestId) {
+      setSelectedInterest("");
+    }
+  }, [interests, interestId]);
+
+  useEffect(() => {
     setSortValue(reverseSortMap[orderBy] || "게시일");
     setDirectionValue(direction === "DESC" ? "내림차순" : "오름차순");
     fetchInitialData();
@@ -383,8 +396,8 @@ export default function ArticlesPage() {
         <div className="mb-6">
           <SearchBar height="h-11" onSearch={handleSearch} />
         </div>
-        <div className="h-auto mb-6 border border-slate-200 rounded-2xl px-4 pt-4 pb-6 bg-white">
-          <div className="text-14-m text-slate-900 mb-2">정렬</div>
+        <div className="h-auto mb-6 border border-gray-200 rounded-2xl px-4 pt-4 pb-6 bg-white">
+          <div className="text-14-m text-gray-900 mb-2">정렬</div>
           <div className="min-h-10">
             <SelectBox
               items={sortOptions}
@@ -394,17 +407,17 @@ export default function ArticlesPage() {
             />
           </div>
 
-          <div className="text-14-m text-slate-900 mb-2">정렬 방향</div>
+          <div className="text-14-m text-gray-900 mb-2">정렬 방향</div>
           <SelectBox
             items={directionOptions}
             value={directionValue}
             onChange={handleDirectionOption}
             className="mb-6 h-10"
           />
-          <div className="text-14-m text-slate-900 mb-2">출처</div>
+          <div className="text-14-m text-gray-900 mb-2">출처</div>
           <Input value="NAVER" className="mb-6" inputSize="sm" disabled />
 
-          <div className="text-14-m text-slate-900 mb-2">날짜</div>
+          <div className="text-14-m text-gray-900 mb-2">날짜</div>
           <Input
             value={fromDate}
             placeholder="2025.01.01 부터"
@@ -441,7 +454,7 @@ export default function ArticlesPage() {
         {keyword ? (
           <div className="flex gap-4 items-center mb-8">
             <div className="text-24-b text-cyan-600">{keyword}</div>
-            <div className="text-24-b text-slate-900">관련 기사 목록</div>
+            <div className="text-24-b text-gray-900">관련 기사 목록</div>
           </div>
         ) : interests.length > 0 ? (
           <div className="flex gap-4 items-baseline mb-8">
@@ -456,17 +469,17 @@ export default function ArticlesPage() {
                 noBackground={true}
               />
             </div>
-            <div className="text-24-b text-slate-900">관련 기사 목록</div>
+            <div className="text-24-b text-gray-900">관련 기사 목록</div>
           </div>
         ) : (
-          <div className="text-24-b text-slate-900">관련 기사 목록</div>
+          <div className="text-24-b text-gray-900">관련 기사 목록</div>
         )}
         {articles.length === 0 ? (
-          <div className="min-w-[894px] w-full flex flex-col justify-center min-h-72 items-center gap-6 mt-30">
+          <div className="min-w-[894px] w-full flex flex-col justify-center min-h-72 items-center mt-30">
             {interestId ? (
               <EmptyState message="관련된 기사가 없습니다." />
             ) : (
-              <div>
+              <div className="flex flex-col items-center justify-center gap-6">
                 <EmptyState message="관심사를 등록하면 맞춤 기사를 확인하실 수 있어요." />
                 <Button
                   onClick={() => navigate("/interests")}

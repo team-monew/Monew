@@ -173,7 +173,7 @@ MONEW/
 
 <br/>
 
-<h2 id="팀원소개">🧑 팀원 소개</h2>
+<h2 id="팀원소개">👥 팀원 소개</h2>
 
 <a href="https://www.notion.so/26f2c744f86a8000bdb0d71497422216?source=copy_link">📑 프로젝트 협업 문서(노션) 바로가기</a>
 
