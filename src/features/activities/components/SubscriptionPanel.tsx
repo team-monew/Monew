@@ -8,7 +8,7 @@ import { ROUTES } from "@/shared/constants/routes";
 export default function SubscriptionPanel() {
   const { items, totalCount, error, loading, empty } = useUserActivitiesList(
     "subscriptions",
-    4
+    10
   );
 
   if (error) {
