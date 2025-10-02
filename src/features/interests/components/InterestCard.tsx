@@ -122,7 +122,7 @@ export default function InterestCard({
           </Button>
         ) : (
           <Button
-            className="min-w-[80px]"
+            className="min-w-[91px]"
             size="sm"
             onClick={handleSubscribeClick}
           >
