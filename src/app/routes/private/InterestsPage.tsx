@@ -292,8 +292,8 @@ export default function InterestsPage() {
       <div className="w-[1200px] mx-auto">
         <div className="flex justify-between items-center">
           <div className="text-left">
-            <h1 className="text-24-b text-slate-900">관심사 목록</h1>
-            <p className="text-16-m text-slate-500 mt-3">
+            <h1 className="text-24-b text-gray-900">관심사 목록</h1>
+            <p className="text-16-m text-gray-500 mt-3">
               구독 중인 관심사를 관리하고, 새로운 관심사를 등록해보세요.
             </p>
           </div>
